@@ -1,21 +1,23 @@
 import { Link } from 'react-router-dom';
 import Card, { CardHeader, CardTitle, CardBody } from '../components/ui/Card';
 import Button from '../components/ui/Button';
+import { useProgression } from '../hooks/useProgression';
+import { ZONES } from '../data/zoneConfig';
 
-const stats = [
-  { label: 'Quests Completed', value: '3', icon: '🎯' },
-  { label: 'Stars Earned', value: '12', icon: '⭐' },
-  { label: 'Time Spent', value: '45 min', icon: '⏱️' },
-  { label: 'Current Streak', value: '5 days', icon: '🔥' },
-];
-
-const recentActivity = [
-  { quest: 'Coral Reef Cove', score: '100%', date: 'Today' },
-  { quest: 'Kelp Forest', score: '85%', date: 'Yesterday' },
-  { quest: 'Coral Reef Cove', score: '90%', date: '2 days ago' },
-];
+const ZONE_NAME_BY_ACTIVITY_ID: Record<string, string> = Object.fromEntries(
+  ZONES.map((z) => [z.activityId, z.name]),
+);
 
 export default function ParentDashboardScreen() {
+  const { xp, completedLessonIds, earnedItems, unlockedActivityIds } = useProgression();
+
+  const stats = [
+    { label: 'Quests Completed', value: String(completedLessonIds.length), icon: '🎯' },
+    { label: 'XP Earned', value: String(xp), icon: '⚡' },
+    { label: 'Treasures Found', value: String(earnedItems.length), icon: '🐚' },
+    { label: 'Zones Unlocked', value: `${unlockedActivityIds.length} / 6`, icon: '🗺️' },
+  ];
+
   return (
     <div className="min-h-screen px-4 py-10">
       <div className="mx-auto max-w-4xl">
@@ -46,17 +48,21 @@ export default function ParentDashboardScreen() {
             <CardTitle>📋 Recent Activity</CardTitle>
           </CardHeader>
           <CardBody>
-            <div className="divide-y divide-white/10">
-              {recentActivity.map((item, i) => (
-                <div key={i} className="flex items-center justify-between py-3">
-                  <div>
-                    <p className="font-quest text-pearl-200">{item.quest}</p>
-                    <p className="font-body text-xs text-ocean-400">{item.date}</p>
+            {completedLessonIds.length === 0 ? (
+              <p className="font-body text-pearl-400 text-sm">No quests completed yet. Start exploring!</p>
+            ) : (
+              <div className="divide-y divide-white/10">
+                {[...completedLessonIds].reverse().map((lessonId) => (
+                  <div key={lessonId} className="flex items-center justify-between py-3">
+                    <div>
+                      <p className="font-quest text-pearl-200">{ZONE_NAME_BY_ACTIVITY_ID[lessonId] ?? `Quest #${lessonId}`}</p>
+                      <p className="font-body text-xs text-ocean-400">Completed</p>
+                    </div>
+                    <span className="font-quest text-seafoam-400 text-lg">✅ 100%</span>
                   </div>
-                  <span className="font-quest text-seafoam-400 text-lg">{item.score}</span>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </CardBody>
         </Card>
 
