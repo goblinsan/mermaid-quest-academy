@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import type { Lesson } from '../types/lesson';
+import type { Lesson, LessonReward } from '../types/lesson';
 import type { EarnedItem, LessonAttempt, ProgressionState } from '../types/progression';
 import { INITIAL_UNLOCKED_ACTIVITY_IDS } from '../data/zoneConfig';
 import { loadProgression, saveProgression } from '../services/storageService';
@@ -26,6 +26,15 @@ export interface UseProgressionReturn {
    * @param isCorrect - Whether the learner answered correctly on their first try.
    */
   completeLesson: (lesson: Lesson, isCorrect: boolean) => void;
+  /**
+   * Records a reading/phonics activity as completed: awards XP and adds the
+   * earned item without modifying zone unlock state.
+   * No-op if the activity id has already been completed.
+   * @param activityId - The reading activity id (e.g. `"ra-1"`).
+   * @param reward     - The reward to award on completion.
+   * @param isCorrect  - Whether the learner completed correctly (first-try accuracy).
+   */
+  completeReadingActivity: (activityId: string, reward: LessonReward, isCorrect: boolean) => void;
   /** Resets all progression back to the initial state. */
   reset: () => void;
 }
@@ -71,6 +80,33 @@ export function useProgression(): UseProgressionReturn {
     });
   }, []);
 
+  const completeReadingActivity = useCallback(
+    (activityId: string, reward: LessonReward, isCorrect: boolean) => {
+      setState((prev) => {
+        // Guard: do not award the same activity twice
+        if (prev.completedLessonIds.includes(activityId)) return prev;
+
+        const attempt: LessonAttempt = {
+          lessonId: activityId,
+          completedAt: new Date().toISOString(),
+          correct: isCorrect,
+        };
+
+        const next: ProgressionState = {
+          ...prev,
+          xp: prev.xp + reward.xp,
+          completedLessonIds: [...prev.completedLessonIds, activityId],
+          earnedItems: [...prev.earnedItems, { emoji: reward.emoji, item: reward.item }],
+          lessonAttempts: [...prev.lessonAttempts, attempt],
+        };
+
+        saveProgression(next);
+        return next;
+      });
+    },
+    [],
+  );
+
   const reset = useCallback(() => {
     const empty: ProgressionState = {
       xp: 0,
@@ -102,6 +138,7 @@ export function useProgression(): UseProgressionReturn {
     isLessonCompleted,
     isActivityUnlocked,
     completeLesson,
+    completeReadingActivity,
     reset,
   };
 }

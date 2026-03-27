@@ -3,6 +3,7 @@ import AppLayout from '../layouts/AppLayout';
 import HomeScreen from '../screens/HomeScreen';
 import WorldMapScreen from '../screens/WorldMapScreen';
 import ActivityScreen from '../screens/ActivityScreen';
+import ReadingActivityScreen from '../screens/ReadingActivityScreen';
 import RewardScreen from '../screens/RewardScreen';
 import ParentDashboardScreen from '../screens/ParentDashboardScreen';
 
@@ -14,6 +15,7 @@ const router = createBrowserRouter([
       { index: true, element: <HomeScreen /> },
       { path: 'world', element: <WorldMapScreen /> },
       { path: 'activity/:id', element: <ActivityScreen /> },
+      { path: 'reading/:id', element: <ReadingActivityScreen /> },
       { path: 'reward', element: <RewardScreen /> },
       { path: 'parent', element: <ParentDashboardScreen /> },
     ],
