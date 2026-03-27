@@ -29,17 +29,17 @@ export default function WorldMapScreen() {
             <div key={zone.id}>
               {zone.unlocked ? (
                 <Link to={`/activity/${zone.activityId}`}>
-                  <Card variant="ocean" hoverable className="text-center py-8">
-                    <div className="text-5xl mb-3">{zone.icon}</div>
+                  <Card variant="ocean" hoverable className="text-center py-10 min-h-[160px] flex flex-col items-center justify-center">
+                    <div className="text-6xl mb-3">{zone.icon}</div>
                     <p className="font-quest text-lg text-ocean-200">{zone.name}</p>
-                    <p className="text-xs text-ocean-400 mt-1">Tap to explore!</p>
+                    <p className="text-sm text-ocean-400 mt-1">Tap to explore!</p>
                   </Card>
                 </Link>
               ) : (
-                <Card variant="default" className="text-center py-8 opacity-50">
-                  <div className="text-5xl mb-3">🔒</div>
+                <Card variant="default" className="text-center py-10 opacity-50 min-h-[160px] flex flex-col items-center justify-center">
+                  <div className="text-6xl mb-3">🔒</div>
                   <p className="font-quest text-lg text-pearl-400">{zone.name}</p>
-                  <p className="text-xs text-pearl-500 mt-1">Complete earlier quests to unlock</p>
+                  <p className="text-sm text-pearl-500 mt-1">Complete earlier quests to unlock</p>
                 </Card>
               )}
             </div>

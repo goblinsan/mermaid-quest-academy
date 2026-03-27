@@ -9,6 +9,11 @@ function normalizeAnswer(value: string): string {
   return value.trim().toLowerCase();
 }
 
+/** Evaluates whether `given` matches the `expected` answer. */
+function isAnswerCorrect(given: string, expected: string): boolean {
+  return normalizeAnswer(given) === normalizeAnswer(expected);
+}
+
 interface UseLessonStateReturn {
   /** The active lesson, or `null` when none is loaded. */
   lesson: Lesson | null;
@@ -24,6 +29,11 @@ interface UseLessonStateReturn {
   selectAnswer: (answer: string) => void;
   /** Evaluate the selected answer against the correct answer. */
   submitAnswer: () => void;
+  /**
+   * Selects and immediately evaluates the given answer in a single action.
+   * Intended for tap-to-submit flows (e.g. multiple-choice, true/false).
+   */
+  selectAndSubmit: (answer: string) => void;
   /** Advance to `completed` so the caller can navigate away. */
   completeLesson: () => void;
   /** Reset all state back to `idle`. */
@@ -60,11 +70,23 @@ export function useLessonState(): UseLessonStateReturn {
   const submitAnswer = useCallback(() => {
     if (!lesson || selectedAnswer === null) return;
 
-    const correct = normalizeAnswer(selectedAnswer) === normalizeAnswer(lesson.answer);
+    const correct = isAnswerCorrect(selectedAnswer, lesson.answer);
 
     setIsCorrect(correct);
     setStatus(correct ? 'correct' : 'incorrect');
   }, [lesson, selectedAnswer]);
+
+  const selectAndSubmit = useCallback(
+    (answer: string) => {
+      if (!lesson) return;
+
+      setSelectedAnswer(answer);
+      const correct = isAnswerCorrect(answer, lesson.answer);
+      setIsCorrect(correct);
+      setStatus(correct ? 'correct' : 'incorrect');
+    },
+    [lesson],
+  );
 
   const completeLesson = useCallback(() => {
     setStatus('completed');
@@ -85,6 +107,7 @@ export function useLessonState(): UseLessonStateReturn {
     loadLesson,
     selectAnswer,
     submitAnswer,
+    selectAndSubmit,
     completeLesson,
     reset,
   };
