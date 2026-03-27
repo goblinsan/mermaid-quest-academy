@@ -12,6 +12,36 @@ import type { LessonReward } from './lesson';
  */
 export type PhonicsActivityType = 'sound-match' | 'letter-sound' | 'word-blend' | 'rhyme-match';
 
+/**
+ * The four instructional stages of the phonics curriculum, ordered by
+ * increasing complexity.
+ *
+ * | Stage          | Description                                              |
+ * |----------------|----------------------------------------------------------|
+ * | `letter-sound` | See a letter, identify the word that starts with it      |
+ * | `sound-object` | Hear a phoneme, tap the matching picture / object        |
+ * | `sorting`      | Discriminate sounds across 4+ choices (higher effort)    |
+ * | `cvc-blend`    | Blend individual phonemes into a complete CVC word       |
+ */
+export type PhonicsProgressionStage = 'letter-sound' | 'sound-object' | 'sorting' | 'cvc-blend';
+
+/** Curriculum metadata that positions an activity within the phonics progression. */
+export interface PhonicsProgressionMetadata {
+  /**
+   * The target phoneme(s) practised in this activity.
+   * Single consonants/vowels use their lowercase letter (e.g. `"s"`, `"a"`).
+   * CVC blend targets use the full word (e.g. `"sat"`, `"pin"`).
+   */
+  targetSound: string;
+  /**
+   * Difficulty tier aligned to the four progression stages:
+   * 1 = letter–sound, 2 = sound–object, 3 = sorting, 4 = CVC blending.
+   */
+  difficultyLevel: 1 | 2 | 3 | 4;
+  /** Instructional stage used for curriculum sequencing and filtering. */
+  progressionStage: PhonicsProgressionStage;
+}
+
 /** How the challenge prompt is surfaced to the learner. */
 export type PhonicsPromptKind = 'text' | 'audio-only' | 'text-and-image';
 
@@ -83,4 +113,6 @@ export interface PhonicsActivityConfig {
   reward: LessonReward;
   /** The condition that must be met for the activity to be considered done. */
   completionCondition: PhonicsCompletionCondition;
+  /** Curriculum metadata linking this activity to the phonics progression. */
+  progression: PhonicsProgressionMetadata;
 }
