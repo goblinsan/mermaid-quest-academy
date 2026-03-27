@@ -1,0 +1,112 @@
+[
+  {
+    "id": "ra-1",
+    "title": "Letter Sound: A",
+    "type": "letter-sound",
+    "prompt": {
+      "kind": "text",
+      "text": "Which word starts with the 'A' sound?",
+      "ttsText": "Which word starts with the A sound?"
+    },
+    "options": [
+      { "id": "opt-1", "text": "Apple", "emoji": "🍎" },
+      { "id": "opt-2", "text": "Banana", "emoji": "🍌" },
+      { "id": "opt-3", "text": "Cherry", "emoji": "🍒" }
+    ],
+    "correctOptionId": "opt-1",
+    "feedback": {
+      "correctMessage": "Apple starts with the A sound!",
+      "incorrectMessage": "Listen carefully! We're looking for the A sound at the start."
+    },
+    "reward": { "xp": 50, "item": "Letter Badge A", "emoji": "🅰️" },
+    "completionCondition": { "type": "single-correct" }
+  },
+  {
+    "id": "ra-2",
+    "title": "Rhyme Time: Cat",
+    "type": "rhyme-match",
+    "prompt": {
+      "kind": "text",
+      "text": "Which word rhymes with 'Cat'?",
+      "ttsText": "Which word rhymes with cat?"
+    },
+    "options": [
+      { "id": "opt-1", "text": "Hat", "emoji": "🎩" },
+      { "id": "opt-2", "text": "Dog", "emoji": "🐕" },
+      { "id": "opt-3", "text": "Fish", "emoji": "🐟" }
+    ],
+    "correctOptionId": "opt-1",
+    "feedback": {
+      "correctMessage": "Cat and Hat both end in the '-at' sound!",
+      "incorrectMessage": "Try again! Listen for the '-at' ending in cat."
+    },
+    "reward": { "xp": 50, "item": "Rhyme Shell", "emoji": "🐚" },
+    "completionCondition": { "type": "single-correct" }
+  },
+  {
+    "id": "ra-3",
+    "title": "Sound Match: S",
+    "type": "sound-match",
+    "prompt": {
+      "kind": "text",
+      "text": "Which ocean animal's name starts with the 'S' sound?",
+      "ttsText": "Which ocean animal's name starts with the S sound?"
+    },
+    "options": [
+      { "id": "opt-1", "text": "Turtle", "emoji": "🐢" },
+      { "id": "opt-2", "text": "Shark", "emoji": "🦈" },
+      { "id": "opt-3", "text": "Whale", "emoji": "🐋" }
+    ],
+    "correctOptionId": "opt-2",
+    "feedback": {
+      "correctMessage": "Shark starts with the S sound!",
+      "incorrectMessage": "Listen again! We're listening for the S sound at the start."
+    },
+    "reward": { "xp": 75, "item": "Shark Fin Badge", "emoji": "🦈" },
+    "completionCondition": { "type": "single-correct" }
+  },
+  {
+    "id": "ra-4",
+    "title": "Word Blend: B-A-T",
+    "type": "word-blend",
+    "prompt": {
+      "kind": "text",
+      "text": "Listen to the sounds 'B'... 'A'... 'T'. What word do they make?",
+      "ttsText": "Listen to the sounds: B... A... T. What word do they make?"
+    },
+    "options": [
+      { "id": "opt-1", "text": "Bat", "emoji": "🦇" },
+      { "id": "opt-2", "text": "Cat", "emoji": "🐱" },
+      { "id": "opt-3", "text": "Rat", "emoji": "🐭" }
+    ],
+    "correctOptionId": "opt-1",
+    "feedback": {
+      "correctMessage": "B-A-T spells Bat! Great blending!",
+      "incorrectMessage": "Try again! Listen to each sound carefully: B... A... T..."
+    },
+    "reward": { "xp": 100, "item": "Blending Pearl", "emoji": "🫧" },
+    "completionCondition": { "type": "single-correct" }
+  },
+  {
+    "id": "ra-5",
+    "title": "Short Vowel Streak: E",
+    "type": "sound-match",
+    "prompt": {
+      "kind": "text",
+      "text": "Which word has the short 'E' vowel sound?",
+      "ttsText": "Which word has the short E vowel sound?"
+    },
+    "options": [
+      { "id": "opt-1", "text": "Egg", "emoji": "🥚" },
+      { "id": "opt-2", "text": "Kite", "emoji": "🪁" },
+      { "id": "opt-3", "text": "Boat", "emoji": "⛵" }
+    ],
+    "correctOptionId": "opt-1",
+    "feedback": {
+      "correctMessage": "Egg has the short E sound! Answer correctly twice to complete the challenge.",
+      "incorrectMessage": "Not quite! Listen for the short 'eh' sound in egg."
+    },
+    "reward": { "xp": 150, "item": "Vowel Gem", "emoji": "💎" },
+    "completionCondition": { "type": "streak", "count": 2 }
+  }
+]
