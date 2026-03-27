@@ -1,17 +1,12 @@
 import { Link } from 'react-router-dom';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
-
-const zones = [
-  { id: 'coral-reef', name: 'Coral Reef Cove', icon: '🐠', unlocked: true, activityId: '1' },
-  { id: 'kelp-forest', name: 'Kelp Forest', icon: '🌿', unlocked: true, activityId: '2' },
-  { id: 'sunken-ship', name: 'Sunken Ship', icon: '⚓', unlocked: false, activityId: '3' },
-  { id: 'deep-abyss', name: 'The Deep Abyss', icon: '🌑', unlocked: false, activityId: '4' },
-  { id: 'pearl-palace', name: 'Pearl Palace', icon: '🏰', unlocked: false, activityId: '5' },
-  { id: 'volcano-vent', name: 'Volcano Vent', icon: '🌋', unlocked: false, activityId: '6' },
-];
+import { useProgression } from '../hooks/useProgression';
+import { ZONES } from '../data/zoneConfig';
 
 export default function WorldMapScreen() {
+  const { isActivityUnlocked, isLessonCompleted } = useProgression();
+
   return (
     <div className="min-h-screen px-4 py-10">
       <div className="mx-auto max-w-5xl">
@@ -25,25 +20,32 @@ export default function WorldMapScreen() {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-5">
-          {zones.map((zone) => (
-            <div key={zone.id}>
-              {zone.unlocked ? (
-                <Link to={`/activity/${zone.activityId}`}>
-                  <Card variant="ocean" hoverable className="text-center py-10 min-h-[160px] flex flex-col items-center justify-center">
-                    <div className="text-6xl mb-3">{zone.icon}</div>
-                    <p className="font-quest text-lg text-ocean-200">{zone.name}</p>
-                    <p className="text-sm text-ocean-400 mt-1">Tap to explore!</p>
+          {ZONES.map((zone) => {
+            const unlocked = isActivityUnlocked(zone.activityId);
+            const completed = isLessonCompleted(zone.activityId);
+            return (
+              <div key={zone.id}>
+                {unlocked ? (
+                  <Link to={`/activity/${zone.activityId}`}>
+                    <Card variant="ocean" hoverable className="text-center py-10 min-h-[160px] flex flex-col items-center justify-center relative">
+                      {completed && (
+                        <span className="absolute top-2 right-2 text-lg" title="Completed">✅</span>
+                      )}
+                      <div className="text-6xl mb-3">{zone.icon}</div>
+                      <p className="font-quest text-lg text-ocean-200">{zone.name}</p>
+                      <p className="text-sm text-ocean-400 mt-1">{completed ? 'Replay quest' : 'Tap to explore!'}</p>
+                    </Card>
+                  </Link>
+                ) : (
+                  <Card variant="default" className="text-center py-10 opacity-50 min-h-[160px] flex flex-col items-center justify-center">
+                    <div className="text-6xl mb-3">🔒</div>
+                    <p className="font-quest text-lg text-pearl-400">{zone.name}</p>
+                    <p className="text-sm text-pearl-500 mt-1">Complete earlier quests to unlock</p>
                   </Card>
-                </Link>
-              ) : (
-                <Card variant="default" className="text-center py-10 opacity-50 min-h-[160px] flex flex-col items-center justify-center">
-                  <div className="text-6xl mb-3">🔒</div>
-                  <p className="font-quest text-lg text-pearl-400">{zone.name}</p>
-                  <p className="text-sm text-pearl-500 mt-1">Complete earlier quests to unlock</p>
-                </Card>
-              )}
-            </div>
-          ))}
+                )}
+              </div>
+            );
+          })}
         </div>
 
         <div className="mt-10 text-center">

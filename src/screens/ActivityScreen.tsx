@@ -3,16 +3,18 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import ReplayAudioButton from '../components/ui/ReplayAudioButton';
-import { getLessonById } from '../services/lessonLoader';
+import { getLessonById, getAllLessons } from '../services/lessonLoader';
 import { useLessonState } from '../hooks/useLessonState';
 import { useAudio } from '../hooks/useAudio';
+import { useProgression } from '../hooks/useProgression';
 
 export default function ActivityScreen() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { lesson, selectedAnswer, status, loadLesson, selectAnswer, selectAndSubmit, submitAnswer, completeLesson, reset } =
+  const { lesson, selectedAnswer, status, loadLesson, selectAnswer, selectAndSubmit, submitAnswer, reset } =
     useLessonState();
   const { speak, replay, isLoading: audioLoading } = useAudio();
+  const progression = useProgression();
 
   useEffect(() => {
     reset();
@@ -29,11 +31,15 @@ export default function ActivityScreen() {
     }
   }, [lesson, speak]);
 
-  useEffect(() => {
-    if (status === 'completed') {
-      navigate('/reward');
-    }
-  }, [status, navigate]);
+  const handleClaimReward = () => {
+    if (!lesson) return;
+    const totalLessons = getAllLessons().length;
+    const nextActivityId = String(Number(lesson.id) + 1);
+    const newZoneUnlocked =
+      !progression.isActivityUnlocked(nextActivityId) && Number(lesson.id) < totalLessons;
+    progression.completeLesson(lesson);
+    navigate('/reward', { state: { reward: lesson.reward, newZoneUnlocked } });
+  };
 
   if (!lesson) {
     return (
@@ -166,7 +172,7 @@ export default function ActivityScreen() {
 
           {/* After answering — claim reward */}
           {showResult && (
-            <Button variant="coral" size="xl" fullWidth onClick={completeLesson}>
+            <Button variant="coral" size="xl" fullWidth onClick={handleClaimReward}>
               🏆 Claim Reward!
             </Button>
           )}
