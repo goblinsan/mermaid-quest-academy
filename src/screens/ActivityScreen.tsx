@@ -2,14 +2,17 @@ import { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
+import ReplayAudioButton from '../components/ui/ReplayAudioButton';
 import { getLessonById } from '../services/lessonLoader';
 import { useLessonState } from '../hooks/useLessonState';
+import { useAudio } from '../hooks/useAudio';
 
 export default function ActivityScreen() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { lesson, selectedAnswer, status, loadLesson, selectAnswer, submitAnswer, completeLesson, reset } =
+  const { lesson, selectedAnswer, status, loadLesson, selectAnswer, selectAndSubmit, submitAnswer, completeLesson, reset } =
     useLessonState();
+  const { speak, replay, isLoading: audioLoading } = useAudio();
 
   useEffect(() => {
     reset();
@@ -18,6 +21,13 @@ export default function ActivityScreen() {
       if (found) loadLesson(found);
     }
   }, [id, reset, loadLesson]);
+
+  // Auto-play the question prompt whenever a lesson loads
+  useEffect(() => {
+    if (lesson) {
+      speak(lesson.ttsText);
+    }
+  }, [lesson, speak]);
 
   useEffect(() => {
     if (status === 'completed') {
@@ -37,7 +47,7 @@ export default function ActivityScreen() {
             We couldn't find activity #{id}. Head back to the world map!
           </p>
           <Link to="/world">
-            <Button variant="primary">← Back to World Map</Button>
+            <Button variant="primary" size="lg">← Back to World Map</Button>
           </Link>
         </div>
       </div>
@@ -48,38 +58,41 @@ export default function ActivityScreen() {
     selectAnswer(e.target.value);
   };
 
-  const canSubmit =
+  const canSubmitFillBlank =
     status === 'in-progress' &&
     selectedAnswer !== null &&
     selectedAnswer.trim().length > 0;
 
+  const showResult = status === 'correct' || status === 'incorrect';
+
   return (
     <div className="min-h-screen px-4 py-10">
       <div className="mx-auto max-w-2xl">
-        <div className="text-center mb-8">
-          <div className="text-6xl mb-4">🎯</div>
+        {/* Header */}
+        <div className="text-center mb-6">
+          <div className="text-6xl mb-3">🎯</div>
           <h1 className="font-quest text-4xl text-ocean-200 text-shadow-glow mb-2">
             Quest #{id}
           </h1>
-          <p className="font-body text-pearl-300">
-            Complete this activity to earn stars and advance in the ocean world!
-          </p>
         </div>
 
+        {/* Question card */}
         <Card variant="glass" className="mb-6">
-          <h2 className="font-quest text-2xl text-ocean-300 mb-4">📜 Quest Challenge</h2>
-          <p className="font-body text-pearl-200 text-lg mb-6">{lesson.prompt}</p>
+          {/* Prompt + always-visible replay button */}
+          <div className="flex items-start justify-between gap-4 mb-6">
+            <p className="font-body text-pearl-100 text-xl leading-relaxed flex-1">{lesson.prompt}</p>
+            <ReplayAudioButton onReplay={replay} isLoading={audioLoading} />
+          </div>
 
-          {/* Multiple-choice / True-False options */}
+          {/* Multiple-choice / True-False options — tap to auto-submit */}
           {lesson.options && (
-            <div className="flex flex-col gap-3 mb-4">
+            <div className="flex flex-col gap-4 mb-4">
               {lesson.options.map((option) => {
                 const isSelected = selectedAnswer === option;
-                const showResult = status === 'correct' || status === 'incorrect';
                 const isCorrectOption = option === lesson.answer;
 
                 let optionClass =
-                  'w-full text-left rounded-xl border-2 px-5 py-4 font-body text-base transition-all duration-200 cursor-pointer ';
+                  'w-full text-left rounded-2xl border-2 px-6 py-5 font-body text-lg transition-all duration-200 min-h-[72px] flex items-center gap-3 ';
 
                 if (showResult) {
                   if (isCorrectOption) {
@@ -93,18 +106,19 @@ export default function ActivityScreen() {
                   optionClass += 'border-ocean-400 bg-ocean-700/50 text-pearl-100';
                 } else {
                   optionClass +=
-                    'border-ocean-600/40 bg-ocean-900/20 text-pearl-200 hover:border-ocean-400 hover:bg-ocean-700/30';
+                    'border-ocean-600/40 bg-ocean-900/20 text-pearl-200 hover:border-ocean-400 hover:bg-ocean-700/30 active:scale-98 cursor-pointer';
                 }
 
                 return (
                   <button
                     key={option}
                     className={optionClass}
-                    disabled={status !== 'in-progress'}
-                    onClick={() => selectAnswer(option)}
+                    disabled={showResult}
+                    onClick={() => selectAndSubmit(option)}
                   >
-                    {showResult && isCorrectOption && '✅ '}
-                    {showResult && isSelected && !isCorrectOption && '❌ '}
+                    {showResult && isCorrectOption && <span className="text-2xl">✅</span>}
+                    {showResult && isSelected && !isCorrectOption && <span className="text-2xl">❌</span>}
+                    {!showResult && <span className="text-2xl opacity-0 select-none" aria-hidden="true">▶</span>}
                     {option}
                   </button>
                 );
@@ -117,46 +131,50 @@ export default function ActivityScreen() {
             <div className="mb-4">
               <input
                 type="text"
-                className="w-full rounded-xl border-2 border-ocean-600/40 bg-ocean-900/20 px-5 py-4 font-body text-base text-pearl-100 placeholder-ocean-400 focus:border-ocean-400 focus:outline-none disabled:opacity-60"
+                className="w-full rounded-2xl border-2 border-ocean-600/40 bg-ocean-900/20 px-6 py-5 font-body text-lg text-pearl-100 placeholder-ocean-400 focus:border-ocean-400 focus:outline-none disabled:opacity-60 min-h-[72px]"
                 placeholder="Type your answer here…"
                 value={selectedAnswer ?? ''}
                 onChange={handleFillBlankChange}
-                disabled={status !== 'in-progress'}
+                disabled={showResult}
               />
             </div>
           )}
 
           {/* Feedback banner */}
           {status === 'correct' && (
-            <div className="rounded-xl bg-seafoam-900/40 border-2 border-seafoam-400 px-5 py-4 text-seafoam-200 font-quest text-lg mb-4">
+            <div className="rounded-2xl bg-seafoam-900/40 border-2 border-seafoam-400 px-6 py-5 text-seafoam-200 font-quest text-xl mb-2">
               🎉 Correct! You earned {lesson.reward.xp} XP and a {lesson.reward.item}{' '}
               {lesson.reward.emoji}!
             </div>
           )}
           {status === 'incorrect' && (
-            <div className="rounded-xl bg-coral-900/40 border-2 border-coral-500 px-5 py-4 text-coral-200 font-quest text-lg mb-4">
+            <div className="rounded-2xl bg-coral-900/40 border-2 border-coral-500 px-6 py-5 text-coral-200 font-quest text-xl mb-2">
               😢 Not quite! The correct answer is:{' '}
               <span className="font-body">{lesson.answer}</span>
             </div>
           )}
         </Card>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-between">
-          <Link to="/world">
-            <Button variant="ghost">← Back to World Map</Button>
-          </Link>
-
-          {status === 'in-progress' && (
-            <Button variant="coral" disabled={!canSubmit} onClick={submitAnswer}>
+        {/* Single primary CTA per phase */}
+        <div className="flex flex-col gap-4">
+          {/* Fill-blank submit — only shown while answer is being typed */}
+          {lesson.type === 'fill-blank' && status === 'in-progress' && (
+            <Button variant="coral" size="xl" fullWidth disabled={!canSubmitFillBlank} onClick={submitAnswer}>
               ✅ Submit Answer
             </Button>
           )}
 
-          {(status === 'correct' || status === 'incorrect') && (
-            <Button variant="coral" onClick={completeLesson}>
+          {/* After answering — claim reward */}
+          {showResult && (
+            <Button variant="coral" size="xl" fullWidth onClick={completeLesson}>
               🏆 Claim Reward!
             </Button>
           )}
+
+          {/* Secondary escape — less prominent */}
+          <Link to="/world" className="block">
+            <Button variant="ghost" size="lg" fullWidth>← Back to World Map</Button>
+          </Link>
         </div>
       </div>
     </div>
