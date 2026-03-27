@@ -1,0 +1,79 @@
+[
+  {
+    "id": "1",
+    "type": "multiple-choice",
+    "prompt": "What do coral reefs provide for ocean creatures?",
+    "ttsText": "What do coral reefs provide for ocean creatures?",
+    "options": ["Food and shelter", "Fresh water", "Sunlight", "Sand"],
+    "answer": "Food and shelter",
+    "reward": {
+      "xp": 50,
+      "item": "Coral Fragment",
+      "emoji": "🪸"
+    }
+  },
+  {
+    "id": "2",
+    "type": "true-false",
+    "prompt": "Kelp is a type of seaweed that can grow very tall — sometimes over 45 metres!",
+    "ttsText": "True or false: Kelp is a type of seaweed that can grow very tall — sometimes over 45 metres!",
+    "options": ["True", "False"],
+    "answer": "True",
+    "reward": {
+      "xp": 50,
+      "item": "Kelp Strand",
+      "emoji": "🌿"
+    }
+  },
+  {
+    "id": "3",
+    "type": "multiple-choice",
+    "prompt": "Which sea creature is famous for using sunken ships as its home?",
+    "ttsText": "Which sea creature is famous for using sunken ships as its home?",
+    "options": ["Octopus", "Whale", "Dolphin", "Jellyfish"],
+    "answer": "Octopus",
+    "reward": {
+      "xp": 75,
+      "item": "Treasure Coin",
+      "emoji": "🪙"
+    }
+  },
+  {
+    "id": "4",
+    "type": "fill-blank",
+    "prompt": "The deepest part of the ocean is called the _____ zone.",
+    "ttsText": "Complete the sentence: The deepest part of the ocean is called the blank zone.",
+    "answer": "hadal",
+    "reward": {
+      "xp": 100,
+      "item": "Deep Crystal",
+      "emoji": "💎"
+    }
+  },
+  {
+    "id": "5",
+    "type": "multiple-choice",
+    "prompt": "What animal creates pearls inside its shell?",
+    "ttsText": "What animal creates pearls inside its shell?",
+    "options": ["Oyster", "Clam", "Crab", "Snail"],
+    "answer": "Oyster",
+    "reward": {
+      "xp": 100,
+      "item": "Pearl",
+      "emoji": "🐚"
+    }
+  },
+  {
+    "id": "6",
+    "type": "true-false",
+    "prompt": "Underwater volcanoes can create brand new islands over time.",
+    "ttsText": "True or false: Underwater volcanoes can create brand new islands over time.",
+    "options": ["True", "False"],
+    "answer": "True",
+    "reward": {
+      "xp": 150,
+      "item": "Volcano Gem",
+      "emoji": "🌋"
+    }
+  }
+]
