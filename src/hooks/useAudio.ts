@@ -17,6 +17,22 @@ interface UseAudioReturn {
 }
 
 /**
+ * Silently pre-fetches and caches TTS audio for a given text string.
+ * Calling this before `speak()` ensures the audio is ready without delay.
+ * Failures are silently swallowed so they never interrupt the learner.
+ */
+export async function prefetchAudio(text: string): Promise<void> {
+  if (!text.trim()) return;
+  if (getCachedAudio(text)) return; // already cached
+  try {
+    const blob = await fetchTTSAudio(text);
+    cacheAudio(text, blob);
+  } catch {
+    // Prefetch failures are non-fatal — the audio will be fetched on demand instead
+  }
+}
+
+/**
  * React hook that integrates TTS fetching, in-memory caching, and audio
  * playback into a single, easy-to-use API.
  *

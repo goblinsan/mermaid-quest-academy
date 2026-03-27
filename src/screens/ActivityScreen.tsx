@@ -5,7 +5,7 @@ import Button from '../components/ui/Button';
 import ReplayAudioButton from '../components/ui/ReplayAudioButton';
 import { getLessonById, getAllLessons } from '../services/lessonLoader';
 import { useLessonState } from '../hooks/useLessonState';
-import { useAudio } from '../hooks/useAudio';
+import { useAudio, prefetchAudio } from '../hooks/useAudio';
 import { useProgression } from '../hooks/useProgression';
 
 export default function ActivityScreen() {
@@ -30,6 +30,17 @@ export default function ActivityScreen() {
       speak(lesson.ttsText);
     }
   }, [lesson, speak]);
+
+  // Prefetch audio for the next lesson in the background so it plays instantly
+  useEffect(() => {
+    if (!lesson) return;
+    const all = getAllLessons();
+    const currentIndex = all.findIndex((l) => l.id === lesson.id);
+    const nextLesson = currentIndex >= 0 ? all[currentIndex + 1] : undefined;
+    if (nextLesson) {
+      prefetchAudio(nextLesson.ttsText);
+    }
+  }, [lesson]);
 
   const handleClaimReward = () => {
     if (!lesson) return;
