@@ -1,0 +1,102 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  theme: {
+    extend: {
+      colors: {
+        ocean: {
+          50: '#e0f7fa',
+          100: '#b2ebf2',
+          200: '#80deea',
+          300: '#4dd0e1',
+          400: '#26c6da',
+          500: '#00bcd4',
+          600: '#00acc1',
+          700: '#0097a7',
+          800: '#00838f',
+          900: '#006064',
+          950: '#003d40',
+        },
+        deep: {
+          50: '#e8eaf6',
+          100: '#c5cae9',
+          200: '#9fa8da',
+          300: '#7986cb',
+          400: '#5c6bc0',
+          500: '#3f51b5',
+          600: '#3949ab',
+          700: '#303f9f',
+          800: '#283593',
+          900: '#1a237e',
+          950: '#0d0d4d',
+        },
+        coral: {
+          50: '#fff3e0',
+          100: '#ffe0b2',
+          200: '#ffcc80',
+          300: '#ffb74d',
+          400: '#ffa726',
+          500: '#ff9800',
+          600: '#fb8c00',
+          700: '#f57c00',
+          800: '#ef6c00',
+          900: '#e65100',
+        },
+        seafoam: {
+          50: '#e8f5e9',
+          100: '#c8e6c9',
+          200: '#a5d6a7',
+          300: '#81c784',
+          400: '#66bb6a',
+          500: '#4caf50',
+          600: '#43a047',
+          700: '#388e3c',
+          800: '#2e7d32',
+          900: '#1b5e20',
+        },
+        pearl: {
+          50: '#fafafa',
+          100: '#f5f5f5',
+          200: '#eeeeee',
+          300: '#e0e0e0',
+          400: '#bdbdbd',
+          500: '#9e9e9e',
+        },
+      },
+      fontFamily: {
+        quest: ['"Fredoka One"', 'cursive', 'sans-serif'],
+        body: ['"Nunito"', 'sans-serif'],
+      },
+      backgroundImage: {
+        'ocean-gradient': 'linear-gradient(180deg, #006064 0%, #003d40 50%, #0d0d4d 100%)',
+        'coral-gradient': 'linear-gradient(135deg, #ff9800 0%, #ef6c00 100%)',
+        'seafoam-gradient': 'linear-gradient(135deg, #4caf50 0%, #00838f 100%)',
+      },
+      boxShadow: {
+        ocean: '0 4px 20px rgba(0, 188, 212, 0.3)',
+        coral: '0 4px 20px rgba(255, 152, 0, 0.4)',
+        glow: '0 0 20px rgba(0, 188, 212, 0.5)',
+      },
+      animation: {
+        'wave': 'wave 3s ease-in-out infinite',
+        'bubble': 'bubble 4s ease-in-out infinite',
+        'float': 'float 6s ease-in-out infinite',
+      },
+      keyframes: {
+        wave: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
+        bubble: {
+          '0%': { transform: 'translateY(0) scale(1)', opacity: '0.8' },
+          '100%': { transform: 'translateY(-100px) scale(1.2)', opacity: '0' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0) rotate(-2deg)' },
+          '50%': { transform: 'translateY(-15px) rotate(2deg)' },
+        },
+      },
+    },
+  },
+  plugins: [],
+}
