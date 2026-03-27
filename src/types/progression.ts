@@ -8,6 +8,16 @@ export interface EarnedItem {
   item: string;
 }
 
+/** Performance record for a single lesson attempt. */
+export interface LessonAttempt {
+  /** ID of the lesson that was attempted. */
+  lessonId: string;
+  /** ISO 8601 timestamp of when the attempt was completed. */
+  completedAt: string;
+  /** Whether the learner answered correctly on their first try. */
+  correct: boolean;
+}
+
 /** Persisted state for the learner's overall progression. */
 export interface ProgressionState {
   /** Cumulative XP earned across all completed lessons. */
@@ -18,6 +28,8 @@ export interface ProgressionState {
   earnedItems: EarnedItem[];
   /** Activity IDs that are currently unlocked and playable. */
   unlockedActivityIds: string[];
+  /** Ordered list of per-lesson attempt records for accuracy tracking. */
+  lessonAttempts: LessonAttempt[];
 }
 
 /** Data passed to the RewardScreen via React Router navigation state. */

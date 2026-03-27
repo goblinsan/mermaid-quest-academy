@@ -37,7 +37,7 @@ export default function ActivityScreen() {
     const nextActivityId = String(Number(lesson.id) + 1);
     const newZoneUnlocked =
       !progression.isActivityUnlocked(nextActivityId) && Number(lesson.id) < totalLessons;
-    progression.completeLesson(lesson);
+    progression.completeLesson(lesson, status === 'correct');
     navigate('/reward', { state: { reward: lesson.reward, newZoneUnlocked } });
   };
 

@@ -9,7 +9,12 @@ const ZONE_NAME_BY_ACTIVITY_ID: Record<string, string> = Object.fromEntries(
 );
 
 export default function ParentDashboardScreen() {
-  const { xp, completedLessonIds, earnedItems, unlockedActivityIds } = useProgression();
+  const { xp, completedLessonIds, earnedItems, unlockedActivityIds, lessonAttempts } = useProgression();
+
+  const totalAttempts = lessonAttempts.length;
+  const correctAttempts = lessonAttempts.filter((a) => a.correct).length;
+  const overallAccuracy =
+    totalAttempts > 0 ? Math.round((correctAttempts / totalAttempts) * 100) : null;
 
   const stats = [
     { label: 'Quests Completed', value: String(completedLessonIds.length), icon: '🎯' },
@@ -42,6 +47,17 @@ export default function ParentDashboardScreen() {
           ))}
         </div>
 
+        {/* Overall accuracy */}
+        {overallAccuracy !== null && (
+          <Card variant="ocean" className="text-center mb-8">
+            <div className="text-3xl mb-1">🎯</div>
+            <p className="font-quest text-2xl text-ocean-200">{overallAccuracy}%</p>
+            <p className="font-body text-xs text-ocean-400 mt-1">
+              Overall Accuracy ({correctAttempts} / {totalAttempts} correct)
+            </p>
+          </Card>
+        )}
+
         {/* Recent activity */}
         <Card variant="glass" className="mb-8">
           <CardHeader>
@@ -52,15 +68,29 @@ export default function ParentDashboardScreen() {
               <p className="font-body text-pearl-400 text-sm">No quests completed yet. Start exploring!</p>
             ) : (
               <div className="divide-y divide-white/10">
-                {[...completedLessonIds].reverse().map((lessonId) => (
-                  <div key={lessonId} className="flex items-center justify-between py-3">
-                    <div>
-                      <p className="font-quest text-pearl-200">{ZONE_NAME_BY_ACTIVITY_ID[lessonId] ?? `Quest #${lessonId}`}</p>
-                      <p className="font-body text-xs text-ocean-400">Completed</p>
+                {[...lessonAttempts].reverse().map((attempt, idx) => {
+                  const accuracyLabel = attempt.correct ? '✅ 100%' : '❌ 0%';
+                  const accuracyClass = attempt.correct
+                    ? 'font-quest text-seafoam-400 text-lg'
+                    : 'font-quest text-coral-400 text-lg';
+                  return (
+                    <div key={`${attempt.lessonId}-${idx}`} className="flex items-center justify-between py-3">
+                      <div>
+                        <p className="font-quest text-pearl-200">
+                          {ZONE_NAME_BY_ACTIVITY_ID[attempt.lessonId] ?? `Quest #${attempt.lessonId}`}
+                        </p>
+                        <p className="font-body text-xs text-ocean-400">
+                          {new Date(attempt.completedAt).toLocaleDateString(undefined, {
+                            month: 'short',
+                            day: 'numeric',
+                            year: 'numeric',
+                          })}
+                        </p>
+                      </div>
+                      <span className={accuracyClass}>{accuracyLabel}</span>
                     </div>
-                    <span className="font-quest text-seafoam-400 text-lg">✅ 100%</span>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             )}
           </CardBody>

@@ -1,37 +1,8 @@
 import { useCallback, useState } from 'react';
 import type { Lesson } from '../types/lesson';
-import type { EarnedItem, ProgressionState } from '../types/progression';
+import type { EarnedItem, LessonAttempt, ProgressionState } from '../types/progression';
 import { INITIAL_UNLOCKED_ACTIVITY_IDS } from '../data/zoneConfig';
-
-const STORAGE_KEY = 'mqa_progression';
-
-const defaultState: ProgressionState = {
-  xp: 0,
-  completedLessonIds: [],
-  earnedItems: [],
-  unlockedActivityIds: INITIAL_UNLOCKED_ACTIVITY_IDS,
-};
-
-function loadState(): ProgressionState {
-  try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) {
-      const parsed = JSON.parse(stored) as Partial<ProgressionState>;
-      return { ...defaultState, ...parsed };
-    }
-  } catch {
-    /* ignore malformed data */
-  }
-  return defaultState;
-}
-
-function saveState(state: ProgressionState): void {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-  } catch {
-    /* ignore storage errors */
-  }
-}
+import { loadProgression, saveProgression } from '../services/storageService';
 
 export interface UseProgressionReturn {
   /** Total XP accumulated across all completed lessons. */
@@ -42,6 +13,8 @@ export interface UseProgressionReturn {
   earnedItems: EarnedItem[];
   /** Activity IDs the learner is allowed to start. */
   unlockedActivityIds: string[];
+  /** Ordered list of per-lesson attempt records for accuracy tracking. */
+  lessonAttempts: LessonAttempt[];
   /** Returns true if the given lesson id has been completed. */
   isLessonCompleted: (id: string) => boolean;
   /** Returns true if the given activity id is unlocked for play. */
@@ -49,21 +22,23 @@ export interface UseProgressionReturn {
   /**
    * Records a lesson as completed: awards XP, adds the earned item,
    * and unlocks the next sequential zone. No-op if already completed.
+   * @param lesson - The lesson that was completed.
+   * @param isCorrect - Whether the learner answered correctly on their first try.
    */
-  completeLesson: (lesson: Lesson) => void;
+  completeLesson: (lesson: Lesson, isCorrect: boolean) => void;
   /** Resets all progression back to the initial state. */
   reset: () => void;
 }
 
 /**
  * Manages the learner's persistent progression: XP, earned treasures,
- * and zone unlock state. State is persisted to localStorage so it
- * survives page refreshes.
+ * zone unlock state, and per-lesson accuracy. State is persisted to
+ * localStorage so it survives page refreshes.
  */
 export function useProgression(): UseProgressionReturn {
-  const [state, setState] = useState<ProgressionState>(loadState);
+  const [state, setState] = useState<ProgressionState>(loadProgression);
 
-  const completeLesson = useCallback((lesson: Lesson) => {
+  const completeLesson = useCallback((lesson: Lesson, isCorrect: boolean) => {
     setState((prev) => {
       // Guard: do not award the same lesson twice
       if (prev.completedLessonIds.includes(lesson.id)) return prev;
@@ -74,6 +49,12 @@ export function useProgression(): UseProgressionReturn {
         ? prev.unlockedActivityIds
         : [...prev.unlockedActivityIds, nextId];
 
+      const attempt: LessonAttempt = {
+        lessonId: lesson.id,
+        completedAt: new Date().toISOString(),
+        correct: isCorrect,
+      };
+
       const next: ProgressionState = {
         xp: prev.xp + lesson.reward.xp,
         completedLessonIds: [...prev.completedLessonIds, lesson.id],
@@ -82,16 +63,24 @@ export function useProgression(): UseProgressionReturn {
           { emoji: lesson.reward.emoji, item: lesson.reward.item },
         ],
         unlockedActivityIds: newUnlocked,
+        lessonAttempts: [...prev.lessonAttempts, attempt],
       };
 
-      saveState(next);
+      saveProgression(next);
       return next;
     });
   }, []);
 
   const reset = useCallback(() => {
-    saveState(defaultState);
-    setState(defaultState);
+    const empty: ProgressionState = {
+      xp: 0,
+      completedLessonIds: [],
+      earnedItems: [],
+      unlockedActivityIds: INITIAL_UNLOCKED_ACTIVITY_IDS,
+      lessonAttempts: [],
+    };
+    saveProgression(empty);
+    setState(empty);
   }, []);
 
   const isLessonCompleted = useCallback(
@@ -109,9 +98,11 @@ export function useProgression(): UseProgressionReturn {
     completedLessonIds: state.completedLessonIds,
     earnedItems: state.earnedItems,
     unlockedActivityIds: state.unlockedActivityIds,
+    lessonAttempts: state.lessonAttempts,
     isLessonCompleted,
     isActivityUnlocked,
     completeLesson,
     reset,
   };
 }
+
