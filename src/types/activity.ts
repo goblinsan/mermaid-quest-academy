@@ -93,6 +93,17 @@ export type PhonicsCompletionCondition =
   | { type: 'single-correct' }
   | { type: 'streak'; count: number };
 
+/**
+ * The UI rendering variant for an activity.
+ *
+ * | Value         | Description                                               |
+ * |---------------|-----------------------------------------------------------|
+ * | `default`     | Standard list of answer tiles via `ActivityShell`         |
+ * | `seashell`    | Circular seashell tiles for letter-sound matching         |
+ * | `bubble-pop`  | Animated floating letter bubbles the player pops          |
+ */
+export type PhonicsActivityUIVariant = 'default' | 'seashell' | 'bubble-pop';
+
 /** Full configuration object for one reading/phonics activity. */
 export interface PhonicsActivityConfig {
   /** Unique string identifier (e.g. `"ra-1"`). */
@@ -115,4 +126,9 @@ export interface PhonicsActivityConfig {
   completionCondition: PhonicsCompletionCondition;
   /** Curriculum metadata linking this activity to the phonics progression. */
   progression: PhonicsProgressionMetadata;
+  /**
+   * Optional UI rendering variant.  Defaults to `'default'` (standard
+   * `ActivityShell` tiles) when omitted.
+   */
+  uiVariant?: PhonicsActivityUIVariant;
 }
