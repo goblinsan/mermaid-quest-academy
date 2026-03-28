@@ -31,7 +31,11 @@ export default function FeedbackBanner({
 }: FeedbackBannerProps) {
   if (status === 'correct') {
     return (
-      <div className="rounded-2xl bg-seafoam-900/40 border-2 border-seafoam-400 px-6 py-5 text-seafoam-200 font-quest text-xl mb-2">
+      <div
+        role="status"
+        aria-live="polite"
+        className="rounded-2xl bg-seafoam-900/40 border-2 border-seafoam-400 px-6 py-5 text-seafoam-200 font-quest text-xl mb-2"
+      >
         🎉 {message}
         {reward && (
           <span>
@@ -44,7 +48,11 @@ export default function FeedbackBanner({
   }
 
   return (
-    <div className="rounded-2xl bg-coral-900/40 border-2 border-coral-500 px-6 py-5 text-coral-200 font-quest text-xl mb-2">
+    <div
+      role="status"
+      aria-live="polite"
+      className="rounded-2xl bg-coral-900/40 border-2 border-coral-500 px-6 py-5 text-coral-200 font-quest text-xl mb-2"
+    >
       😢 {message}
       {correctAnswer && (
         <span className="font-body"> The correct answer is: {correctAnswer}</span>

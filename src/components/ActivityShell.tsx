@@ -144,6 +144,8 @@ export default function ActivityShell({
                   key={option.id}
                   className={optionClass}
                   disabled={showResult}
+                  aria-label={`${option.text}${isSelected ? ', selected' : ''}`}
+                  aria-pressed={isSelected}
                   onClick={() => {
                     if (option.ttsText) onOptionAudio?.(option.ttsText);
                     onSelectOption(option.id);
