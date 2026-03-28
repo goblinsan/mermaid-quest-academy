@@ -85,10 +85,12 @@ export default function SessionScreen() {
     const progressionState = {
       completedLessonIds: progression.completedLessonIds,
       xp: progression.xp,
+      pearls: progression.pearls,
       earnedItems: progression.earnedItems,
       unlockedActivityIds: progression.unlockedActivityIds,
       lessonAttempts: progression.lessonAttempts,
       phonicsMastery: progression.phonicsMastery,
+      earnedBadgeIds: progression.earnedBadgeIds,
     };
     const newSession = generateSession(progressionState, recentIds);
     saveActiveSession(newSession);

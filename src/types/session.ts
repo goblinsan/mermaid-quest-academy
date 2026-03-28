@@ -19,12 +19,19 @@ export interface ReadingSession {
   completedActivityIds: string[];
   /** Total XP accumulated across all activities in this session. */
   xpEarned: number;
+  /** Total magic pearls accumulated across all activities in this session. */
+  pearlsEarned: number;
   /** ISO 8601 timestamp when the session was first started. */
   startedAt: string;
   /** ISO 8601 timestamp when all activities were finished. Absent on incomplete sessions. */
   completedAt?: string;
   /** The highest phonics level unlocked at the time this session was generated. */
   phonicsLevel: number;
+  /**
+   * Snapshot of the learner's earned badge IDs at the moment this session was generated.
+   * Used by `SessionRewardScreen` to determine which badges (and their unlocks) are new.
+   */
+  earnedBadgeIdsAtStart: string[];
 }
 
 /**
