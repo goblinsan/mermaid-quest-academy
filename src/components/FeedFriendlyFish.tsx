@@ -95,7 +95,7 @@ export default function FeedFriendlyFish({
   }, [status]);
 
   return (
-    <div className="min-h-screen px-4 py-10">
+    <div className="min-h-screen px-4 py-6 sm:py-10">
       <div className="mx-auto max-w-2xl">
         {/* Header */}
         <div className="text-center mb-6">
@@ -103,13 +103,14 @@ export default function FeedFriendlyFish({
           <h1 className="font-quest text-4xl text-ocean-200 text-shadow-glow mb-2">
             {config.title}
           </h1>
-          <p className="font-body text-pearl-300 text-sm">
+          {/* Instruction only available to screen readers (#115) */}
+          <p className="sr-only">
             Tap the picture that starts with the right sound to feed the fish!
           </p>
         </div>
 
-        {/* Prompt card */}
-        <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 mb-8">
+        {/* Sticky prompt card — replay button always reachable (#116) */}
+        <div className="sticky top-0 z-10 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 mb-8">
           <div className="flex items-center justify-between gap-4">
             <p className="font-body text-pearl-100 text-xl leading-relaxed flex-1">
               {config.prompt.text}
@@ -146,7 +147,7 @@ export default function FeedFriendlyFish({
               reward={status === 'completed' ? config.reward : undefined}
             />
             {status === 'completed' && (
-              <div className="mt-3 text-center font-quest text-2xl text-ocean-200 animate-float">
+              <div className="mt-3 text-center font-quest text-2xl text-ocean-200 animate-float gpu-accelerated">
                 🐟✨ The fish is happy! Great job! ✨🐟
               </div>
             )}

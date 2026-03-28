@@ -98,7 +98,7 @@ export default function BubblePopLetters({
   const positions = getBubblePositions(config.options.length);
 
   return (
-    <div className="min-h-screen px-4 py-10">
+    <div className="min-h-screen px-4 py-6 sm:py-10">
       <div className="mx-auto max-w-2xl">
         {/* Header */}
         <div className="text-center mb-6">
@@ -108,8 +108,8 @@ export default function BubblePopLetters({
           </h1>
         </div>
 
-        {/* Prompt card */}
-        <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 mb-6">
+        {/* Sticky prompt card — replay button always reachable (#116) */}
+        <div className="sticky top-0 z-10 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 mb-6">
           <div className="flex items-center justify-between gap-4">
             <p className="font-body text-pearl-100 text-xl leading-relaxed flex-1">
               {config.prompt.text}
@@ -118,10 +118,9 @@ export default function BubblePopLetters({
           </div>
         </div>
 
-        {/* Bubble play area */}
+        {/* Bubble play area — responsive height for portrait/landscape tablet (#118) */}
         <div
-          className="relative w-full rounded-2xl bg-ocean-950/50 border border-ocean-700/30 mb-6"
-          style={{ height: '220px' }}
+          className="relative w-full rounded-2xl bg-ocean-950/50 border border-ocean-700/30 mb-6 h-[180px] sm:h-[220px]"
           role="group"
           aria-label="Floating letter bubbles"
         >
@@ -151,7 +150,7 @@ export default function BubblePopLetters({
               bubbleClass +=
                 'border-ocean-300/60 bg-ocean-700/30 backdrop-blur-sm cursor-pointer ' +
                 'hover:border-ocean-200 hover:bg-ocean-600/40 hover:scale-110 active:scale-95 ' +
-                'animate-float';
+                'animate-float gpu-accelerated';
             }
 
             return (
@@ -197,7 +196,7 @@ export default function BubblePopLetters({
               reward={status === 'completed' ? config.reward : undefined}
             />
             {status === 'completed' && (
-              <div className="mt-3 text-center font-quest text-2xl text-ocean-200 animate-float">
+              <div className="mt-3 text-center font-quest text-2xl text-ocean-200 animate-float gpu-accelerated">
                 🫧✨ POP! Great job! ✨🫧
               </div>
             )}

@@ -75,7 +75,7 @@ export default function TreasureChestSort({
   const pendingItems = config.options.filter((o) => correctPlacements[o.id] === undefined);
 
   return (
-    <div className="min-h-screen px-4 py-10">
+    <div className="min-h-screen px-4 py-6 sm:py-10">
       <div className="mx-auto max-w-2xl">
         {/* Header */}
         <div className="text-center mb-6">
@@ -83,13 +83,14 @@ export default function TreasureChestSort({
           <h1 className="font-quest text-4xl text-ocean-200 text-shadow-glow mb-2">
             {config.title}
           </h1>
-          <p className="font-body text-pearl-300 text-sm">
+          {/* Instruction only available to screen readers (#115) */}
+          <p className="sr-only">
             Tap a card, then tap the right treasure chest!
           </p>
         </div>
 
-        {/* Prompt card */}
-        <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 mb-6">
+        {/* Sticky prompt card — replay button always reachable (#116) */}
+        <div className="sticky top-0 z-10 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 mb-6">
           <div className="flex items-center justify-between gap-4">
             <p className="font-body text-pearl-100 text-xl leading-relaxed flex-1">
               {config.prompt.text}
@@ -101,7 +102,7 @@ export default function TreasureChestSort({
         {/* Items tray — shows only items not yet correctly placed */}
         {pendingItems.length > 0 && (
           <div className="mb-6">
-            <p className="font-body text-pearl-400 text-xs uppercase tracking-widest mb-3 text-center">
+            <p className="sr-only">
               Items to sort
             </p>
             <div
@@ -201,7 +202,7 @@ export default function TreasureChestSort({
 
                 {/* Drop hint when item is selected and chest is empty */}
                 {canReceive && placedItems.length === 0 && (
-                  <div className="mt-2 text-pearl-400 font-body text-xs animate-pulse">
+                  <div className="mt-2 text-pearl-400 font-body text-xs animate-pulse gpu-accelerated">
                     Tap to place
                   </div>
                 )}
@@ -233,7 +234,7 @@ export default function TreasureChestSort({
               message={config.feedback.correctMessage}
               reward={config.reward}
             />
-            <div className="mt-3 text-center font-quest text-2xl text-ocean-200 animate-float">
+            <div className="mt-3 text-center font-quest text-2xl text-ocean-200 animate-float gpu-accelerated">
               🏴‍☠️✨ Amazing sorting! You&apos;re a sound champion! ✨🏴‍☠️
             </div>
           </div>

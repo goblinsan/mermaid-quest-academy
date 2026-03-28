@@ -64,7 +64,7 @@ export default function MermaidEchoSong({
   const isCompleted = phase === 'completed';
 
   return (
-    <div className="min-h-screen px-4 py-10">
+    <div className="min-h-screen px-4 py-6 sm:py-10">
       <div className="mx-auto max-w-2xl">
         {/* Header */}
         <div className="text-center mb-6">
@@ -72,13 +72,14 @@ export default function MermaidEchoSong({
           <h1 className="font-quest text-4xl text-ocean-200 text-shadow-glow mb-2">
             {config.title}
           </h1>
-          <p className="font-body text-pearl-300 text-sm">
+          {/* Instruction only available to screen readers (#115) */}
+          <p className="sr-only">
             Listen to the mermaid, then tap along with each sound!
           </p>
         </div>
 
-        {/* Prompt card */}
-        <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 mb-6">
+        {/* Sticky prompt card — replay button always reachable (#116) */}
+        <div className="sticky top-0 z-10 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 mb-6">
           <div className="flex items-center justify-between gap-4">
             <p className="font-body text-pearl-100 text-xl leading-relaxed flex-1">
               {config.prompt.text}
@@ -105,7 +106,7 @@ export default function MermaidEchoSong({
 
               if (isActive) {
                 bubbleClass +=
-                  'bg-ocean-400/80 border-ocean-200 scale-125 shadow-lg shadow-ocean-400/60 text-white animate-pulse';
+                  'bg-ocean-400/80 border-ocean-200 scale-125 shadow-lg shadow-ocean-400/60 text-white animate-pulse gpu-accelerated';
               } else if (isHit) {
                 bubbleClass += 'bg-seafoam-700/60 border-seafoam-400 text-seafoam-200 scale-110';
               } else if (isMiss) {
@@ -145,7 +146,7 @@ export default function MermaidEchoSong({
               message={config.feedback.correctMessage}
               reward={config.reward}
             />
-            <div className="mt-3 text-center font-quest text-2xl text-ocean-200 animate-float">
+            <div className="mt-3 text-center font-quest text-2xl text-ocean-200 animate-float gpu-accelerated">
               🧜‍♀️✨ Amazing rhythm! You&apos;re a sound star! ✨🧜‍♀️
             </div>
           </div>
