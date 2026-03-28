@@ -6,6 +6,8 @@ import SoundSeashellMatch from '../components/SoundSeashellMatch';
 import BubblePopLetters from '../components/BubblePopLetters';
 import FeedFriendlyFish from '../components/FeedFriendlyFish';
 import TreasureChestSort from '../components/TreasureChestSort';
+import MermaidEchoSong from '../components/MermaidEchoSong';
+import UnderwaterWordBuilder from '../components/UnderwaterWordBuilder';
 import { getReadingActivityById, getAllReadingActivities } from '../services/activityLoader';
 import { usePhonicsActivity } from '../hooks/usePhonicsActivity';
 import { useAudio, prefetchAudio } from '../hooks/useAudio';
@@ -21,7 +23,13 @@ import { useProgression } from '../hooks/useProgression';
  * - `'bubble-pop'`     → `BubblePopLetters`
  * - `'fish-feed'`      → `FeedFriendlyFish`
  * - `'treasure-sort'`  → `TreasureChestSort`
+ * - `'echo-song'`      → `MermaidEchoSong`
+ * - `'word-builder'`   → `UnderwaterWordBuilder`
  * - `'default'` / unset → `ActivityShell` (generic fallback)
+ *
+ * Activities that include `requiredSounds` are gated: if the learner has not
+ * yet completed at least one earlier activity for each required phoneme, a
+ * locked screen is shown instead of the activity (issue #93).
  */
 export default function ReadingActivityScreen() {
   const { id } = useParams<{ id: string }>();
@@ -89,6 +97,50 @@ export default function ReadingActivityScreen() {
     );
   }
 
+  // ------------------------------------------------------------------
+  // CVC gating (issue #93): check that every required phoneme has been
+  // practised in at least one earlier (level 1–3) activity before
+  // allowing the learner to attempt this level-4 activity.
+  // ------------------------------------------------------------------
+  if (config.requiredSounds && config.requiredSounds.length > 0) {
+    const allActivities = getAllReadingActivities();
+    const unmastered = config.requiredSounds.filter((sound) => {
+      const prerequisiteActivities = allActivities.filter(
+        (a) =>
+          a.progression.targetSound === sound &&
+          a.progression.difficultyLevel < 4,
+      );
+      return !prerequisiteActivities.some((a) =>
+        progression.completedLessonIds.includes(a.id),
+      );
+    });
+
+    if (unmastered.length > 0) {
+      return (
+        <div className="min-h-screen px-4 py-10">
+          <div className="mx-auto max-w-2xl text-center">
+            <div className="text-6xl mb-4">🔒</div>
+            <h1 className="font-quest text-4xl text-ocean-200 text-shadow-glow mb-4">
+              {config.title}
+            </h1>
+            <p className="font-body text-pearl-300 mb-2">
+              You need to practise these sounds first:
+            </p>
+            <p className="font-quest text-3xl text-ocean-300 mb-6">
+              {unmastered.map((s) => s.toUpperCase()).join('  ·  ')}
+            </p>
+            <p className="font-body text-pearl-400 text-sm mb-8">
+              Complete earlier phonics activities to unlock this word-blending challenge!
+            </p>
+            <Link to="/world">
+              <Button variant="primary" size="lg">← Back to World Map</Button>
+            </Link>
+          </div>
+        </div>
+      );
+    }
+  }
+
   const handleClaimReward = () => {
     progression.completeReadingActivity(config.id, config.reward, isCorrect);
     navigate('/reward', { state: { reward: config.reward, newZoneUnlocked: false } });
@@ -149,6 +201,33 @@ export default function ReadingActivityScreen() {
         onReplayAudio={replay}
         onItemAudio={handleOptionAudio}
         onBinAudio={handleOptionAudio}
+      />
+    );
+  }
+
+  if (config.uiVariant === 'echo-song') {
+    return (
+      <MermaidEchoSong
+        config={config}
+        onClaimReward={handleSortingClaimReward}
+        onExit={() => navigate('/world')}
+        audioLoading={audioLoading}
+        onReplayAudio={replay}
+        onBeatAudio={handleOptionAudio}
+      />
+    );
+  }
+
+  if (config.uiVariant === 'word-builder') {
+    return (
+      <UnderwaterWordBuilder
+        config={config}
+        onClaimReward={handleSortingClaimReward}
+        onExit={() => navigate('/world')}
+        audioLoading={audioLoading}
+        onReplayAudio={replay}
+        onLetterAudio={handleOptionAudio}
+        onBlendedWordAudio={(word) => speakOption(word)}
       />
     );
   }
