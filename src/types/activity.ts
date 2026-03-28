@@ -91,14 +91,18 @@ export interface PhonicsActivityFeedback {
 /**
  * Defines when the activity is considered finished.
  *
- * - `single-correct` — one right answer completes the activity immediately.
- * - `streak`         — the learner must answer correctly `count` times in a row.
- * - `all-sorted`     — all items must be placed into their correct bins.
+ * - `single-correct`    — one right answer completes the activity immediately.
+ * - `streak`            — the learner must answer correctly `count` times in a row.
+ * - `all-sorted`        — all items must be placed into their correct bins.
+ * - `rhythm-complete`   — all rhythm beats have been tapped in the echo-song activity.
+ * - `word-built`        — the learner has assembled the full CVC word in the word-builder.
  */
 export type PhonicsCompletionCondition =
   | { type: 'single-correct' }
   | { type: 'streak'; count: number }
-  | { type: 'all-sorted' };
+  | { type: 'all-sorted' }
+  | { type: 'rhythm-complete' }
+  | { type: 'word-built' };
 
 /**
  * The UI rendering variant for an activity.
@@ -112,13 +116,34 @@ export type PhonicsCompletionCondition =
  * |                  | the target phoneme to feed the friendly fish              |
  * | `treasure-sort`  | Two treasure chests; sort letters or objects by starting  |
  * |                  | sound using tap-to-place interaction                      |
+ * | `echo-song`      | Mermaid Echo Song; the mermaid plays a phoneme rhythm and |
+ * |                  | the learner taps along to echo each beat                  |
+ * | `word-builder`   | Underwater Word Builder; tap letter tiles in order to     |
+ * |                  | assemble a CVC word and hear the blended result           |
  */
 export type PhonicsActivityUIVariant =
   | 'default'
   | 'seashell'
   | 'bubble-pop'
   | 'fish-feed'
-  | 'treasure-sort';
+  | 'treasure-sort'
+  | 'echo-song'
+  | 'word-builder';
+
+/**
+ * A single phoneme beat in a `'echo-song'` rhythm activity.
+ * Beats are played in sequence; the learner taps along to each one.
+ */
+export interface PhonicsRhythmBeat {
+  /** The target phoneme for this beat (lowercase, e.g. `"s"`). */
+  sound: string;
+  /** Text spoken aloud via TTS when this beat fires. */
+  ttsText: string;
+  /** Letter displayed on the beat bubble (e.g. `"S"`). */
+  displayText: string;
+  /** Optional decorative emoji shown on the beat tile. */
+  emoji?: string;
+}
 
 /**
  * A sound-labeled container (treasure chest) used in `'treasure-sort'` activities.
@@ -170,4 +195,32 @@ export interface PhonicsActivityConfig {
    * Not present on other activity variants.
    */
   bins?: PhonicsActivityBin[];
+  /**
+   * Phonemes that must have been practised in earlier levels before this
+   * activity is made available to the learner.  Used by `'echo-song'` and
+   * `'word-builder'` activities to gate CVC blending until component sounds
+   * have been introduced (issue #93).
+   *
+   * Each element is a lowercase SATPIN letter (e.g. `["s", "a", "t"]`).
+   */
+  requiredSounds?: string[];
+  /**
+   * The ordered sequence of phoneme beats for `'echo-song'` activities.
+   * The mermaid plays each beat in turn and the learner taps along.
+   * Not present on other activity variants.
+   */
+  rhythmBeats?: PhonicsRhythmBeat[];
+  /**
+   * The target CVC word for `'word-builder'` activities.
+   * The learner taps letter tiles in phoneme order to construct this word.
+   * Not present on other activity variants.
+   */
+  cvcTarget?: {
+    /** The target word in lowercase (e.g. `"sat"`). */
+    word: string;
+    /** The three individual phonemes, in order (e.g. `["s", "a", "t"]`). */
+    phonemes: [string, string, string];
+    /** Emoji that visually represents the word (e.g. `"🪑"`). */
+    emoji: string;
+  };
 }

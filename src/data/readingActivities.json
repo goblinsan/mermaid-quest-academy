@@ -1992,7 +1992,6 @@
       "progressionStage": "sound-object"
     }
   },
-
   {
     "id": "ra-sort-s-a",
     "title": "Sort: S and A",
@@ -2020,10 +2019,34 @@
       }
     ],
     "options": [
-      { "id": "item-1", "text": "S", "emoji": "🐍", "ttsText": "S says s", "correctBinId": "bin-s" },
-      { "id": "item-2", "text": "A", "emoji": "🍎", "ttsText": "A says a", "correctBinId": "bin-a" },
-      { "id": "item-3", "text": "S", "emoji": "⭐", "ttsText": "S says s", "correctBinId": "bin-s" },
-      { "id": "item-4", "text": "A", "emoji": "🐜", "ttsText": "A says a", "correctBinId": "bin-a" }
+      {
+        "id": "item-1",
+        "text": "S",
+        "emoji": "🐍",
+        "ttsText": "S says s",
+        "correctBinId": "bin-s"
+      },
+      {
+        "id": "item-2",
+        "text": "A",
+        "emoji": "🍎",
+        "ttsText": "A says a",
+        "correctBinId": "bin-a"
+      },
+      {
+        "id": "item-3",
+        "text": "S",
+        "emoji": "⭐",
+        "ttsText": "S says s",
+        "correctBinId": "bin-s"
+      },
+      {
+        "id": "item-4",
+        "text": "A",
+        "emoji": "🐜",
+        "ttsText": "A says a",
+        "correctBinId": "bin-a"
+      }
     ],
     "correctOptionId": "",
     "feedback": {
@@ -2035,14 +2058,15 @@
       "item": "Sorting Star Badge",
       "emoji": "⭐"
     },
-    "completionCondition": { "type": "all-sorted" },
+    "completionCondition": {
+      "type": "all-sorted"
+    },
     "progression": {
       "targetSound": "s,a",
       "difficultyLevel": 3,
       "progressionStage": "sorting"
     }
   },
-
   {
     "id": "ra-sort-t-p",
     "title": "Sort: T and P",
@@ -2070,10 +2094,34 @@
       }
     ],
     "options": [
-      { "id": "item-1", "text": "T", "emoji": "🐯", "ttsText": "T says t", "correctBinId": "bin-t" },
-      { "id": "item-2", "text": "P", "emoji": "🐷", "ttsText": "P says p", "correctBinId": "bin-p" },
-      { "id": "item-3", "text": "T", "emoji": "🐢", "ttsText": "T says t", "correctBinId": "bin-t" },
-      { "id": "item-4", "text": "P", "emoji": "🍐", "ttsText": "P says p", "correctBinId": "bin-p" }
+      {
+        "id": "item-1",
+        "text": "T",
+        "emoji": "🐯",
+        "ttsText": "T says t",
+        "correctBinId": "bin-t"
+      },
+      {
+        "id": "item-2",
+        "text": "P",
+        "emoji": "🐷",
+        "ttsText": "P says p",
+        "correctBinId": "bin-p"
+      },
+      {
+        "id": "item-3",
+        "text": "T",
+        "emoji": "🐢",
+        "ttsText": "T says t",
+        "correctBinId": "bin-t"
+      },
+      {
+        "id": "item-4",
+        "text": "P",
+        "emoji": "🍐",
+        "ttsText": "P says p",
+        "correctBinId": "bin-p"
+      }
     ],
     "correctOptionId": "",
     "feedback": {
@@ -2085,14 +2133,15 @@
       "item": "Tiger Sorting Badge",
       "emoji": "🐯"
     },
-    "completionCondition": { "type": "all-sorted" },
+    "completionCondition": {
+      "type": "all-sorted"
+    },
     "progression": {
       "targetSound": "t,p",
       "difficultyLevel": 3,
       "progressionStage": "sorting"
     }
   },
-
   {
     "id": "ra-sort-i-n",
     "title": "Sort: I and N",
@@ -2120,10 +2169,34 @@
       }
     ],
     "options": [
-      { "id": "item-1", "text": "I", "emoji": "🐛", "ttsText": "I says i", "correctBinId": "bin-i" },
-      { "id": "item-2", "text": "N", "emoji": "🪺", "ttsText": "N says n", "correctBinId": "bin-n" },
-      { "id": "item-3", "text": "I", "emoji": "✒️", "ttsText": "I says i", "correctBinId": "bin-i" },
-      { "id": "item-4", "text": "N", "emoji": "🪡", "ttsText": "N says n", "correctBinId": "bin-n" }
+      {
+        "id": "item-1",
+        "text": "I",
+        "emoji": "🐛",
+        "ttsText": "I says i",
+        "correctBinId": "bin-i"
+      },
+      {
+        "id": "item-2",
+        "text": "N",
+        "emoji": "🪺",
+        "ttsText": "N says n",
+        "correctBinId": "bin-n"
+      },
+      {
+        "id": "item-3",
+        "text": "I",
+        "emoji": "✒️",
+        "ttsText": "I says i",
+        "correctBinId": "bin-i"
+      },
+      {
+        "id": "item-4",
+        "text": "N",
+        "emoji": "🪡",
+        "ttsText": "N says n",
+        "correctBinId": "bin-n"
+      }
     ],
     "correctOptionId": "",
     "feedback": {
@@ -2135,14 +2208,15 @@
       "item": "Insect Sorting Badge",
       "emoji": "🐛"
     },
-    "completionCondition": { "type": "all-sorted" },
+    "completionCondition": {
+      "type": "all-sorted"
+    },
     "progression": {
       "targetSound": "i,n",
       "difficultyLevel": 3,
       "progressionStage": "sorting"
     }
   },
-
   {
     "id": "ra-sort-s-t",
     "title": "Sort: S and T",
@@ -2170,10 +2244,34 @@
       }
     ],
     "options": [
-      { "id": "item-1", "text": "S", "emoji": "🐍", "ttsText": "S says s", "correctBinId": "bin-s" },
-      { "id": "item-2", "text": "T", "emoji": "🐯", "ttsText": "T says t", "correctBinId": "bin-t" },
-      { "id": "item-3", "text": "S", "emoji": "☀️", "ttsText": "S says s", "correctBinId": "bin-s" },
-      { "id": "item-4", "text": "T", "emoji": "🐢", "ttsText": "T says t", "correctBinId": "bin-t" }
+      {
+        "id": "item-1",
+        "text": "S",
+        "emoji": "🐍",
+        "ttsText": "S says s",
+        "correctBinId": "bin-s"
+      },
+      {
+        "id": "item-2",
+        "text": "T",
+        "emoji": "🐯",
+        "ttsText": "T says t",
+        "correctBinId": "bin-t"
+      },
+      {
+        "id": "item-3",
+        "text": "S",
+        "emoji": "☀️",
+        "ttsText": "S says s",
+        "correctBinId": "bin-s"
+      },
+      {
+        "id": "item-4",
+        "text": "T",
+        "emoji": "🐢",
+        "ttsText": "T says t",
+        "correctBinId": "bin-t"
+      }
     ],
     "correctOptionId": "",
     "feedback": {
@@ -2185,14 +2283,15 @@
       "item": "Champion Sorter Badge",
       "emoji": "🏆"
     },
-    "completionCondition": { "type": "all-sorted" },
+    "completionCondition": {
+      "type": "all-sorted"
+    },
     "progression": {
       "targetSound": "s,t",
       "difficultyLevel": 3,
       "progressionStage": "sorting"
     }
   },
-
   {
     "id": "ra-sort-a-p",
     "title": "Sort: A and P",
@@ -2220,10 +2319,34 @@
       }
     ],
     "options": [
-      { "id": "item-1", "text": "A", "emoji": "🍎", "ttsText": "A says a", "correctBinId": "bin-a" },
-      { "id": "item-2", "text": "P", "emoji": "🐷", "ttsText": "P says p", "correctBinId": "bin-p" },
-      { "id": "item-3", "text": "A", "emoji": "⚓", "ttsText": "A says a", "correctBinId": "bin-a" },
-      { "id": "item-4", "text": "P", "emoji": "🍐", "ttsText": "P says p", "correctBinId": "bin-p" }
+      {
+        "id": "item-1",
+        "text": "A",
+        "emoji": "🍎",
+        "ttsText": "A says a",
+        "correctBinId": "bin-a"
+      },
+      {
+        "id": "item-2",
+        "text": "P",
+        "emoji": "🐷",
+        "ttsText": "P says p",
+        "correctBinId": "bin-p"
+      },
+      {
+        "id": "item-3",
+        "text": "A",
+        "emoji": "⚓",
+        "ttsText": "A says a",
+        "correctBinId": "bin-a"
+      },
+      {
+        "id": "item-4",
+        "text": "P",
+        "emoji": "🍐",
+        "ttsText": "P says p",
+        "correctBinId": "bin-p"
+      }
     ],
     "correctOptionId": "",
     "feedback": {
@@ -2235,14 +2358,15 @@
       "item": "Apple Sorting Badge",
       "emoji": "🍎"
     },
-    "completionCondition": { "type": "all-sorted" },
+    "completionCondition": {
+      "type": "all-sorted"
+    },
     "progression": {
       "targetSound": "a,p",
       "difficultyLevel": 3,
       "progressionStage": "sorting"
     }
   },
-
   {
     "id": "ra-sort-p-n",
     "title": "Sort: P and N",
@@ -2270,10 +2394,34 @@
       }
     ],
     "options": [
-      { "id": "item-1", "text": "P", "emoji": "🐷", "ttsText": "P says p", "correctBinId": "bin-p" },
-      { "id": "item-2", "text": "N", "emoji": "🪺", "ttsText": "N says n", "correctBinId": "bin-n" },
-      { "id": "item-3", "text": "P", "emoji": "🍳", "ttsText": "P says p", "correctBinId": "bin-p" },
-      { "id": "item-4", "text": "N", "emoji": "🪡", "ttsText": "N says n", "correctBinId": "bin-n" }
+      {
+        "id": "item-1",
+        "text": "P",
+        "emoji": "🐷",
+        "ttsText": "P says p",
+        "correctBinId": "bin-p"
+      },
+      {
+        "id": "item-2",
+        "text": "N",
+        "emoji": "🪺",
+        "ttsText": "N says n",
+        "correctBinId": "bin-n"
+      },
+      {
+        "id": "item-3",
+        "text": "P",
+        "emoji": "🍳",
+        "ttsText": "P says p",
+        "correctBinId": "bin-p"
+      },
+      {
+        "id": "item-4",
+        "text": "N",
+        "emoji": "🪡",
+        "ttsText": "N says n",
+        "correctBinId": "bin-n"
+      }
     ],
     "correctOptionId": "",
     "feedback": {
@@ -2285,14 +2433,15 @@
       "item": "Pearl Sorting Badge",
       "emoji": "🫧"
     },
-    "completionCondition": { "type": "all-sorted" },
+    "completionCondition": {
+      "type": "all-sorted"
+    },
     "progression": {
       "targetSound": "p,n",
       "difficultyLevel": 3,
       "progressionStage": "sorting"
     }
   },
-
   {
     "id": "ra-sort-obj-s-a",
     "title": "Sort Objects: S and A",
@@ -2320,12 +2469,48 @@
       }
     ],
     "options": [
-      { "id": "item-1", "text": "Sun", "emoji": "☀️", "ttsText": "Sun", "correctBinId": "bin-s" },
-      { "id": "item-2", "text": "Apple", "emoji": "🍎", "ttsText": "Apple", "correctBinId": "bin-a" },
-      { "id": "item-3", "text": "Snake", "emoji": "🐍", "ttsText": "Snake", "correctBinId": "bin-s" },
-      { "id": "item-4", "text": "Ant", "emoji": "🐜", "ttsText": "Ant", "correctBinId": "bin-a" },
-      { "id": "item-5", "text": "Star", "emoji": "⭐", "ttsText": "Star", "correctBinId": "bin-s" },
-      { "id": "item-6", "text": "Anchor", "emoji": "⚓", "ttsText": "Anchor", "correctBinId": "bin-a" }
+      {
+        "id": "item-1",
+        "text": "Sun",
+        "emoji": "☀️",
+        "ttsText": "Sun",
+        "correctBinId": "bin-s"
+      },
+      {
+        "id": "item-2",
+        "text": "Apple",
+        "emoji": "🍎",
+        "ttsText": "Apple",
+        "correctBinId": "bin-a"
+      },
+      {
+        "id": "item-3",
+        "text": "Snake",
+        "emoji": "🐍",
+        "ttsText": "Snake",
+        "correctBinId": "bin-s"
+      },
+      {
+        "id": "item-4",
+        "text": "Ant",
+        "emoji": "🐜",
+        "ttsText": "Ant",
+        "correctBinId": "bin-a"
+      },
+      {
+        "id": "item-5",
+        "text": "Star",
+        "emoji": "⭐",
+        "ttsText": "Star",
+        "correctBinId": "bin-s"
+      },
+      {
+        "id": "item-6",
+        "text": "Anchor",
+        "emoji": "⚓",
+        "ttsText": "Anchor",
+        "correctBinId": "bin-a"
+      }
     ],
     "correctOptionId": "",
     "feedback": {
@@ -2337,14 +2522,15 @@
       "item": "Object Sorter Badge",
       "emoji": "🌟"
     },
-    "completionCondition": { "type": "all-sorted" },
+    "completionCondition": {
+      "type": "all-sorted"
+    },
     "progression": {
       "targetSound": "s,a",
       "difficultyLevel": 3,
       "progressionStage": "sorting"
     }
   },
-
   {
     "id": "ra-sort-obj-t-p",
     "title": "Sort Objects: T and P",
@@ -2372,12 +2558,48 @@
       }
     ],
     "options": [
-      { "id": "item-1", "text": "Tiger", "emoji": "🐯", "ttsText": "Tiger", "correctBinId": "bin-t" },
-      { "id": "item-2", "text": "Pig", "emoji": "🐷", "ttsText": "Pig", "correctBinId": "bin-p" },
-      { "id": "item-3", "text": "Turtle", "emoji": "🐢", "ttsText": "Turtle", "correctBinId": "bin-t" },
-      { "id": "item-4", "text": "Pan", "emoji": "🍳", "ttsText": "Pan", "correctBinId": "bin-p" },
-      { "id": "item-5", "text": "Tree", "emoji": "🌳", "ttsText": "Tree", "correctBinId": "bin-t" },
-      { "id": "item-6", "text": "Parrot", "emoji": "🦜", "ttsText": "Parrot", "correctBinId": "bin-p" }
+      {
+        "id": "item-1",
+        "text": "Tiger",
+        "emoji": "🐯",
+        "ttsText": "Tiger",
+        "correctBinId": "bin-t"
+      },
+      {
+        "id": "item-2",
+        "text": "Pig",
+        "emoji": "🐷",
+        "ttsText": "Pig",
+        "correctBinId": "bin-p"
+      },
+      {
+        "id": "item-3",
+        "text": "Turtle",
+        "emoji": "🐢",
+        "ttsText": "Turtle",
+        "correctBinId": "bin-t"
+      },
+      {
+        "id": "item-4",
+        "text": "Pan",
+        "emoji": "🍳",
+        "ttsText": "Pan",
+        "correctBinId": "bin-p"
+      },
+      {
+        "id": "item-5",
+        "text": "Tree",
+        "emoji": "🌳",
+        "ttsText": "Tree",
+        "correctBinId": "bin-t"
+      },
+      {
+        "id": "item-6",
+        "text": "Parrot",
+        "emoji": "🦜",
+        "ttsText": "Parrot",
+        "correctBinId": "bin-p"
+      }
     ],
     "correctOptionId": "",
     "feedback": {
@@ -2389,14 +2611,15 @@
       "item": "Tiger Sorter Badge",
       "emoji": "🐯"
     },
-    "completionCondition": { "type": "all-sorted" },
+    "completionCondition": {
+      "type": "all-sorted"
+    },
     "progression": {
       "targetSound": "t,p",
       "difficultyLevel": 3,
       "progressionStage": "sorting"
     }
   },
-
   {
     "id": "ra-sort-obj-i-n",
     "title": "Sort Objects: I and N",
@@ -2424,12 +2647,48 @@
       }
     ],
     "options": [
-      { "id": "item-1", "text": "Insect", "emoji": "🐛", "ttsText": "Insect", "correctBinId": "bin-i" },
-      { "id": "item-2", "text": "Nut", "emoji": "🥜", "ttsText": "Nut", "correctBinId": "bin-n" },
-      { "id": "item-3", "text": "Igloo", "emoji": "🏔️", "ttsText": "Igloo", "correctBinId": "bin-i" },
-      { "id": "item-4", "text": "Nest", "emoji": "🪺", "ttsText": "Nest", "correctBinId": "bin-n" },
-      { "id": "item-5", "text": "Ink", "emoji": "✒️", "ttsText": "Ink", "correctBinId": "bin-i" },
-      { "id": "item-6", "text": "Needle", "emoji": "🪡", "ttsText": "Needle", "correctBinId": "bin-n" }
+      {
+        "id": "item-1",
+        "text": "Insect",
+        "emoji": "🐛",
+        "ttsText": "Insect",
+        "correctBinId": "bin-i"
+      },
+      {
+        "id": "item-2",
+        "text": "Nut",
+        "emoji": "🥜",
+        "ttsText": "Nut",
+        "correctBinId": "bin-n"
+      },
+      {
+        "id": "item-3",
+        "text": "Igloo",
+        "emoji": "🏔️",
+        "ttsText": "Igloo",
+        "correctBinId": "bin-i"
+      },
+      {
+        "id": "item-4",
+        "text": "Nest",
+        "emoji": "🪺",
+        "ttsText": "Nest",
+        "correctBinId": "bin-n"
+      },
+      {
+        "id": "item-5",
+        "text": "Ink",
+        "emoji": "✒️",
+        "ttsText": "Ink",
+        "correctBinId": "bin-i"
+      },
+      {
+        "id": "item-6",
+        "text": "Needle",
+        "emoji": "🪡",
+        "ttsText": "Needle",
+        "correctBinId": "bin-n"
+      }
     ],
     "correctOptionId": "",
     "feedback": {
@@ -2441,11 +2700,829 @@
       "item": "Insect Sorter Badge",
       "emoji": "🐛"
     },
-    "completionCondition": { "type": "all-sorted" },
+    "completionCondition": {
+      "type": "all-sorted"
+    },
     "progression": {
       "targetSound": "i,n",
       "difficultyLevel": 3,
       "progressionStage": "sorting"
+    }
+  },
+  {
+    "id": "ra-echo-sat",
+    "title": "Mermaid Echo: S-A-T",
+    "type": "word-blend",
+    "prompt": {
+      "kind": "text",
+      "text": "Echo the mermaid! Tap along as you hear each sound.",
+      "ttsText": "Echo the mermaid! Tap along as you hear each sound."
+    },
+    "options": [],
+    "correctOptionId": "none",
+    "feedback": {
+      "correctMessage": "Amazing rhythm! You echoed s...a...t perfectly!",
+      "incorrectMessage": "Keep tapping! Every tap is great practice."
+    },
+    "reward": {
+      "xp": 80,
+      "item": "Rhythm Shell",
+      "emoji": "🐚"
+    },
+    "completionCondition": {
+      "type": "rhythm-complete"
+    },
+    "progression": {
+      "targetSound": "sat",
+      "difficultyLevel": 4,
+      "progressionStage": "cvc-blend"
+    },
+    "uiVariant": "echo-song",
+    "requiredSounds": [
+      "s",
+      "a",
+      "t"
+    ],
+    "rhythmBeats": [
+      {
+        "sound": "s",
+        "ttsText": "s",
+        "displayText": "S",
+        "emoji": "🐍"
+      },
+      {
+        "sound": "a",
+        "ttsText": "a",
+        "displayText": "A",
+        "emoji": "🍎"
+      },
+      {
+        "sound": "t",
+        "ttsText": "t",
+        "displayText": "T",
+        "emoji": "🐢"
+      }
+    ]
+  },
+  {
+    "id": "ra-echo-sit",
+    "title": "Mermaid Echo: S-I-T",
+    "type": "word-blend",
+    "prompt": {
+      "kind": "text",
+      "text": "Echo the mermaid! Tap along as you hear each sound.",
+      "ttsText": "Echo the mermaid! Tap along as you hear each sound."
+    },
+    "options": [],
+    "correctOptionId": "none",
+    "feedback": {
+      "correctMessage": "Brilliant rhythm! You echoed s...i...t!",
+      "incorrectMessage": "Keep tapping! Every tap is great practice."
+    },
+    "reward": {
+      "xp": 80,
+      "item": "Beat Pearl",
+      "emoji": "🎵"
+    },
+    "completionCondition": {
+      "type": "rhythm-complete"
+    },
+    "progression": {
+      "targetSound": "sit",
+      "difficultyLevel": 4,
+      "progressionStage": "cvc-blend"
+    },
+    "uiVariant": "echo-song",
+    "requiredSounds": [
+      "s",
+      "i",
+      "t"
+    ],
+    "rhythmBeats": [
+      {
+        "sound": "s",
+        "ttsText": "s",
+        "displayText": "S",
+        "emoji": "🐍"
+      },
+      {
+        "sound": "i",
+        "ttsText": "i",
+        "displayText": "I",
+        "emoji": "🦋"
+      },
+      {
+        "sound": "t",
+        "ttsText": "t",
+        "displayText": "T",
+        "emoji": "🐢"
+      }
+    ]
+  },
+  {
+    "id": "ra-echo-tap",
+    "title": "Mermaid Echo: T-A-P",
+    "type": "word-blend",
+    "prompt": {
+      "kind": "text",
+      "text": "Echo the mermaid! Tap along as you hear each sound.",
+      "ttsText": "Echo the mermaid! Tap along as you hear each sound."
+    },
+    "options": [],
+    "correctOptionId": "none",
+    "feedback": {
+      "correctMessage": "Wonderful rhythm! You echoed t...a...p!",
+      "incorrectMessage": "Keep tapping! Every tap is great practice."
+    },
+    "reward": {
+      "xp": 80,
+      "item": "Rhythm Coin",
+      "emoji": "🪙"
+    },
+    "completionCondition": {
+      "type": "rhythm-complete"
+    },
+    "progression": {
+      "targetSound": "tap",
+      "difficultyLevel": 4,
+      "progressionStage": "cvc-blend"
+    },
+    "uiVariant": "echo-song",
+    "requiredSounds": [
+      "t",
+      "a",
+      "p"
+    ],
+    "rhythmBeats": [
+      {
+        "sound": "t",
+        "ttsText": "t",
+        "displayText": "T",
+        "emoji": "🐢"
+      },
+      {
+        "sound": "a",
+        "ttsText": "a",
+        "displayText": "A",
+        "emoji": "🍎"
+      },
+      {
+        "sound": "p",
+        "ttsText": "p",
+        "displayText": "P",
+        "emoji": "🍕"
+      }
+    ]
+  },
+  {
+    "id": "ra-echo-pin",
+    "title": "Mermaid Echo: P-I-N",
+    "type": "word-blend",
+    "prompt": {
+      "kind": "text",
+      "text": "Echo the mermaid! Tap along as you hear each sound.",
+      "ttsText": "Echo the mermaid! Tap along as you hear each sound."
+    },
+    "options": [],
+    "correctOptionId": "none",
+    "feedback": {
+      "correctMessage": "Superb rhythm! You echoed p...i...n!",
+      "incorrectMessage": "Keep tapping! Every tap is great practice."
+    },
+    "reward": {
+      "xp": 80,
+      "item": "Echo Badge",
+      "emoji": "🎶"
+    },
+    "completionCondition": {
+      "type": "rhythm-complete"
+    },
+    "progression": {
+      "targetSound": "pin",
+      "difficultyLevel": 4,
+      "progressionStage": "cvc-blend"
+    },
+    "uiVariant": "echo-song",
+    "requiredSounds": [
+      "p",
+      "i",
+      "n"
+    ],
+    "rhythmBeats": [
+      {
+        "sound": "p",
+        "ttsText": "p",
+        "displayText": "P",
+        "emoji": "🍕"
+      },
+      {
+        "sound": "i",
+        "ttsText": "i",
+        "displayText": "I",
+        "emoji": "🦋"
+      },
+      {
+        "sound": "n",
+        "ttsText": "n",
+        "displayText": "N",
+        "emoji": "🌙"
+      }
+    ]
+  },
+  {
+    "id": "ra-echo-nap",
+    "title": "Mermaid Echo: N-A-P",
+    "type": "word-blend",
+    "prompt": {
+      "kind": "text",
+      "text": "Echo the mermaid! Tap along as you hear each sound.",
+      "ttsText": "Echo the mermaid! Tap along as you hear each sound."
+    },
+    "options": [],
+    "correctOptionId": "none",
+    "feedback": {
+      "correctMessage": "Fantastic rhythm! You echoed n...a...p!",
+      "incorrectMessage": "Keep tapping! Every tap is great practice."
+    },
+    "reward": {
+      "xp": 80,
+      "item": "Lullaby Pearl",
+      "emoji": "💤"
+    },
+    "completionCondition": {
+      "type": "rhythm-complete"
+    },
+    "progression": {
+      "targetSound": "nap",
+      "difficultyLevel": 4,
+      "progressionStage": "cvc-blend"
+    },
+    "uiVariant": "echo-song",
+    "requiredSounds": [
+      "n",
+      "a",
+      "p"
+    ],
+    "rhythmBeats": [
+      {
+        "sound": "n",
+        "ttsText": "n",
+        "displayText": "N",
+        "emoji": "🌙"
+      },
+      {
+        "sound": "a",
+        "ttsText": "a",
+        "displayText": "A",
+        "emoji": "🍎"
+      },
+      {
+        "sound": "p",
+        "ttsText": "p",
+        "displayText": "P",
+        "emoji": "🍕"
+      }
+    ]
+  },
+  {
+    "id": "ra-echo-pan",
+    "title": "Mermaid Echo: P-A-N",
+    "type": "word-blend",
+    "prompt": {
+      "kind": "text",
+      "text": "Echo the mermaid! Tap along as you hear each sound.",
+      "ttsText": "Echo the mermaid! Tap along as you hear each sound."
+    },
+    "options": [],
+    "correctOptionId": "none",
+    "feedback": {
+      "correctMessage": "Excellent rhythm! You echoed p...a...n!",
+      "incorrectMessage": "Keep tapping! Every tap is great practice."
+    },
+    "reward": {
+      "xp": 80,
+      "item": "Song Treasure",
+      "emoji": "🎼"
+    },
+    "completionCondition": {
+      "type": "rhythm-complete"
+    },
+    "progression": {
+      "targetSound": "pan",
+      "difficultyLevel": 4,
+      "progressionStage": "cvc-blend"
+    },
+    "uiVariant": "echo-song",
+    "requiredSounds": [
+      "p",
+      "a",
+      "n"
+    ],
+    "rhythmBeats": [
+      {
+        "sound": "p",
+        "ttsText": "p",
+        "displayText": "P",
+        "emoji": "🍕"
+      },
+      {
+        "sound": "a",
+        "ttsText": "a",
+        "displayText": "A",
+        "emoji": "🍎"
+      },
+      {
+        "sound": "n",
+        "ttsText": "n",
+        "displayText": "N",
+        "emoji": "🌙"
+      }
+    ]
+  },
+  {
+    "id": "ra-wb-sat",
+    "title": "Word Builder: SAT",
+    "type": "word-blend",
+    "prompt": {
+      "kind": "text",
+      "text": "Tap the letters in order to build the word: S... A... T",
+      "ttsText": "Tap the letters in order to build the word: s, a, t"
+    },
+    "options": [
+      {
+        "id": "opt-s",
+        "text": "s",
+        "emoji": "🐍",
+        "ttsText": "s"
+      },
+      {
+        "id": "opt-a",
+        "text": "a",
+        "emoji": "🍎",
+        "ttsText": "a"
+      },
+      {
+        "id": "opt-t",
+        "text": "t",
+        "emoji": "🐢",
+        "ttsText": "t"
+      },
+      {
+        "id": "opt-p",
+        "text": "p",
+        "emoji": "🍕",
+        "ttsText": "p"
+      },
+      {
+        "id": "opt-i",
+        "text": "i",
+        "emoji": "🦋",
+        "ttsText": "i"
+      },
+      {
+        "id": "opt-n",
+        "text": "n",
+        "emoji": "🌙",
+        "ttsText": "n"
+      }
+    ],
+    "correctOptionId": "opt-s",
+    "feedback": {
+      "correctMessage": "You built SAT! /s/ /a/ /t/ = sat! Incredible!",
+      "incorrectMessage": "Try again! Listen for the first sound."
+    },
+    "reward": {
+      "xp": 120,
+      "item": "Word Pearl",
+      "emoji": "🫧"
+    },
+    "completionCondition": {
+      "type": "word-built"
+    },
+    "progression": {
+      "targetSound": "sat",
+      "difficultyLevel": 4,
+      "progressionStage": "cvc-blend"
+    },
+    "uiVariant": "word-builder",
+    "requiredSounds": [
+      "s",
+      "a",
+      "t"
+    ],
+    "cvcTarget": {
+      "word": "sat",
+      "phonemes": [
+        "s",
+        "a",
+        "t"
+      ],
+      "emoji": "🪑"
+    }
+  },
+  {
+    "id": "ra-wb-sit",
+    "title": "Word Builder: SIT",
+    "type": "word-blend",
+    "prompt": {
+      "kind": "text",
+      "text": "Tap the letters in order to build the word: S... I... T",
+      "ttsText": "Tap the letters in order to build the word: s, i, t"
+    },
+    "options": [
+      {
+        "id": "opt-s",
+        "text": "s",
+        "emoji": "🐍",
+        "ttsText": "s"
+      },
+      {
+        "id": "opt-i",
+        "text": "i",
+        "emoji": "🦋",
+        "ttsText": "i"
+      },
+      {
+        "id": "opt-t",
+        "text": "t",
+        "emoji": "🐢",
+        "ttsText": "t"
+      },
+      {
+        "id": "opt-a",
+        "text": "a",
+        "emoji": "🍎",
+        "ttsText": "a"
+      },
+      {
+        "id": "opt-p",
+        "text": "p",
+        "emoji": "🍕",
+        "ttsText": "p"
+      },
+      {
+        "id": "opt-n",
+        "text": "n",
+        "emoji": "🌙",
+        "ttsText": "n"
+      }
+    ],
+    "correctOptionId": "opt-s",
+    "feedback": {
+      "correctMessage": "You built SIT! /s/ /i/ /t/ = sit! Brilliant!",
+      "incorrectMessage": "Try again! Listen for the first sound."
+    },
+    "reward": {
+      "xp": 120,
+      "item": "Gem Blend",
+      "emoji": "💎"
+    },
+    "completionCondition": {
+      "type": "word-built"
+    },
+    "progression": {
+      "targetSound": "sit",
+      "difficultyLevel": 4,
+      "progressionStage": "cvc-blend"
+    },
+    "uiVariant": "word-builder",
+    "requiredSounds": [
+      "s",
+      "i",
+      "t"
+    ],
+    "cvcTarget": {
+      "word": "sit",
+      "phonemes": [
+        "s",
+        "i",
+        "t"
+      ],
+      "emoji": "🧘"
+    }
+  },
+  {
+    "id": "ra-wb-tap",
+    "title": "Word Builder: TAP",
+    "type": "word-blend",
+    "prompt": {
+      "kind": "text",
+      "text": "Tap the letters in order to build the word: T... A... P",
+      "ttsText": "Tap the letters in order to build the word: t, a, p"
+    },
+    "options": [
+      {
+        "id": "opt-t",
+        "text": "t",
+        "emoji": "🐢",
+        "ttsText": "t"
+      },
+      {
+        "id": "opt-a",
+        "text": "a",
+        "emoji": "🍎",
+        "ttsText": "a"
+      },
+      {
+        "id": "opt-p",
+        "text": "p",
+        "emoji": "🍕",
+        "ttsText": "p"
+      },
+      {
+        "id": "opt-s",
+        "text": "s",
+        "emoji": "🐍",
+        "ttsText": "s"
+      },
+      {
+        "id": "opt-i",
+        "text": "i",
+        "emoji": "🦋",
+        "ttsText": "i"
+      },
+      {
+        "id": "opt-n",
+        "text": "n",
+        "emoji": "🌙",
+        "ttsText": "n"
+      }
+    ],
+    "correctOptionId": "opt-t",
+    "feedback": {
+      "correctMessage": "You built TAP! /t/ /a/ /p/ = tap! Fantastic!",
+      "incorrectMessage": "Try again! Listen for the first sound."
+    },
+    "reward": {
+      "xp": 120,
+      "item": "Tap Trophy",
+      "emoji": "🏆"
+    },
+    "completionCondition": {
+      "type": "word-built"
+    },
+    "progression": {
+      "targetSound": "tap",
+      "difficultyLevel": 4,
+      "progressionStage": "cvc-blend"
+    },
+    "uiVariant": "word-builder",
+    "requiredSounds": [
+      "t",
+      "a",
+      "p"
+    ],
+    "cvcTarget": {
+      "word": "tap",
+      "phonemes": [
+        "t",
+        "a",
+        "p"
+      ],
+      "emoji": "🚿"
+    }
+  },
+  {
+    "id": "ra-wb-pin",
+    "title": "Word Builder: PIN",
+    "type": "word-blend",
+    "prompt": {
+      "kind": "text",
+      "text": "Tap the letters in order to build the word: P... I... N",
+      "ttsText": "Tap the letters in order to build the word: p, i, n"
+    },
+    "options": [
+      {
+        "id": "opt-p",
+        "text": "p",
+        "emoji": "🍕",
+        "ttsText": "p"
+      },
+      {
+        "id": "opt-i",
+        "text": "i",
+        "emoji": "🦋",
+        "ttsText": "i"
+      },
+      {
+        "id": "opt-n",
+        "text": "n",
+        "emoji": "🌙",
+        "ttsText": "n"
+      },
+      {
+        "id": "opt-s",
+        "text": "s",
+        "emoji": "🐍",
+        "ttsText": "s"
+      },
+      {
+        "id": "opt-a",
+        "text": "a",
+        "emoji": "🍎",
+        "ttsText": "a"
+      },
+      {
+        "id": "opt-t",
+        "text": "t",
+        "emoji": "🐢",
+        "ttsText": "t"
+      }
+    ],
+    "correctOptionId": "opt-p",
+    "feedback": {
+      "correctMessage": "You built PIN! /p/ /i/ /n/ = pin! Wonderful!",
+      "incorrectMessage": "Try again! Listen for the first sound."
+    },
+    "reward": {
+      "xp": 120,
+      "item": "Pin Badge",
+      "emoji": "📌"
+    },
+    "completionCondition": {
+      "type": "word-built"
+    },
+    "progression": {
+      "targetSound": "pin",
+      "difficultyLevel": 4,
+      "progressionStage": "cvc-blend"
+    },
+    "uiVariant": "word-builder",
+    "requiredSounds": [
+      "p",
+      "i",
+      "n"
+    ],
+    "cvcTarget": {
+      "word": "pin",
+      "phonemes": [
+        "p",
+        "i",
+        "n"
+      ],
+      "emoji": "📌"
+    }
+  },
+  {
+    "id": "ra-wb-nap",
+    "title": "Word Builder: NAP",
+    "type": "word-blend",
+    "prompt": {
+      "kind": "text",
+      "text": "Tap the letters in order to build the word: N... A... P",
+      "ttsText": "Tap the letters in order to build the word: n, a, p"
+    },
+    "options": [
+      {
+        "id": "opt-n",
+        "text": "n",
+        "emoji": "🌙",
+        "ttsText": "n"
+      },
+      {
+        "id": "opt-a",
+        "text": "a",
+        "emoji": "🍎",
+        "ttsText": "a"
+      },
+      {
+        "id": "opt-p",
+        "text": "p",
+        "emoji": "🍕",
+        "ttsText": "p"
+      },
+      {
+        "id": "opt-s",
+        "text": "s",
+        "emoji": "🐍",
+        "ttsText": "s"
+      },
+      {
+        "id": "opt-i",
+        "text": "i",
+        "emoji": "🦋",
+        "ttsText": "i"
+      },
+      {
+        "id": "opt-t",
+        "text": "t",
+        "emoji": "🐢",
+        "ttsText": "t"
+      }
+    ],
+    "correctOptionId": "opt-n",
+    "feedback": {
+      "correctMessage": "You built NAP! /n/ /a/ /p/ = nap! Superb!",
+      "incorrectMessage": "Try again! Listen for the first sound."
+    },
+    "reward": {
+      "xp": 120,
+      "item": "Dream Shell",
+      "emoji": "🐚"
+    },
+    "completionCondition": {
+      "type": "word-built"
+    },
+    "progression": {
+      "targetSound": "nap",
+      "difficultyLevel": 4,
+      "progressionStage": "cvc-blend"
+    },
+    "uiVariant": "word-builder",
+    "requiredSounds": [
+      "n",
+      "a",
+      "p"
+    ],
+    "cvcTarget": {
+      "word": "nap",
+      "phonemes": [
+        "n",
+        "a",
+        "p"
+      ],
+      "emoji": "😴"
+    }
+  },
+  {
+    "id": "ra-wb-pan",
+    "title": "Word Builder: PAN",
+    "type": "word-blend",
+    "prompt": {
+      "kind": "text",
+      "text": "Tap the letters in order to build the word: P... A... N",
+      "ttsText": "Tap the letters in order to build the word: p, a, n"
+    },
+    "options": [
+      {
+        "id": "opt-p",
+        "text": "p",
+        "emoji": "🍕",
+        "ttsText": "p"
+      },
+      {
+        "id": "opt-a",
+        "text": "a",
+        "emoji": "🍎",
+        "ttsText": "a"
+      },
+      {
+        "id": "opt-n",
+        "text": "n",
+        "emoji": "🌙",
+        "ttsText": "n"
+      },
+      {
+        "id": "opt-s",
+        "text": "s",
+        "emoji": "🐍",
+        "ttsText": "s"
+      },
+      {
+        "id": "opt-i",
+        "text": "i",
+        "emoji": "🦋",
+        "ttsText": "i"
+      },
+      {
+        "id": "opt-t",
+        "text": "t",
+        "emoji": "🐢",
+        "ttsText": "t"
+      }
+    ],
+    "correctOptionId": "opt-p",
+    "feedback": {
+      "correctMessage": "You built PAN! /p/ /a/ /n/ = pan! Amazing!",
+      "incorrectMessage": "Try again! Listen for the first sound."
+    },
+    "reward": {
+      "xp": 120,
+      "item": "Pan Gold",
+      "emoji": "🍳"
+    },
+    "completionCondition": {
+      "type": "word-built"
+    },
+    "progression": {
+      "targetSound": "pan",
+      "difficultyLevel": 4,
+      "progressionStage": "cvc-blend"
+    },
+    "uiVariant": "word-builder",
+    "requiredSounds": [
+      "p",
+      "a",
+      "n"
+    ],
+    "cvcTarget": {
+      "word": "pan",
+      "phonemes": [
+        "p",
+        "a",
+        "n"
+      ],
+      "emoji": "🍳"
     }
   }
 ]
