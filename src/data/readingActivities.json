@@ -1991,5 +1991,461 @@
       "difficultyLevel": 2,
       "progressionStage": "sound-object"
     }
+  },
+
+  {
+    "id": "ra-sort-s-a",
+    "title": "Sort: S and A",
+    "type": "sound-match",
+    "uiVariant": "treasure-sort",
+    "prompt": {
+      "kind": "text",
+      "text": "Sort each letter into the right treasure chest!",
+      "ttsText": "Sort each letter into the right treasure chest! Listen to the sound and put it in the correct chest."
+    },
+    "bins": [
+      {
+        "id": "bin-s",
+        "label": "S",
+        "sound": "s",
+        "ttsText": "S says s like in snake",
+        "emoji": "🐍"
+      },
+      {
+        "id": "bin-a",
+        "label": "A",
+        "sound": "a",
+        "ttsText": "A says a like in apple",
+        "emoji": "🍎"
+      }
+    ],
+    "options": [
+      { "id": "item-1", "text": "S", "emoji": "🐍", "ttsText": "S says s", "correctBinId": "bin-s" },
+      { "id": "item-2", "text": "A", "emoji": "🍎", "ttsText": "A says a", "correctBinId": "bin-a" },
+      { "id": "item-3", "text": "S", "emoji": "⭐", "ttsText": "S says s", "correctBinId": "bin-s" },
+      { "id": "item-4", "text": "A", "emoji": "🐜", "ttsText": "A says a", "correctBinId": "bin-a" }
+    ],
+    "correctOptionId": "",
+    "feedback": {
+      "correctMessage": "Excellent sorting! You know your S and A sounds!",
+      "incorrectMessage": "Good try! Listen to the sound and try again."
+    },
+    "reward": {
+      "xp": 100,
+      "item": "Sorting Star Badge",
+      "emoji": "⭐"
+    },
+    "completionCondition": { "type": "all-sorted" },
+    "progression": {
+      "targetSound": "s,a",
+      "difficultyLevel": 3,
+      "progressionStage": "sorting"
+    }
+  },
+
+  {
+    "id": "ra-sort-t-p",
+    "title": "Sort: T and P",
+    "type": "sound-match",
+    "uiVariant": "treasure-sort",
+    "prompt": {
+      "kind": "text",
+      "text": "Sort each letter into the right treasure chest!",
+      "ttsText": "Sort each letter into the right treasure chest! Listen to the sound and put it in the correct chest."
+    },
+    "bins": [
+      {
+        "id": "bin-t",
+        "label": "T",
+        "sound": "t",
+        "ttsText": "T says t like in tiger",
+        "emoji": "🐯"
+      },
+      {
+        "id": "bin-p",
+        "label": "P",
+        "sound": "p",
+        "ttsText": "P says p like in pig",
+        "emoji": "🐷"
+      }
+    ],
+    "options": [
+      { "id": "item-1", "text": "T", "emoji": "🐯", "ttsText": "T says t", "correctBinId": "bin-t" },
+      { "id": "item-2", "text": "P", "emoji": "🐷", "ttsText": "P says p", "correctBinId": "bin-p" },
+      { "id": "item-3", "text": "T", "emoji": "🐢", "ttsText": "T says t", "correctBinId": "bin-t" },
+      { "id": "item-4", "text": "P", "emoji": "🍐", "ttsText": "P says p", "correctBinId": "bin-p" }
+    ],
+    "correctOptionId": "",
+    "feedback": {
+      "correctMessage": "Wonderful sorting! You know your T and P sounds!",
+      "incorrectMessage": "Good try! Listen to the sound and try again."
+    },
+    "reward": {
+      "xp": 100,
+      "item": "Tiger Sorting Badge",
+      "emoji": "🐯"
+    },
+    "completionCondition": { "type": "all-sorted" },
+    "progression": {
+      "targetSound": "t,p",
+      "difficultyLevel": 3,
+      "progressionStage": "sorting"
+    }
+  },
+
+  {
+    "id": "ra-sort-i-n",
+    "title": "Sort: I and N",
+    "type": "sound-match",
+    "uiVariant": "treasure-sort",
+    "prompt": {
+      "kind": "text",
+      "text": "Sort each letter into the right treasure chest!",
+      "ttsText": "Sort each letter into the right treasure chest! Listen to the sound and put it in the correct chest."
+    },
+    "bins": [
+      {
+        "id": "bin-i",
+        "label": "I",
+        "sound": "i",
+        "ttsText": "I says i like in insect",
+        "emoji": "🐛"
+      },
+      {
+        "id": "bin-n",
+        "label": "N",
+        "sound": "n",
+        "ttsText": "N says n like in nest",
+        "emoji": "🪺"
+      }
+    ],
+    "options": [
+      { "id": "item-1", "text": "I", "emoji": "🐛", "ttsText": "I says i", "correctBinId": "bin-i" },
+      { "id": "item-2", "text": "N", "emoji": "🪺", "ttsText": "N says n", "correctBinId": "bin-n" },
+      { "id": "item-3", "text": "I", "emoji": "✒️", "ttsText": "I says i", "correctBinId": "bin-i" },
+      { "id": "item-4", "text": "N", "emoji": "🪡", "ttsText": "N says n", "correctBinId": "bin-n" }
+    ],
+    "correctOptionId": "",
+    "feedback": {
+      "correctMessage": "Fantastic sorting! You know your I and N sounds!",
+      "incorrectMessage": "Good try! Listen to the sound and try again."
+    },
+    "reward": {
+      "xp": 100,
+      "item": "Insect Sorting Badge",
+      "emoji": "🐛"
+    },
+    "completionCondition": { "type": "all-sorted" },
+    "progression": {
+      "targetSound": "i,n",
+      "difficultyLevel": 3,
+      "progressionStage": "sorting"
+    }
+  },
+
+  {
+    "id": "ra-sort-s-t",
+    "title": "Sort: S and T",
+    "type": "sound-match",
+    "uiVariant": "treasure-sort",
+    "prompt": {
+      "kind": "text",
+      "text": "Sort each letter into the right treasure chest!",
+      "ttsText": "Sort each letter into the right treasure chest! Listen carefully to each sound."
+    },
+    "bins": [
+      {
+        "id": "bin-s",
+        "label": "S",
+        "sound": "s",
+        "ttsText": "S says s like in snake",
+        "emoji": "🐍"
+      },
+      {
+        "id": "bin-t",
+        "label": "T",
+        "sound": "t",
+        "ttsText": "T says t like in tiger",
+        "emoji": "🐯"
+      }
+    ],
+    "options": [
+      { "id": "item-1", "text": "S", "emoji": "🐍", "ttsText": "S says s", "correctBinId": "bin-s" },
+      { "id": "item-2", "text": "T", "emoji": "🐯", "ttsText": "T says t", "correctBinId": "bin-t" },
+      { "id": "item-3", "text": "S", "emoji": "☀️", "ttsText": "S says s", "correctBinId": "bin-s" },
+      { "id": "item-4", "text": "T", "emoji": "🐢", "ttsText": "T says t", "correctBinId": "bin-t" }
+    ],
+    "correctOptionId": "",
+    "feedback": {
+      "correctMessage": "Amazing sorting! You can hear the difference between S and T!",
+      "incorrectMessage": "Good try! Listen carefully and try again."
+    },
+    "reward": {
+      "xp": 100,
+      "item": "Champion Sorter Badge",
+      "emoji": "🏆"
+    },
+    "completionCondition": { "type": "all-sorted" },
+    "progression": {
+      "targetSound": "s,t",
+      "difficultyLevel": 3,
+      "progressionStage": "sorting"
+    }
+  },
+
+  {
+    "id": "ra-sort-a-p",
+    "title": "Sort: A and P",
+    "type": "sound-match",
+    "uiVariant": "treasure-sort",
+    "prompt": {
+      "kind": "text",
+      "text": "Sort each letter into the right treasure chest!",
+      "ttsText": "Sort each letter into the right treasure chest! Listen carefully to each sound."
+    },
+    "bins": [
+      {
+        "id": "bin-a",
+        "label": "A",
+        "sound": "a",
+        "ttsText": "A says a like in apple",
+        "emoji": "🍎"
+      },
+      {
+        "id": "bin-p",
+        "label": "P",
+        "sound": "p",
+        "ttsText": "P says p like in pig",
+        "emoji": "🐷"
+      }
+    ],
+    "options": [
+      { "id": "item-1", "text": "A", "emoji": "🍎", "ttsText": "A says a", "correctBinId": "bin-a" },
+      { "id": "item-2", "text": "P", "emoji": "🐷", "ttsText": "P says p", "correctBinId": "bin-p" },
+      { "id": "item-3", "text": "A", "emoji": "⚓", "ttsText": "A says a", "correctBinId": "bin-a" },
+      { "id": "item-4", "text": "P", "emoji": "🍐", "ttsText": "P says p", "correctBinId": "bin-p" }
+    ],
+    "correctOptionId": "",
+    "feedback": {
+      "correctMessage": "Brilliant sorting! You know your A and P sounds!",
+      "incorrectMessage": "Good try! Listen carefully and try again."
+    },
+    "reward": {
+      "xp": 100,
+      "item": "Apple Sorting Badge",
+      "emoji": "🍎"
+    },
+    "completionCondition": { "type": "all-sorted" },
+    "progression": {
+      "targetSound": "a,p",
+      "difficultyLevel": 3,
+      "progressionStage": "sorting"
+    }
+  },
+
+  {
+    "id": "ra-sort-p-n",
+    "title": "Sort: P and N",
+    "type": "sound-match",
+    "uiVariant": "treasure-sort",
+    "prompt": {
+      "kind": "text",
+      "text": "Sort each letter into the right treasure chest!",
+      "ttsText": "Sort each letter into the right treasure chest! Listen carefully to each sound."
+    },
+    "bins": [
+      {
+        "id": "bin-p",
+        "label": "P",
+        "sound": "p",
+        "ttsText": "P says p like in pig",
+        "emoji": "🐷"
+      },
+      {
+        "id": "bin-n",
+        "label": "N",
+        "sound": "n",
+        "ttsText": "N says n like in nest",
+        "emoji": "🪺"
+      }
+    ],
+    "options": [
+      { "id": "item-1", "text": "P", "emoji": "🐷", "ttsText": "P says p", "correctBinId": "bin-p" },
+      { "id": "item-2", "text": "N", "emoji": "🪺", "ttsText": "N says n", "correctBinId": "bin-n" },
+      { "id": "item-3", "text": "P", "emoji": "🍳", "ttsText": "P says p", "correctBinId": "bin-p" },
+      { "id": "item-4", "text": "N", "emoji": "🪡", "ttsText": "N says n", "correctBinId": "bin-n" }
+    ],
+    "correctOptionId": "",
+    "feedback": {
+      "correctMessage": "Superb sorting! You know your P and N sounds!",
+      "incorrectMessage": "Good try! Listen carefully and try again."
+    },
+    "reward": {
+      "xp": 100,
+      "item": "Pearl Sorting Badge",
+      "emoji": "🫧"
+    },
+    "completionCondition": { "type": "all-sorted" },
+    "progression": {
+      "targetSound": "p,n",
+      "difficultyLevel": 3,
+      "progressionStage": "sorting"
+    }
+  },
+
+  {
+    "id": "ra-sort-obj-s-a",
+    "title": "Sort Objects: S and A",
+    "type": "sound-match",
+    "uiVariant": "treasure-sort",
+    "prompt": {
+      "kind": "text",
+      "text": "Sort each picture into the chest that matches its starting sound!",
+      "ttsText": "Sort each picture into the chest that matches its starting sound! Does it start with S or A?"
+    },
+    "bins": [
+      {
+        "id": "bin-s",
+        "label": "S",
+        "sound": "s",
+        "ttsText": "S says s like in snake",
+        "emoji": "🐍"
+      },
+      {
+        "id": "bin-a",
+        "label": "A",
+        "sound": "a",
+        "ttsText": "A says a like in apple",
+        "emoji": "🍎"
+      }
+    ],
+    "options": [
+      { "id": "item-1", "text": "Sun", "emoji": "☀️", "ttsText": "Sun", "correctBinId": "bin-s" },
+      { "id": "item-2", "text": "Apple", "emoji": "🍎", "ttsText": "Apple", "correctBinId": "bin-a" },
+      { "id": "item-3", "text": "Snake", "emoji": "🐍", "ttsText": "Snake", "correctBinId": "bin-s" },
+      { "id": "item-4", "text": "Ant", "emoji": "🐜", "ttsText": "Ant", "correctBinId": "bin-a" },
+      { "id": "item-5", "text": "Star", "emoji": "⭐", "ttsText": "Star", "correctBinId": "bin-s" },
+      { "id": "item-6", "text": "Anchor", "emoji": "⚓", "ttsText": "Anchor", "correctBinId": "bin-a" }
+    ],
+    "correctOptionId": "",
+    "feedback": {
+      "correctMessage": "Outstanding! You sorted all the S and A pictures perfectly!",
+      "incorrectMessage": "Good try! Listen to the starting sound and try again."
+    },
+    "reward": {
+      "xp": 100,
+      "item": "Object Sorter Badge",
+      "emoji": "🌟"
+    },
+    "completionCondition": { "type": "all-sorted" },
+    "progression": {
+      "targetSound": "s,a",
+      "difficultyLevel": 3,
+      "progressionStage": "sorting"
+    }
+  },
+
+  {
+    "id": "ra-sort-obj-t-p",
+    "title": "Sort Objects: T and P",
+    "type": "sound-match",
+    "uiVariant": "treasure-sort",
+    "prompt": {
+      "kind": "text",
+      "text": "Sort each picture into the chest that matches its starting sound!",
+      "ttsText": "Sort each picture into the chest that matches its starting sound! Does it start with T or P?"
+    },
+    "bins": [
+      {
+        "id": "bin-t",
+        "label": "T",
+        "sound": "t",
+        "ttsText": "T says t like in tiger",
+        "emoji": "🐯"
+      },
+      {
+        "id": "bin-p",
+        "label": "P",
+        "sound": "p",
+        "ttsText": "P says p like in pig",
+        "emoji": "🐷"
+      }
+    ],
+    "options": [
+      { "id": "item-1", "text": "Tiger", "emoji": "🐯", "ttsText": "Tiger", "correctBinId": "bin-t" },
+      { "id": "item-2", "text": "Pig", "emoji": "🐷", "ttsText": "Pig", "correctBinId": "bin-p" },
+      { "id": "item-3", "text": "Turtle", "emoji": "🐢", "ttsText": "Turtle", "correctBinId": "bin-t" },
+      { "id": "item-4", "text": "Pan", "emoji": "🍳", "ttsText": "Pan", "correctBinId": "bin-p" },
+      { "id": "item-5", "text": "Tree", "emoji": "🌳", "ttsText": "Tree", "correctBinId": "bin-t" },
+      { "id": "item-6", "text": "Parrot", "emoji": "🦜", "ttsText": "Parrot", "correctBinId": "bin-p" }
+    ],
+    "correctOptionId": "",
+    "feedback": {
+      "correctMessage": "Incredible! You sorted all the T and P pictures!",
+      "incorrectMessage": "Good try! Listen to the starting sound and try again."
+    },
+    "reward": {
+      "xp": 100,
+      "item": "Tiger Sorter Badge",
+      "emoji": "🐯"
+    },
+    "completionCondition": { "type": "all-sorted" },
+    "progression": {
+      "targetSound": "t,p",
+      "difficultyLevel": 3,
+      "progressionStage": "sorting"
+    }
+  },
+
+  {
+    "id": "ra-sort-obj-i-n",
+    "title": "Sort Objects: I and N",
+    "type": "sound-match",
+    "uiVariant": "treasure-sort",
+    "prompt": {
+      "kind": "text",
+      "text": "Sort each picture into the chest that matches its starting sound!",
+      "ttsText": "Sort each picture into the chest that matches its starting sound! Does it start with I or N?"
+    },
+    "bins": [
+      {
+        "id": "bin-i",
+        "label": "I",
+        "sound": "i",
+        "ttsText": "I says i like in insect",
+        "emoji": "🐛"
+      },
+      {
+        "id": "bin-n",
+        "label": "N",
+        "sound": "n",
+        "ttsText": "N says n like in nest",
+        "emoji": "🪺"
+      }
+    ],
+    "options": [
+      { "id": "item-1", "text": "Insect", "emoji": "🐛", "ttsText": "Insect", "correctBinId": "bin-i" },
+      { "id": "item-2", "text": "Nut", "emoji": "🥜", "ttsText": "Nut", "correctBinId": "bin-n" },
+      { "id": "item-3", "text": "Igloo", "emoji": "🏔️", "ttsText": "Igloo", "correctBinId": "bin-i" },
+      { "id": "item-4", "text": "Nest", "emoji": "🪺", "ttsText": "Nest", "correctBinId": "bin-n" },
+      { "id": "item-5", "text": "Ink", "emoji": "✒️", "ttsText": "Ink", "correctBinId": "bin-i" },
+      { "id": "item-6", "text": "Needle", "emoji": "🪡", "ttsText": "Needle", "correctBinId": "bin-n" }
+    ],
+    "correctOptionId": "",
+    "feedback": {
+      "correctMessage": "Wonderful! You sorted all the I and N pictures!",
+      "incorrectMessage": "Good try! Listen to the starting sound and try again."
+    },
+    "reward": {
+      "xp": 100,
+      "item": "Insect Sorter Badge",
+      "emoji": "🐛"
+    },
+    "completionCondition": { "type": "all-sorted" },
+    "progression": {
+      "targetSound": "i,n",
+      "difficultyLevel": 3,
+      "progressionStage": "sorting"
+    }
   }
 ]

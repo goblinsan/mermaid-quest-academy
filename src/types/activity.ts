@@ -73,6 +73,11 @@ export interface PhonicsAnswerOption {
    * (e.g. for audio-only prompts where hearing the option matters).
    */
   ttsText?: string;
+  /**
+   * The `id` of the bin this item should be sorted into.
+   * Only used by `'treasure-sort'` activities.
+   */
+  correctBinId?: string;
 }
 
 /** Messages shown after the learner submits an answer. */
@@ -88,23 +93,49 @@ export interface PhonicsActivityFeedback {
  *
  * - `single-correct` — one right answer completes the activity immediately.
  * - `streak`         — the learner must answer correctly `count` times in a row.
+ * - `all-sorted`     — all items must be placed into their correct bins.
  */
 export type PhonicsCompletionCondition =
   | { type: 'single-correct' }
-  | { type: 'streak'; count: number };
+  | { type: 'streak'; count: number }
+  | { type: 'all-sorted' };
 
 /**
  * The UI rendering variant for an activity.
  *
- * | Value         | Description                                               |
- * |---------------|-----------------------------------------------------------|
- * | `default`     | Standard list of answer tiles via `ActivityShell`         |
- * | `seashell`    | Circular seashell tiles for letter-sound matching         |
- * | `bubble-pop`  | Animated floating letter bubbles the player pops          |
- * | `fish-feed`   | Large object-picture cards; tap the one that starts with  |
- * |               | the target phoneme to feed the friendly fish              |
+ * | Value            | Description                                               |
+ * |------------------|-----------------------------------------------------------|
+ * | `default`        | Standard list of answer tiles via `ActivityShell`         |
+ * | `seashell`       | Circular seashell tiles for letter-sound matching         |
+ * | `bubble-pop`     | Animated floating letter bubbles the player pops          |
+ * | `fish-feed`      | Large object-picture cards; tap the one that starts with  |
+ * |                  | the target phoneme to feed the friendly fish              |
+ * | `treasure-sort`  | Two treasure chests; sort letters or objects by starting  |
+ * |                  | sound using tap-to-place interaction                      |
  */
-export type PhonicsActivityUIVariant = 'default' | 'seashell' | 'bubble-pop' | 'fish-feed';
+export type PhonicsActivityUIVariant =
+  | 'default'
+  | 'seashell'
+  | 'bubble-pop'
+  | 'fish-feed'
+  | 'treasure-sort';
+
+/**
+ * A sound-labeled container (treasure chest) used in `'treasure-sort'` activities.
+ * The learner places items into the bin whose sound matches the item's starting sound.
+ */
+export interface PhonicsActivityBin {
+  /** Unique identifier within the activity (e.g. `"bin-s"`). */
+  id: string;
+  /** The letter label displayed on the chest (e.g. `"S"`). */
+  label: string;
+  /** The target phoneme for this bin (e.g. `"s"`). */
+  sound: string;
+  /** TTS text spoken when the learner taps the bin label (e.g. `"S says s like in snake"`). */
+  ttsText: string;
+  /** Optional decorative emoji shown on the chest (e.g. `"🐍"`). */
+  emoji?: string;
+}
 
 /** Full configuration object for one reading/phonics activity. */
 export interface PhonicsActivityConfig {
@@ -133,4 +164,10 @@ export interface PhonicsActivityConfig {
    * `ActivityShell` tiles) when omitted.
    */
   uiVariant?: PhonicsActivityUIVariant;
+  /**
+   * The treasure-chest bins used by `'treasure-sort'` activities.
+   * Each bin has a sound label and the learner places items into it.
+   * Not present on other activity variants.
+   */
+  bins?: PhonicsActivityBin[];
 }

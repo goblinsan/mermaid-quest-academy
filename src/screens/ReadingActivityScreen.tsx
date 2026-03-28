@@ -5,6 +5,7 @@ import ActivityShell from '../components/ActivityShell';
 import SoundSeashellMatch from '../components/SoundSeashellMatch';
 import BubblePopLetters from '../components/BubblePopLetters';
 import FeedFriendlyFish from '../components/FeedFriendlyFish';
+import TreasureChestSort from '../components/TreasureChestSort';
 import { getReadingActivityById, getAllReadingActivities } from '../services/activityLoader';
 import { usePhonicsActivity } from '../hooks/usePhonicsActivity';
 import { useAudio, prefetchAudio } from '../hooks/useAudio';
@@ -16,9 +17,10 @@ import { useProgression } from '../hooks/useProgression';
  * for reading/phonics mini-games at `/reading/:id`.
  *
  * The rendered component is chosen by `config.uiVariant`:
- * - `'seashell'`    → `SoundSeashellMatch`
- * - `'bubble-pop'`  → `BubblePopLetters`
- * - `'fish-feed'`   → `FeedFriendlyFish`
+ * - `'seashell'`       → `SoundSeashellMatch`
+ * - `'bubble-pop'`     → `BubblePopLetters`
+ * - `'fish-feed'`      → `FeedFriendlyFish`
+ * - `'treasure-sort'`  → `TreasureChestSort`
  * - `'default'` / unset → `ActivityShell` (generic fallback)
  */
 export default function ReadingActivityScreen() {
@@ -92,6 +94,16 @@ export default function ReadingActivityScreen() {
     navigate('/reward', { state: { reward: config.reward, newZoneUnlocked: false } });
   };
 
+  /**
+   * Reward handler for treasure-sort activities.
+   * Sorting is only completable when all items are placed correctly,
+   * so `isCorrect` is always `true` at this point.
+   */
+  const handleSortingClaimReward = () => {
+    progression.completeReadingActivity(config.id, config.reward, true);
+    navigate('/reward', { state: { reward: config.reward, newZoneUnlocked: false } });
+  };
+
   /** Plays the per-letter phoneme sound when the learner taps an option tile. */
   const handleOptionAudio = (ttsText: string) => {
     speakOption(ttsText);
@@ -123,6 +135,20 @@ export default function ReadingActivityScreen() {
       <FeedFriendlyFish
         {...sharedProps}
         onIncorrectHintAudio={handleIncorrectHintAudio}
+      />
+    );
+  }
+
+  if (config.uiVariant === 'treasure-sort') {
+    return (
+      <TreasureChestSort
+        config={config}
+        onClaimReward={handleSortingClaimReward}
+        onExit={() => navigate('/world')}
+        audioLoading={audioLoading}
+        onReplayAudio={replay}
+        onItemAudio={handleOptionAudio}
+        onBinAudio={handleOptionAudio}
       />
     );
   }
