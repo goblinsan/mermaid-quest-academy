@@ -63,7 +63,7 @@ export default function SoundSeashellMatch({
   const correctOption = config.options.find((o) => o.id === config.correctOptionId);
 
   return (
-    <div className="min-h-screen px-4 py-10">
+    <div className="min-h-screen px-4 py-6 sm:py-10">
       <div className="mx-auto max-w-2xl">
         {/* Header */}
         <div className="text-center mb-6">
@@ -73,8 +73,8 @@ export default function SoundSeashellMatch({
           </h1>
         </div>
 
-        {/* Prompt card */}
-        <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 mb-8">
+        {/* Sticky prompt card — replay button always reachable (#116) */}
+        <div className="sticky top-0 z-10 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 mb-8">
           <div className="flex items-center justify-between gap-4">
             <p className="font-body text-pearl-100 text-xl leading-relaxed flex-1">
               {config.prompt.text}
@@ -110,7 +110,7 @@ export default function SoundSeashellMatch({
               shellClass +=
                 'border-pearl-300/50 bg-ocean-800/60 cursor-pointer ' +
                 'hover:border-ocean-300 hover:bg-ocean-700/60 hover:scale-110 ' +
-                'active:scale-95 animate-float';
+                'active:scale-95 animate-float gpu-accelerated';
             }
 
             return (
@@ -156,7 +156,7 @@ export default function SoundSeashellMatch({
               reward={status === 'completed' ? config.reward : undefined}
             />
             {status === 'completed' && (
-              <div className="mt-3 text-center font-quest text-2xl text-ocean-200 animate-float">
+              <div className="mt-3 text-center font-quest text-2xl text-ocean-200 animate-float gpu-accelerated">
                 🌊✨ Amazing work! Keep it up! ✨🌊
               </div>
             )}

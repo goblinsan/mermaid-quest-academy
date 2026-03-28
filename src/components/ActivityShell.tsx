@@ -85,7 +85,7 @@ export default function ActivityShell({
   const correctOption = config.options.find((o) => o.id === config.correctOptionId);
 
   return (
-    <div className="min-h-screen px-4 py-10">
+    <div className="min-h-screen px-4 py-6 sm:py-10">
       <div className="mx-auto max-w-2xl">
         {/* Header */}
         <div className="text-center mb-6">
@@ -95,10 +95,9 @@ export default function ActivityShell({
           </h1>
         </div>
 
-        {/* Activity card */}
-        <Card variant="glass" className="mb-6">
-          {/* Prompt area + replay button */}
-          <div className="flex items-start justify-between gap-4 mb-6">
+        {/* Sticky prompt card — replay button always reachable (#116) */}
+        <div className="sticky top-0 z-10 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 mb-6">
+          <div className="flex items-start justify-between gap-4">
             <div className="flex-1">
               <p className="font-body text-pearl-100 text-xl leading-relaxed">
                 {config.prompt.text}
@@ -114,15 +113,18 @@ export default function ActivityShell({
             </div>
             <ReplayAudioButton onReplay={onReplayAudio} isLoading={audioLoading} />
           </div>
+        </div>
 
-          {/* Answer option tiles — tap-to-submit */}
+        {/* Activity card — options + feedback */}
+        <Card variant="glass" className="mb-6">
+          {/* Answer option tiles — tap-to-submit (#114: min-h-[80px] for tablet touch targets) */}
           <div className="flex flex-col gap-4 mb-4">
             {config.options.map((option) => {
               const isSelected = selectedOptionId === option.id;
               const isCorrectOption = option.id === config.correctOptionId;
 
               let optionClass =
-                'w-full text-left rounded-2xl border-2 px-6 py-5 font-body text-lg transition-all duration-200 min-h-[72px] flex items-center gap-3 ';
+                'w-full text-left rounded-2xl border-2 px-6 py-5 font-body text-lg transition-all duration-200 min-h-[80px] flex items-center gap-3 ';
 
               if (showResult) {
                 if (isCorrectOption) {

@@ -89,7 +89,7 @@ export default function UnderwaterWordBuilder({
   const builtWord = slotLabels.join('');
 
   return (
-    <div className="min-h-screen px-4 py-10">
+    <div className="min-h-screen px-4 py-6 sm:py-10">
       <div className="mx-auto max-w-2xl">
         {/* Header */}
         <div className="text-center mb-6">
@@ -97,13 +97,14 @@ export default function UnderwaterWordBuilder({
           <h1 className="font-quest text-4xl text-ocean-200 text-shadow-glow mb-2">
             {config.title}
           </h1>
-          <p className="font-body text-pearl-300 text-sm">
+          {/* Instruction only available to screen readers (#115) */}
+          <p className="sr-only">
             Tap the letters in order to build the word!
           </p>
         </div>
 
-        {/* Prompt card */}
-        <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 mb-6">
+        {/* Sticky prompt card — replay button always reachable (#116) */}
+        <div className="sticky top-0 z-10 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 mb-6">
           <div className="flex items-center justify-between gap-4">
             <p className="font-body text-pearl-100 text-xl leading-relaxed flex-1">
               {config.prompt.text}
@@ -116,8 +117,8 @@ export default function UnderwaterWordBuilder({
         {target && (
           <div className="text-center mb-6">
             <div className="text-8xl mb-2">{target.emoji}</div>
-            <p className="font-body text-pearl-400 text-sm uppercase tracking-widest">
-              Build this word ↓
+            <p className="sr-only">
+              Build this word
             </p>
           </div>
         )}
@@ -177,16 +178,17 @@ export default function UnderwaterWordBuilder({
               message={config.feedback.correctMessage}
               reward={config.reward}
             />
-            <div className="mt-3 text-center font-quest text-2xl text-ocean-200 animate-float">
+            <div className="mt-3 text-center font-quest text-2xl text-ocean-200 animate-float gpu-accelerated">
               🌊✨ You built the word! Amazing! ✨🌊
             </div>
           </div>
         )}
 
-        {/* Letter tile grid */}
+        {/* Letter tile grid — 3 cols on small screens, 6 cols on wider screens
+             to reduce vertical height and fit landscape tablet viewports (#118) */}
         {!isCompleted && (
           <div
-            className="grid grid-cols-3 gap-3 mb-8"
+            className="grid grid-cols-3 sm:grid-cols-6 gap-3 mb-8"
             role="group"
             aria-label="Letter tiles"
           >
