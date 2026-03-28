@@ -2,15 +2,22 @@ import { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Button from '../components/ui/Button';
 import ActivityShell from '../components/ActivityShell';
+import SoundSeashellMatch from '../components/SoundSeashellMatch';
+import BubblePopLetters from '../components/BubblePopLetters';
 import { getReadingActivityById, getAllReadingActivities } from '../services/activityLoader';
 import { usePhonicsActivity } from '../hooks/usePhonicsActivity';
 import { useAudio, prefetchAudio } from '../hooks/useAudio';
 import { useProgression } from '../hooks/useProgression';
 
 /**
- * Screen that wires the shared `ActivityShell` together with the
+ * Screen that wires the shared activity components together with the
  * `usePhonicsActivity` hook, audio system, and progression tracking
  * for reading/phonics mini-games at `/reading/:id`.
+ *
+ * The rendered component is chosen by `config.uiVariant`:
+ * - `'seashell'`    → `SoundSeashellMatch`
+ * - `'bubble-pop'`  → `BubblePopLetters`
+ * - `'default'` / unset → `ActivityShell` (generic fallback)
  */
 export default function ReadingActivityScreen() {
   const { id } = useParams<{ id: string }>();
@@ -22,6 +29,7 @@ export default function ReadingActivityScreen() {
     usePhonicsActivity(config ?? null);
 
   const { speak, replay, isLoading: audioLoading } = useAudio();
+  const { speak: speakOption } = useAudio();
   const progression = useProgression();
 
   // Auto-play the prompt whenever a new config loads
@@ -67,17 +75,31 @@ export default function ReadingActivityScreen() {
     navigate('/reward', { state: { reward: config.reward, newZoneUnlocked: false } });
   };
 
-  return (
-    <ActivityShell
-      config={config}
-      selectedOptionId={selectedOptionId}
-      status={status}
-      onSelectOption={selectAndSubmit}
-      onContinueAfterFeedback={continueAfterFeedback}
-      onClaimReward={handleClaimReward}
-      onExit={() => navigate('/world')}
-      audioLoading={audioLoading}
-      onReplayAudio={replay}
-    />
-  );
+  /** Plays the per-letter phoneme sound when the learner taps an option tile. */
+  const handleOptionAudio = (ttsText: string) => {
+    speakOption(ttsText);
+  };
+
+  const sharedProps = {
+    config,
+    selectedOptionId,
+    status,
+    onSelectOption: selectAndSubmit,
+    onContinueAfterFeedback: continueAfterFeedback,
+    onClaimReward: handleClaimReward,
+    onExit: () => navigate('/world'),
+    audioLoading,
+    onReplayAudio: replay,
+    onOptionAudio: handleOptionAudio,
+  };
+
+  if (config.uiVariant === 'seashell') {
+    return <SoundSeashellMatch {...sharedProps} />;
+  }
+
+  if (config.uiVariant === 'bubble-pop') {
+    return <BubblePopLetters {...sharedProps} />;
+  }
+
+  return <ActivityShell {...sharedProps} />;
 }

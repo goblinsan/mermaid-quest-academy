@@ -622,6 +622,368 @@
       "difficultyLevel": 4,
       "progressionStage": "cvc-blend"
     }
+  },
+
+  {
+    "id": "ra-s-seashell",
+    "title": "Sound Seashell Match: S",
+    "type": "sound-match",
+    "uiVariant": "seashell",
+    "prompt": {
+      "kind": "audio-only",
+      "text": "Tap the shell that makes the /s/ sound",
+      "ttsText": "Tap the shell that makes the s sound, like in snake"
+    },
+    "options": [
+      { "id": "opt-s", "text": "S", "emoji": "🐚", "ttsText": "S says sss" },
+      { "id": "opt-a", "text": "A", "emoji": "🐚", "ttsText": "A says aah" },
+      { "id": "opt-t", "text": "T", "emoji": "🐚", "ttsText": "T says tuh" }
+    ],
+    "correctOptionId": "opt-s",
+    "feedback": {
+      "correctMessage": "S makes the /s/ sound! Sssnake starts with S!",
+      "incorrectMessage": "Listen again! We're looking for the sss sound."
+    },
+    "reward": { "xp": 50, "item": "Pearl S", "emoji": "🐚" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "s",
+      "difficultyLevel": 1,
+      "progressionStage": "letter-sound"
+    }
+  },
+
+  {
+    "id": "ra-a-seashell",
+    "title": "Sound Seashell Match: A",
+    "type": "sound-match",
+    "uiVariant": "seashell",
+    "prompt": {
+      "kind": "audio-only",
+      "text": "Tap the shell that makes the /a/ sound",
+      "ttsText": "Tap the shell that makes the a sound, like in apple"
+    },
+    "options": [
+      { "id": "opt-a", "text": "A", "emoji": "🐚", "ttsText": "A says aah" },
+      { "id": "opt-s", "text": "S", "emoji": "🐚", "ttsText": "S says sss" },
+      { "id": "opt-t", "text": "T", "emoji": "🐚", "ttsText": "T says tuh" },
+      { "id": "opt-p", "text": "P", "emoji": "🐚", "ttsText": "P says puh" }
+    ],
+    "correctOptionId": "opt-a",
+    "feedback": {
+      "correctMessage": "A makes the /a/ sound! Apple starts with A!",
+      "incorrectMessage": "Listen again! We're looking for the aah sound."
+    },
+    "reward": { "xp": 50, "item": "Pearl A", "emoji": "🐚" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "a",
+      "difficultyLevel": 1,
+      "progressionStage": "letter-sound"
+    }
+  },
+
+  {
+    "id": "ra-t-seashell",
+    "title": "Sound Seashell Match: T",
+    "type": "sound-match",
+    "uiVariant": "seashell",
+    "prompt": {
+      "kind": "audio-only",
+      "text": "Tap the shell that makes the /t/ sound",
+      "ttsText": "Tap the shell that makes the t sound, like in tap"
+    },
+    "options": [
+      { "id": "opt-t", "text": "T", "emoji": "🐚", "ttsText": "T says tuh" },
+      { "id": "opt-s", "text": "S", "emoji": "🐚", "ttsText": "S says sss" },
+      { "id": "opt-a", "text": "A", "emoji": "🐚", "ttsText": "A says aah" },
+      { "id": "opt-p", "text": "P", "emoji": "🐚", "ttsText": "P says puh" }
+    ],
+    "correctOptionId": "opt-t",
+    "feedback": {
+      "correctMessage": "T makes the /t/ sound! Tiger starts with T!",
+      "incorrectMessage": "Listen again! We're looking for the tuh sound."
+    },
+    "reward": { "xp": 50, "item": "Pearl T", "emoji": "🐚" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "t",
+      "difficultyLevel": 1,
+      "progressionStage": "letter-sound"
+    }
+  },
+
+  {
+    "id": "ra-p-seashell",
+    "title": "Sound Seashell Match: P",
+    "type": "sound-match",
+    "uiVariant": "seashell",
+    "prompt": {
+      "kind": "audio-only",
+      "text": "Tap the shell that makes the /p/ sound",
+      "ttsText": "Tap the shell that makes the p sound, like in pat"
+    },
+    "options": [
+      { "id": "opt-p", "text": "P", "emoji": "🐚", "ttsText": "P says puh" },
+      { "id": "opt-s", "text": "S", "emoji": "🐚", "ttsText": "S says sss" },
+      { "id": "opt-a", "text": "A", "emoji": "🐚", "ttsText": "A says aah" },
+      { "id": "opt-t", "text": "T", "emoji": "🐚", "ttsText": "T says tuh" },
+      { "id": "opt-i", "text": "I", "emoji": "🐚", "ttsText": "I says ih" }
+    ],
+    "correctOptionId": "opt-p",
+    "feedback": {
+      "correctMessage": "P makes the /p/ sound! Pig starts with P!",
+      "incorrectMessage": "Listen again! We're looking for the puh sound."
+    },
+    "reward": { "xp": 50, "item": "Pearl P", "emoji": "🐚" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "p",
+      "difficultyLevel": 1,
+      "progressionStage": "letter-sound"
+    }
+  },
+
+  {
+    "id": "ra-i-seashell",
+    "title": "Sound Seashell Match: I",
+    "type": "sound-match",
+    "uiVariant": "seashell",
+    "prompt": {
+      "kind": "audio-only",
+      "text": "Tap the shell that makes the short /i/ sound",
+      "ttsText": "Tap the shell that makes the short i sound, like in insect"
+    },
+    "options": [
+      { "id": "opt-i", "text": "I", "emoji": "🐚", "ttsText": "I says ih" },
+      { "id": "opt-s", "text": "S", "emoji": "🐚", "ttsText": "S says sss" },
+      { "id": "opt-a", "text": "A", "emoji": "🐚", "ttsText": "A says aah" },
+      { "id": "opt-t", "text": "T", "emoji": "🐚", "ttsText": "T says tuh" },
+      { "id": "opt-p", "text": "P", "emoji": "🐚", "ttsText": "P says puh" }
+    ],
+    "correctOptionId": "opt-i",
+    "feedback": {
+      "correctMessage": "I makes the short /i/ sound! Insect starts with I!",
+      "incorrectMessage": "Listen again! We're looking for the short ih sound."
+    },
+    "reward": { "xp": 50, "item": "Pearl I", "emoji": "🐚" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "i",
+      "difficultyLevel": 1,
+      "progressionStage": "letter-sound"
+    }
+  },
+
+  {
+    "id": "ra-n-seashell",
+    "title": "Sound Seashell Match: N",
+    "type": "sound-match",
+    "uiVariant": "seashell",
+    "prompt": {
+      "kind": "audio-only",
+      "text": "Tap the shell that makes the /n/ sound",
+      "ttsText": "Tap the shell that makes the n sound, like in nest"
+    },
+    "options": [
+      { "id": "opt-n", "text": "N", "emoji": "🐚", "ttsText": "N says nnn" },
+      { "id": "opt-s", "text": "S", "emoji": "🐚", "ttsText": "S says sss" },
+      { "id": "opt-a", "text": "A", "emoji": "🐚", "ttsText": "A says aah" },
+      { "id": "opt-t", "text": "T", "emoji": "🐚", "ttsText": "T says tuh" },
+      { "id": "opt-p", "text": "P", "emoji": "🐚", "ttsText": "P says puh" }
+    ],
+    "correctOptionId": "opt-n",
+    "feedback": {
+      "correctMessage": "N makes the /n/ sound! Nest starts with N!",
+      "incorrectMessage": "Listen again! We're looking for the nnn sound."
+    },
+    "reward": { "xp": 50, "item": "Pearl N", "emoji": "🐚" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "n",
+      "difficultyLevel": 1,
+      "progressionStage": "letter-sound"
+    }
+  },
+
+  {
+    "id": "ra-s-bubble",
+    "title": "Bubble Pop: S",
+    "type": "sound-match",
+    "uiVariant": "bubble-pop",
+    "prompt": {
+      "kind": "audio-only",
+      "text": "Pop the bubble with the /s/ sound!",
+      "ttsText": "Pop the bubble that makes the s sound, like in snake!"
+    },
+    "options": [
+      { "id": "opt-s", "text": "S", "ttsText": "S says sss" },
+      { "id": "opt-a", "text": "A", "ttsText": "A says aah" },
+      { "id": "opt-t", "text": "T", "ttsText": "T says tuh" }
+    ],
+    "correctOptionId": "opt-s",
+    "feedback": {
+      "correctMessage": "You popped the S bubble! S makes the sss sound!",
+      "incorrectMessage": "Not that one! Listen for the sss sound and try again."
+    },
+    "reward": { "xp": 60, "item": "Bubble Pearl S", "emoji": "🫧" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "s",
+      "difficultyLevel": 1,
+      "progressionStage": "letter-sound"
+    }
+  },
+
+  {
+    "id": "ra-a-bubble",
+    "title": "Bubble Pop: A",
+    "type": "sound-match",
+    "uiVariant": "bubble-pop",
+    "prompt": {
+      "kind": "audio-only",
+      "text": "Pop the bubble with the /a/ sound!",
+      "ttsText": "Pop the bubble that makes the a sound, like in apple!"
+    },
+    "options": [
+      { "id": "opt-a", "text": "A", "ttsText": "A says aah" },
+      { "id": "opt-s", "text": "S", "ttsText": "S says sss" },
+      { "id": "opt-t", "text": "T", "ttsText": "T says tuh" }
+    ],
+    "correctOptionId": "opt-a",
+    "feedback": {
+      "correctMessage": "You popped the A bubble! A makes the aah sound!",
+      "incorrectMessage": "Not that one! Listen for the aah sound and try again."
+    },
+    "reward": { "xp": 60, "item": "Bubble Pearl A", "emoji": "🫧" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "a",
+      "difficultyLevel": 1,
+      "progressionStage": "letter-sound"
+    }
+  },
+
+  {
+    "id": "ra-t-bubble",
+    "title": "Bubble Pop: T",
+    "type": "sound-match",
+    "uiVariant": "bubble-pop",
+    "prompt": {
+      "kind": "audio-only",
+      "text": "Pop the bubble with the /t/ sound!",
+      "ttsText": "Pop the bubble that makes the t sound, like in tap!"
+    },
+    "options": [
+      { "id": "opt-t", "text": "T", "ttsText": "T says tuh" },
+      { "id": "opt-s", "text": "S", "ttsText": "S says sss" },
+      { "id": "opt-a", "text": "A", "ttsText": "A says aah" },
+      { "id": "opt-p", "text": "P", "ttsText": "P says puh" }
+    ],
+    "correctOptionId": "opt-t",
+    "feedback": {
+      "correctMessage": "You popped the T bubble! T makes the tuh sound!",
+      "incorrectMessage": "Not that one! Listen for the tuh sound and try again."
+    },
+    "reward": { "xp": 60, "item": "Bubble Pearl T", "emoji": "🫧" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "t",
+      "difficultyLevel": 1,
+      "progressionStage": "letter-sound"
+    }
+  },
+
+  {
+    "id": "ra-p-bubble",
+    "title": "Bubble Pop: P",
+    "type": "sound-match",
+    "uiVariant": "bubble-pop",
+    "prompt": {
+      "kind": "audio-only",
+      "text": "Pop the bubble with the /p/ sound!",
+      "ttsText": "Pop the bubble that makes the p sound, like in pat!"
+    },
+    "options": [
+      { "id": "opt-p", "text": "P", "ttsText": "P says puh" },
+      { "id": "opt-s", "text": "S", "ttsText": "S says sss" },
+      { "id": "opt-a", "text": "A", "ttsText": "A says aah" },
+      { "id": "opt-t", "text": "T", "ttsText": "T says tuh" }
+    ],
+    "correctOptionId": "opt-p",
+    "feedback": {
+      "correctMessage": "You popped the P bubble! P makes the puh sound!",
+      "incorrectMessage": "Not that one! Listen for the puh sound and try again."
+    },
+    "reward": { "xp": 60, "item": "Bubble Pearl P", "emoji": "🫧" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "p",
+      "difficultyLevel": 1,
+      "progressionStage": "letter-sound"
+    }
+  },
+
+  {
+    "id": "ra-i-bubble",
+    "title": "Bubble Pop: I",
+    "type": "sound-match",
+    "uiVariant": "bubble-pop",
+    "prompt": {
+      "kind": "audio-only",
+      "text": "Pop the bubble with the short /i/ sound!",
+      "ttsText": "Pop the bubble that makes the short i sound, like in insect!"
+    },
+    "options": [
+      { "id": "opt-i", "text": "I", "ttsText": "I says ih" },
+      { "id": "opt-s", "text": "S", "ttsText": "S says sss" },
+      { "id": "opt-a", "text": "A", "ttsText": "A says aah" },
+      { "id": "opt-t", "text": "T", "ttsText": "T says tuh" },
+      { "id": "opt-p", "text": "P", "ttsText": "P says puh" }
+    ],
+    "correctOptionId": "opt-i",
+    "feedback": {
+      "correctMessage": "You popped the I bubble! I makes the ih sound!",
+      "incorrectMessage": "Not that one! Listen for the ih sound and try again."
+    },
+    "reward": { "xp": 60, "item": "Bubble Pearl I", "emoji": "🫧" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "i",
+      "difficultyLevel": 1,
+      "progressionStage": "letter-sound"
+    }
+  },
+
+  {
+    "id": "ra-n-bubble",
+    "title": "Bubble Pop: N",
+    "type": "sound-match",
+    "uiVariant": "bubble-pop",
+    "prompt": {
+      "kind": "audio-only",
+      "text": "Pop the bubble with the /n/ sound!",
+      "ttsText": "Pop the bubble that makes the n sound, like in nest!"
+    },
+    "options": [
+      { "id": "opt-n", "text": "N", "ttsText": "N says nnn" },
+      { "id": "opt-s", "text": "S", "ttsText": "S says sss" },
+      { "id": "opt-a", "text": "A", "ttsText": "A says aah" },
+      { "id": "opt-t", "text": "T", "ttsText": "T says tuh" },
+      { "id": "opt-p", "text": "P", "ttsText": "P says puh" }
+    ],
+    "correctOptionId": "opt-n",
+    "feedback": {
+      "correctMessage": "You popped the N bubble! N makes the nnn sound!",
+      "incorrectMessage": "Not that one! Listen for the nnn sound and try again."
+    },
+    "reward": { "xp": 60, "item": "Bubble Pearl N", "emoji": "🫧" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "n",
+      "difficultyLevel": 1,
+      "progressionStage": "letter-sound"
+    }
   }
 ]
 

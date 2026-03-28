@@ -30,6 +30,12 @@ interface ActivityShellProps {
   audioLoading?: boolean;
   /** Called when the learner taps the replay audio button. */
   onReplayAudio: () => void;
+  /**
+   * Optional callback invoked when the learner taps an answer tile that has a
+   * `ttsText` value.  Receives the option's TTS text so the parent can play
+   * the per-letter phoneme sound.
+   */
+  onOptionAudio?: (ttsText: string) => void;
 }
 
 /**
@@ -71,6 +77,7 @@ export default function ActivityShell({
   onExit,
   audioLoading = false,
   onReplayAudio,
+  onOptionAudio,
 }: ActivityShellProps) {
   const showResult =
     status === 'correct' || status === 'incorrect' || status === 'completed';
@@ -137,7 +144,10 @@ export default function ActivityShell({
                   key={option.id}
                   className={optionClass}
                   disabled={showResult}
-                  onClick={() => onSelectOption(option.id)}
+                  onClick={() => {
+                    if (option.ttsText) onOptionAudio?.(option.ttsText);
+                    onSelectOption(option.id);
+                  }}
                 >
                   {showResult && isCorrectOption && <span className="text-2xl">✅</span>}
                   {showResult && isSelected && !isCorrectOption && (
