@@ -8,11 +8,13 @@ const LAST_SESSION_IDS_KEY = 'mqa_last_session_ids';
 
 const defaultProgressionState: ProgressionState = {
   xp: 0,
+  pearls: 0,
   completedLessonIds: [],
   earnedItems: [],
   unlockedActivityIds: INITIAL_UNLOCKED_ACTIVITY_IDS,
   lessonAttempts: [],
   phonicsMastery: {},
+  earnedBadgeIds: [],
 };
 
 /**

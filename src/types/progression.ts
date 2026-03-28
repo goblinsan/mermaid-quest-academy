@@ -43,6 +43,8 @@ export interface LessonAttempt {
 export interface ProgressionState {
   /** Cumulative XP earned across all completed lessons. */
   xp: number;
+  /** Magic pearls earned through reading activities, sessions, and milestones. */
+  pearls: number;
   /** IDs of lessons that have been successfully completed. */
   completedLessonIds: string[];
   /** Ordered list of treasure items collected from completed lessons. */
@@ -57,6 +59,11 @@ export interface ProgressionState {
    * completed via `completeReadingActivity`.
    */
   phonicsMastery: Record<string, PhonicsLetterMastery>;
+  /**
+   * IDs of milestone badges permanently earned by the learner.
+   * Append-only — badges are never removed once earned.
+   */
+  earnedBadgeIds: string[];
 }
 
 /** Data passed to the RewardScreen via React Router navigation state. */

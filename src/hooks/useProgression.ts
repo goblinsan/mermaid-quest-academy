@@ -4,10 +4,14 @@ import type { EarnedItem, LessonAttempt, PhonicsLetterMastery, ProgressionState 
 import { INITIAL_UNLOCKED_ACTIVITY_IDS } from '../data/zoneConfig';
 import { loadProgression, saveProgression } from '../services/storageService';
 import { getAllReadingActivities } from '../services/activityLoader';
+import { computeActivityPearls, computeEarnedBadgeIds } from '../services/rewardService';
+import { MILESTONE_BADGES } from '../data/rewardsConfig';
 
 export interface UseProgressionReturn {
   /** Total XP accumulated across all completed lessons. */
   xp: number;
+  /** Total magic pearls earned through reading activities and milestones. */
+  pearls: number;
   /** IDs of lessons the learner has finished. */
   completedLessonIds: string[];
   /** Ordered treasure items collected from completed lessons. */
@@ -21,6 +25,11 @@ export interface UseProgressionReturn {
    * Updated each time `completeReadingActivity` is called.
    */
   phonicsMastery: Record<string, PhonicsLetterMastery>;
+  /**
+   * IDs of milestone badges permanently earned by the learner.
+   * Append-only — badges are never removed once earned.
+   */
+  earnedBadgeIds: string[];
   /** Returns true if the given lesson id has been completed. */
   isLessonCompleted: (id: string) => boolean;
   /** Returns true if the given activity id is unlocked for play. */
@@ -33,8 +42,8 @@ export interface UseProgressionReturn {
    */
   completeLesson: (lesson: Lesson, isCorrect: boolean) => void;
   /**
-   * Records a reading/phonics activity as completed: awards XP and adds the
-   * earned item without modifying zone unlock state.
+   * Records a reading/phonics activity as completed: awards XP, pearls, and
+   * any newly-earned milestone badges.
    * No-op if the activity id has already been completed.
    * @param activityId - The reading activity id (e.g. `"ra-1"`).
    * @param reward     - The reward to award on completion.
@@ -72,6 +81,7 @@ export function useProgression(): UseProgressionReturn {
 
       const next: ProgressionState = {
         xp: prev.xp + lesson.reward.xp,
+        pearls: prev.pearls ?? 0,
         completedLessonIds: [...prev.completedLessonIds, lesson.id],
         earnedItems: [
           ...prev.earnedItems,
@@ -80,6 +90,7 @@ export function useProgression(): UseProgressionReturn {
         unlockedActivityIds: newUnlocked,
         lessonAttempts: [...prev.lessonAttempts, attempt],
         phonicsMastery: prev.phonicsMastery ?? {},
+        earnedBadgeIds: prev.earnedBadgeIds ?? [],
       };
 
       saveProgression(next);
@@ -122,13 +133,32 @@ export function useProgression(): UseProgressionReturn {
           };
         }
 
+        // Compute pearl reward for this activity (issue #102)
+        const difficultyLevel = activityConfig?.progression.difficultyLevel ?? 1;
+        const activityPearls = computeActivityPearls(difficultyLevel, isCorrect);
+
+        // Detect newly earned milestone badges (issues #104, #105)
+        const updatedCompletedIds = [...prev.completedLessonIds, activityId];
+        const currentlyEarnedBadgeIds = computeEarnedBadgeIds(updatedCompletedIds, updatedMastery);
+        const prevEarnedBadgeIds = prev.earnedBadgeIds ?? [];
+        const newBadgeIds = currentlyEarnedBadgeIds.filter(
+          (id) => !prevEarnedBadgeIds.includes(id),
+        );
+        // Award pearl bonuses from any newly-earned milestone badges
+        const milestonePearlBonus = newBadgeIds.reduce((sum, id) => {
+          const badge = MILESTONE_BADGES.find((b) => b.id === id);
+          return sum + (badge?.pearlBonus ?? 0);
+        }, 0);
+
         const next: ProgressionState = {
           ...prev,
           xp: prev.xp + reward.xp,
-          completedLessonIds: [...prev.completedLessonIds, activityId],
+          pearls: (prev.pearls ?? 0) + activityPearls + milestonePearlBonus,
+          completedLessonIds: updatedCompletedIds,
           earnedItems: [...prev.earnedItems, { emoji: reward.emoji, item: reward.item }],
           lessonAttempts: [...prev.lessonAttempts, attempt],
           phonicsMastery: updatedMastery,
+          earnedBadgeIds: [...prevEarnedBadgeIds, ...newBadgeIds],
         };
 
         saveProgression(next);
@@ -141,11 +171,13 @@ export function useProgression(): UseProgressionReturn {
   const reset = useCallback(() => {
     const empty: ProgressionState = {
       xp: 0,
+      pearls: 0,
       completedLessonIds: [],
       earnedItems: [],
       unlockedActivityIds: INITIAL_UNLOCKED_ACTIVITY_IDS,
       lessonAttempts: [],
       phonicsMastery: {},
+      earnedBadgeIds: [],
     };
     saveProgression(empty);
     setState(empty);
@@ -163,11 +195,13 @@ export function useProgression(): UseProgressionReturn {
 
   return {
     xp: state.xp,
+    pearls: state.pearls ?? 0,
     completedLessonIds: state.completedLessonIds,
     earnedItems: state.earnedItems,
     unlockedActivityIds: state.unlockedActivityIds,
     lessonAttempts: state.lessonAttempts,
     phonicsMastery: state.phonicsMastery ?? {},
+    earnedBadgeIds: state.earnedBadgeIds ?? [],
     isLessonCompleted,
     isActivityUnlocked,
     completeLesson,

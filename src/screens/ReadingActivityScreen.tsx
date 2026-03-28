@@ -13,6 +13,7 @@ import { usePhonicsActivity } from '../hooks/usePhonicsActivity';
 import { useAudio, prefetchAudio } from '../hooks/useAudio';
 import { useProgression } from '../hooks/useProgression';
 import { loadActiveSession, saveActiveSession } from '../services/storageService';
+import { computeActivityPearls } from '../services/rewardService';
 import type { SessionActivityContext, SessionRewardNavigationState } from '../types/session';
 
 /**
@@ -107,11 +108,16 @@ export default function ReadingActivityScreen() {
       if (sessionContext?.sessionId) {
         const storedSession = loadActiveSession();
         if (storedSession && storedSession.id === sessionContext.sessionId) {
+          const activityPearls = computeActivityPearls(
+            config.progression.difficultyLevel,
+            correct,
+          );
           const updated = {
             ...storedSession,
             completedActivityIds: [...storedSession.completedActivityIds, config.id],
             currentIndex: storedSession.currentIndex + 1,
             xpEarned: storedSession.xpEarned + config.reward.xp,
+            pearlsEarned: (storedSession.pearlsEarned ?? 0) + activityPearls,
           };
           const isSessionDone = updated.currentIndex >= updated.activityIds.length;
           if (isSessionDone) {

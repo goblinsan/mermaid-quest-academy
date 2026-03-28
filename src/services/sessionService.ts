@@ -163,7 +163,9 @@ export function generateSession(
     currentIndex: 0,
     completedActivityIds: [],
     xpEarned: 0,
+    pearlsEarned: 0,
     startedAt: new Date().toISOString(),
     phonicsLevel: level,
+    earnedBadgeIdsAtStart: progression.earnedBadgeIds ?? [],
   };
 }
