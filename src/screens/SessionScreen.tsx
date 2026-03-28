@@ -91,6 +91,9 @@ export default function SessionScreen() {
       lessonAttempts: progression.lessonAttempts,
       phonicsMastery: progression.phonicsMastery,
       earnedBadgeIds: progression.earnedBadgeIds,
+      introducedSounds: progression.introducedSounds,
+      unlockedCvcWords: progression.unlockedCvcWords,
+      sessionHistory: progression.sessionHistory,
     };
     const newSession = generateSession(progressionState, recentIds);
     saveActiveSession(newSession);

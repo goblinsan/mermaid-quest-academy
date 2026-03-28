@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import Card, { CardHeader, CardTitle, CardBody } from '../components/ui/Card';
 import Button from '../components/ui/Button';
@@ -53,6 +54,16 @@ export default function SessionRewardScreen() {
   const navState = location.state as SessionRewardNavigationState | null;
   const session = navState?.session ?? null;
 
+  // Persist the completed session record once on mount (issue #110).
+  const sessionRecorded = useRef(false);
+  useEffect(() => {
+    if (session && !sessionRecorded.current) {
+      sessionRecorded.current = true;
+      progression.recordCompletedSession(session);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   // Determine whether a new phonics level was unlocked during this session.
   const currentLevel = getUnlockedPhonicsLevel({
     completedLessonIds: progression.completedLessonIds,
@@ -105,6 +116,9 @@ export default function SessionRewardScreen() {
       lessonAttempts: progression.lessonAttempts,
       phonicsMastery: progression.phonicsMastery,
       earnedBadgeIds: progression.earnedBadgeIds,
+      introducedSounds: progression.introducedSounds,
+      unlockedCvcWords: progression.unlockedCvcWords,
+      sessionHistory: progression.sessionHistory,
     };
     const newSession = generateSession(progressionState, recentIds);
     saveActiveSession(newSession);

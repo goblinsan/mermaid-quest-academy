@@ -3,9 +3,34 @@ import Card, { CardHeader, CardTitle, CardBody } from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import { useProgression } from '../hooks/useProgression';
 import { ZONES } from '../data/zoneConfig';
+import { getAllReadingActivities } from '../services/activityLoader';
+
+/** SATPIN sounds in curriculum order. */
+const SATPIN_SOUNDS = ['s', 'a', 't', 'p', 'i', 'n'] as const;
+
+/**
+ * Accuracy threshold (as a fraction 0–1) below which a sound is flagged as
+ * a weak target requiring reinforcement (issue #112).
+ * Only applied when the learner has at least MIN_ATTEMPTS_FOR_RECOMMENDATION
+ * attempts for that sound.
+ */
+const WEAK_SOUND_ACCURACY_THRESHOLD = 0.6;
+
+/** Minimum number of attempts before flagging a sound as weak (issue #112). */
+const MIN_ATTEMPTS_FOR_RECOMMENDATION = 3;
 
 export default function ParentDashboardScreen() {
-  const { xp, completedLessonIds, earnedItems, unlockedActivityIds, lessonAttempts } = useProgression();
+  const {
+    xp,
+    completedLessonIds,
+    earnedItems,
+    unlockedActivityIds,
+    lessonAttempts,
+    phonicsMastery,
+    introducedSounds,
+    unlockedCvcWords,
+    sessionHistory,
+  } = useProgression();
 
   const totalAttempts = lessonAttempts.length;
   const correctAttempts = lessonAttempts.filter((a) => a.correct).length;
@@ -24,11 +49,41 @@ export default function ParentDashboardScreen() {
   // Zones where the learner answered incorrectly — recommend revisiting
   const recommendedZones = attemptedZones.filter((zone) => !attemptByLessonId[zone.activityId].correct);
 
+  // --------------------------------------------------------------------------
+  // Phonics sound progress (issue #111)
+  // --------------------------------------------------------------------------
+  const masteredSounds = SATPIN_SOUNDS.filter((sound) => {
+    const m = phonicsMastery[sound];
+    return m !== undefined && m.consecutiveCorrect >= 2;
+  });
+
+  // --------------------------------------------------------------------------
+  // Weak phonics targets for recommendations (issue #112)
+  // --------------------------------------------------------------------------
+  const weakSounds = SATPIN_SOUNDS.filter((sound) => {
+    const m = phonicsMastery[sound];
+    if (!m || m.attemptCount < MIN_ATTEMPTS_FOR_RECOMMENDATION) return false;
+    return m.correctCount / m.attemptCount < WEAK_SOUND_ACCURACY_THRESHOLD;
+  });
+
+  // For each weak sound, find the lowest-level unplayed activity targeting it
+  const allActivities = getAllReadingActivities();
+  const completedSet = new Set(completedLessonIds);
+  const weakSoundRecommendations = weakSounds.flatMap((sound) => {
+    const candidate = allActivities
+      .filter((a) => a.progression.targetSound === sound)
+      .sort((a, b) => a.progression.difficultyLevel - b.progression.difficultyLevel)
+      .find((a) => !completedSet.has(a.id));
+    return candidate ? [{ sound, activity: candidate }] : [];
+  });
+
   const stats = [
     { label: 'Quests Completed', value: String(completedLessonIds.length), icon: '🎯' },
     { label: 'XP Earned', value: String(xp), icon: '⚡' },
     { label: 'Treasures Found', value: String(earnedItems.length), icon: '🐚' },
     { label: 'Zones Unlocked', value: `${unlockedActivityIds.length} / ${ZONES.length}`, icon: '🗺️' },
+    { label: 'Sessions Done', value: String(sessionHistory.length), icon: '📖' },
+    { label: 'CVC Words', value: String(unlockedCvcWords.length), icon: '🔤' },
   ];
 
   return (
@@ -45,7 +100,7 @@ export default function ParentDashboardScreen() {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
           {stats.map(({ label, value, icon }) => (
             <Card key={label} variant="ocean" className="text-center">
               <div className="text-3xl mb-1">{icon}</div>
@@ -63,6 +118,132 @@ export default function ParentDashboardScreen() {
             <p className="font-body text-xs text-ocean-400 mt-1">
               Overall Accuracy ({correctAttempts} / {totalAttempts} correct)
             </p>
+          </Card>
+        )}
+
+        {/* Phonics Sounds Progress (issue #111) */}
+        <Card variant="glass" className="mb-8">
+          <CardHeader>
+            <CardTitle>🔤 Phonics Sounds Progress</CardTitle>
+          </CardHeader>
+          <CardBody>
+            {introducedSounds.length === 0 ? (
+              <p className="font-body text-pearl-400 text-sm">
+                No sounds introduced yet. Start a reading session to begin!
+              </p>
+            ) : (
+              <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
+                {SATPIN_SOUNDS.map((sound) => {
+                  const mastery = phonicsMastery[sound];
+                  const isIntroduced = introducedSounds.includes(sound);
+                  const isMastered = masteredSounds.includes(sound);
+                  const accuracy =
+                    mastery && mastery.attemptCount > 0
+                      ? Math.round((mastery.correctCount / mastery.attemptCount) * 100)
+                      : null;
+
+                  let bgColor = 'bg-white/5';
+                  let labelColor = 'text-pearl-500';
+                  let statusEmoji = '⬜';
+
+                  if (isMastered) {
+                    bgColor = 'bg-seafoam-400/20';
+                    labelColor = 'text-seafoam-400';
+                    statusEmoji = '⭐';
+                  } else if (isIntroduced) {
+                    bgColor = 'bg-ocean-400/20';
+                    labelColor = 'text-ocean-200';
+                    statusEmoji = '🔵';
+                  }
+
+                  return (
+                    <div
+                      key={sound}
+                      className={`rounded-xl ${bgColor} px-3 py-4 text-center`}
+                    >
+                      <p className={`font-quest text-3xl uppercase ${labelColor}`}>{sound}</p>
+                      <p className="text-lg mt-1">{statusEmoji}</p>
+                      {accuracy !== null && (
+                        <p className="font-body text-xs text-ocean-400 mt-1">{accuracy}%</p>
+                      )}
+                      {mastery?.retryCount ? (
+                        <p className="font-body text-xs text-ocean-500 mt-0.5">
+                          {mastery.retryCount} retry{mastery.retryCount !== 1 ? 's' : ''}
+                        </p>
+                      ) : null}
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+            <div className="flex gap-4 mt-4 flex-wrap">
+              <span className="font-body text-xs text-pearl-500">⬜ Not started</span>
+              <span className="font-body text-xs text-ocean-300">🔵 Introduced ({introducedSounds.length}/{SATPIN_SOUNDS.length})</span>
+              <span className="font-body text-xs text-seafoam-400">⭐ Mastered ({masteredSounds.length}/{SATPIN_SOUNDS.length})</span>
+            </div>
+          </CardBody>
+        </Card>
+
+        {/* CVC Words Unlocked (issue #111) */}
+        {unlockedCvcWords.length > 0 && (
+          <Card variant="glass" className="mb-8">
+            <CardHeader>
+              <CardTitle>🔤 CVC Words Unlocked ({unlockedCvcWords.length})</CardTitle>
+            </CardHeader>
+            <CardBody>
+              <p className="font-body text-pearl-400 text-sm mb-3">
+                Words your child can now build from their mastered sounds:
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {unlockedCvcWords.map((word) => (
+                  <span
+                    key={word}
+                    className="font-quest text-ocean-200 bg-ocean-700/40 rounded-lg px-3 py-1 text-sm uppercase tracking-wide"
+                  >
+                    {word}
+                  </span>
+                ))}
+              </div>
+            </CardBody>
+          </Card>
+        )}
+
+        {/* Weak phonics recommendations (issue #112) */}
+        {weakSoundRecommendations.length > 0 && (
+          <Card variant="default" className="mb-8">
+            <CardHeader>
+              <CardTitle>🎯 Phonics Reinforcement Needed</CardTitle>
+            </CardHeader>
+            <CardBody>
+              <p className="font-body text-pearl-400 text-sm mb-4">
+                These sounds need extra practice. The suggested activities will help reinforce them.
+              </p>
+              <div className="flex flex-col gap-3">
+                {weakSoundRecommendations.map(({ sound, activity }) => {
+                  const m = phonicsMastery[sound];
+                  const accuracy = m && m.attemptCount > 0
+                    ? Math.round((m.correctCount / m.attemptCount) * 100)
+                    : 0;
+                  return (
+                    <div key={sound} className="flex items-center justify-between">
+                      <div>
+                        <p className="font-quest text-pearl-200 uppercase">
+                          /{sound}/ sound — {accuracy}% accuracy
+                        </p>
+                        <p className="font-body text-xs text-ocean-400">
+                          Suggested: {activity.title}
+                        </p>
+                      </div>
+                      <Link to={`/reading/${activity.id}`}>
+                        <Button variant="coral" size="sm">
+                          Practice
+                        </Button>
+                      </Link>
+                    </div>
+                  );
+                })}
+              </div>
+            </CardBody>
           </Card>
         )}
 
@@ -152,7 +333,7 @@ export default function ParentDashboardScreen() {
           </Card>
         )}
 
-        {/* Repeat Recommendations */}
+        {/* Repeat Recommendations (zone-level) */}
         {recommendedZones.length > 0 && (
           <Card variant="default" className="mb-8">
             <CardHeader>
@@ -174,6 +355,40 @@ export default function ParentDashboardScreen() {
                         Revisit
                       </Button>
                     </Link>
+                  </div>
+                ))}
+              </div>
+            </CardBody>
+          </Card>
+        )}
+
+        {/* Session History (issue #110) */}
+        {sessionHistory.length > 0 && (
+          <Card variant="glass" className="mb-8">
+            <CardHeader>
+              <CardTitle>📖 Session History</CardTitle>
+            </CardHeader>
+            <CardBody>
+              <div className="divide-y divide-white/10">
+                {[...sessionHistory].reverse().slice(0, 10).map((record) => (
+                  <div key={record.sessionId} className="flex items-center justify-between py-3">
+                    <div>
+                      <p className="font-quest text-pearl-200">
+                        Level {record.phonicsLevel} Session
+                        {' '}
+                        <span className="font-body text-xs text-ocean-400">
+                          ({record.activityIds.length} activit{record.activityIds.length === 1 ? 'y' : 'ies'})
+                        </span>
+                      </p>
+                      <p className="font-body text-xs text-ocean-400">
+                        {new Date(record.completedAt).toLocaleDateString(undefined, {
+                          month: 'short',
+                          day: 'numeric',
+                          year: 'numeric',
+                        })}
+                      </p>
+                    </div>
+                    <p className="font-quest text-ocean-200 text-sm">+{record.pearlsEarned} 🪙</p>
                   </div>
                 ))}
               </div>

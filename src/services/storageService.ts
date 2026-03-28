@@ -15,6 +15,9 @@ const defaultProgressionState: ProgressionState = {
   lessonAttempts: [],
   phonicsMastery: {},
   earnedBadgeIds: [],
+  introducedSounds: [],
+  unlockedCvcWords: [],
+  sessionHistory: [],
 };
 
 /**
