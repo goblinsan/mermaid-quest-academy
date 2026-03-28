@@ -1,0 +1,17 @@
+[
+  { "word": "sat", "phonemes": ["s", "a", "t"], "emoji": "🪑" },
+  { "word": "sap", "phonemes": ["s", "a", "p"], "emoji": "🌳" },
+  { "word": "sit", "phonemes": ["s", "i", "t"], "emoji": "🧘" },
+  { "word": "sip", "phonemes": ["s", "i", "p"], "emoji": "🥤" },
+  { "word": "tap", "phonemes": ["t", "a", "p"], "emoji": "🚿" },
+  { "word": "tan", "phonemes": ["t", "a", "n"], "emoji": "🏖️" },
+  { "word": "tin", "phonemes": ["t", "i", "n"], "emoji": "🥫" },
+  { "word": "tip", "phonemes": ["t", "i", "p"], "emoji": "☝️" },
+  { "word": "pat", "phonemes": ["p", "a", "t"], "emoji": "🐾" },
+  { "word": "pan", "phonemes": ["p", "a", "n"], "emoji": "🍳" },
+  { "word": "pit", "phonemes": ["p", "i", "t"], "emoji": "🕳️" },
+  { "word": "pin", "phonemes": ["p", "i", "n"], "emoji": "📌" },
+  { "word": "nap", "phonemes": ["n", "a", "p"], "emoji": "😴" },
+  { "word": "nit", "phonemes": ["n", "i", "t"], "emoji": "🪲" },
+  { "word": "nip", "phonemes": ["n", "i", "p"], "emoji": "🤏" }
+]

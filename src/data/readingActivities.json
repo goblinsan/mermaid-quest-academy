@@ -5,8 +5,8 @@
     "type": "letter-sound",
     "prompt": {
       "kind": "text",
-      "text": "Which word starts with the 'A' sound?",
-      "ttsText": "Which word starts with the A sound?"
+      "text": "Which word starts with the /a/ sound like in apple?",
+      "ttsText": "Which word starts with the a sound like in apple?"
     },
     "options": [
       { "id": "opt-1", "text": "Apple", "emoji": "🍎" },
@@ -15,42 +15,52 @@
     ],
     "correctOptionId": "opt-1",
     "feedback": {
-      "correctMessage": "Apple starts with the A sound!",
-      "incorrectMessage": "Listen carefully! We're looking for the A sound at the start."
+      "correctMessage": "Apple starts with the /a/ sound!",
+      "incorrectMessage": "Listen again! We're looking for the /a/ sound at the start."
     },
     "reward": { "xp": 50, "item": "Letter Badge A", "emoji": "🅰️" },
-    "completionCondition": { "type": "single-correct" }
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "a",
+      "difficultyLevel": 1,
+      "progressionStage": "letter-sound"
+    }
   },
   {
     "id": "ra-2",
-    "title": "Rhyme Time: Cat",
+    "title": "Rhyme Time: Sat",
     "type": "rhyme-match",
     "prompt": {
       "kind": "text",
-      "text": "Which word rhymes with 'Cat'?",
-      "ttsText": "Which word rhymes with cat?"
+      "text": "Which word rhymes with 'sat'?",
+      "ttsText": "Which word rhymes with sat?"
     },
     "options": [
-      { "id": "opt-1", "text": "Hat", "emoji": "🎩" },
-      { "id": "opt-2", "text": "Dog", "emoji": "🐕" },
-      { "id": "opt-3", "text": "Fish", "emoji": "🐟" }
+      { "id": "opt-1", "text": "Pat", "emoji": "🐾" },
+      { "id": "opt-2", "text": "Pin", "emoji": "📌" },
+      { "id": "opt-3", "text": "Nap", "emoji": "😴" }
     ],
     "correctOptionId": "opt-1",
     "feedback": {
-      "correctMessage": "Cat and Hat both end in the '-at' sound!",
-      "incorrectMessage": "Try again! Listen for the '-at' ending in cat."
+      "correctMessage": "Sat and pat both end with the /at/ sound — great listening!",
+      "incorrectMessage": "Try again! Listen for the /at/ ending in sat."
     },
-    "reward": { "xp": 50, "item": "Rhyme Shell", "emoji": "🐚" },
-    "completionCondition": { "type": "single-correct" }
+    "reward": { "xp": 75, "item": "Rhyme Shell", "emoji": "🐚" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "at",
+      "difficultyLevel": 3,
+      "progressionStage": "sorting"
+    }
   },
   {
     "id": "ra-3",
-    "title": "Sound Match: S",
+    "title": "Sound Object: S",
     "type": "sound-match",
     "prompt": {
-      "kind": "text",
-      "text": "Which ocean animal's name starts with the 'S' sound?",
-      "ttsText": "Which ocean animal's name starts with the S sound?"
+      "kind": "audio-only",
+      "text": "Which ocean animal starts with the /s/ sound?",
+      "ttsText": "Which ocean animal starts with the s sound?"
     },
     "options": [
       { "id": "opt-1", "text": "Turtle", "emoji": "🐢" },
@@ -59,54 +69,559 @@
     ],
     "correctOptionId": "opt-2",
     "feedback": {
-      "correctMessage": "Shark starts with the S sound!",
-      "incorrectMessage": "Listen again! We're listening for the S sound at the start."
+      "correctMessage": "Shark starts with the /s/ sound!",
+      "incorrectMessage": "Listen again! We're listening for the /s/ sound at the start."
     },
     "reward": { "xp": 75, "item": "Shark Fin Badge", "emoji": "🦈" },
-    "completionCondition": { "type": "single-correct" }
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "s",
+      "difficultyLevel": 2,
+      "progressionStage": "sound-object"
+    }
   },
   {
     "id": "ra-4",
-    "title": "Word Blend: B-A-T",
+    "title": "Word Blend: S-A-T",
     "type": "word-blend",
     "prompt": {
       "kind": "text",
-      "text": "Listen to the sounds 'B'... 'A'... 'T'. What word do they make?",
-      "ttsText": "Listen to the sounds: B... A... T. What word do they make?"
+      "text": "Listen to the sounds /s/... /a/... /t/. What word do they make?",
+      "ttsText": "Listen to the sounds: s... a... t. What word do they make?"
     },
     "options": [
-      { "id": "opt-1", "text": "Bat", "emoji": "🦇" },
-      { "id": "opt-2", "text": "Cat", "emoji": "🐱" },
-      { "id": "opt-3", "text": "Rat", "emoji": "🐭" }
+      { "id": "opt-1", "text": "Sat", "emoji": "🪑" },
+      { "id": "opt-2", "text": "Pin", "emoji": "📌" },
+      { "id": "opt-3", "text": "Nap", "emoji": "😴" }
     ],
     "correctOptionId": "opt-1",
     "feedback": {
-      "correctMessage": "B-A-T spells Bat! Great blending!",
-      "incorrectMessage": "Try again! Listen to each sound carefully: B... A... T..."
+      "correctMessage": "/s/ /a/ /t/ blends to make sat! Great blending!",
+      "incorrectMessage": "Try again! Listen to each sound carefully: /s/... /a/... /t/..."
     },
     "reward": { "xp": 100, "item": "Blending Pearl", "emoji": "🫧" },
-    "completionCondition": { "type": "single-correct" }
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "sat",
+      "difficultyLevel": 4,
+      "progressionStage": "cvc-blend"
+    }
   },
   {
     "id": "ra-5",
-    "title": "Short Vowel Streak: E",
+    "title": "Short Vowel Streak: I",
     "type": "sound-match",
     "prompt": {
       "kind": "text",
-      "text": "Which word has the short 'E' vowel sound?",
-      "ttsText": "Which word has the short E vowel sound?"
+      "text": "Which word has the short /i/ sound like in sit?",
+      "ttsText": "Which word has the short i sound like in sit?"
     },
     "options": [
-      { "id": "opt-1", "text": "Egg", "emoji": "🥚" },
-      { "id": "opt-2", "text": "Kite", "emoji": "🪁" },
-      { "id": "opt-3", "text": "Boat", "emoji": "⛵" }
+      { "id": "opt-1", "text": "Pin", "emoji": "📌" },
+      { "id": "opt-2", "text": "Tap", "emoji": "🚿" },
+      { "id": "opt-3", "text": "Nap", "emoji": "😴" }
     ],
     "correctOptionId": "opt-1",
     "feedback": {
-      "correctMessage": "Egg has the short E sound! Answer correctly twice to complete the challenge.",
-      "incorrectMessage": "Not quite! Listen for the short 'eh' sound in egg."
+      "correctMessage": "Pin has the short /i/ sound! Answer correctly twice to complete the challenge.",
+      "incorrectMessage": "Not quite! Listen for the short /i/ sound in pin."
     },
     "reward": { "xp": 150, "item": "Vowel Gem", "emoji": "💎" },
-    "completionCondition": { "type": "streak", "count": 2 }
+    "completionCondition": { "type": "streak", "count": 2 },
+    "progression": {
+      "targetSound": "i",
+      "difficultyLevel": 2,
+      "progressionStage": "sound-object"
+    }
+  },
+  {
+    "id": "ra-s-l1",
+    "title": "Letter Sound: S",
+    "type": "letter-sound",
+    "prompt": {
+      "kind": "text",
+      "text": "Which word starts with the /s/ sound like in sssnake?",
+      "ttsText": "Which word starts with the s sound like in sssnake?"
+    },
+    "options": [
+      { "id": "opt-1", "text": "Sun", "emoji": "☀️" },
+      { "id": "opt-2", "text": "Dog", "emoji": "🐕" },
+      { "id": "opt-3", "text": "Net", "emoji": "🕸️" }
+    ],
+    "correctOptionId": "opt-1",
+    "feedback": {
+      "correctMessage": "Sun starts with the /s/ sound!",
+      "incorrectMessage": "Listen again! We're looking for the /s/ sound at the start."
+    },
+    "reward": { "xp": 50, "item": "Letter Badge S", "emoji": "⭐" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "s",
+      "difficultyLevel": 1,
+      "progressionStage": "letter-sound"
+    }
+  },
+  {
+    "id": "ra-t-l1",
+    "title": "Letter Sound: T",
+    "type": "letter-sound",
+    "prompt": {
+      "kind": "text",
+      "text": "Which word starts with the /t/ sound like in tap?",
+      "ttsText": "Which word starts with the t sound like in tap?"
+    },
+    "options": [
+      { "id": "opt-1", "text": "Tiger", "emoji": "🐯" },
+      { "id": "opt-2", "text": "Fish", "emoji": "🐟" },
+      { "id": "opt-3", "text": "Pig", "emoji": "🐷" }
+    ],
+    "correctOptionId": "opt-1",
+    "feedback": {
+      "correctMessage": "Tiger starts with the /t/ sound!",
+      "incorrectMessage": "Listen again! We're looking for the /t/ sound at the start."
+    },
+    "reward": { "xp": 50, "item": "Letter Badge T", "emoji": "🐯" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "t",
+      "difficultyLevel": 1,
+      "progressionStage": "letter-sound"
+    }
+  },
+  {
+    "id": "ra-p-l1",
+    "title": "Letter Sound: P",
+    "type": "letter-sound",
+    "prompt": {
+      "kind": "text",
+      "text": "Which word starts with the /p/ sound like in pat?",
+      "ttsText": "Which word starts with the p sound like in pat?"
+    },
+    "options": [
+      { "id": "opt-1", "text": "Pig", "emoji": "🐷" },
+      { "id": "opt-2", "text": "Ant", "emoji": "🐜" },
+      { "id": "opt-3", "text": "Sun", "emoji": "☀️" }
+    ],
+    "correctOptionId": "opt-1",
+    "feedback": {
+      "correctMessage": "Pig starts with the /p/ sound!",
+      "incorrectMessage": "Listen again! We're looking for the /p/ sound at the start."
+    },
+    "reward": { "xp": 50, "item": "Letter Badge P", "emoji": "🐷" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "p",
+      "difficultyLevel": 1,
+      "progressionStage": "letter-sound"
+    }
+  },
+  {
+    "id": "ra-i-l1",
+    "title": "Letter Sound: I",
+    "type": "letter-sound",
+    "prompt": {
+      "kind": "text",
+      "text": "Which word starts with the short /i/ sound like in itch?",
+      "ttsText": "Which word starts with the short i sound like in itch?"
+    },
+    "options": [
+      { "id": "opt-1", "text": "Insect", "emoji": "🐛" },
+      { "id": "opt-2", "text": "Top", "emoji": "🪀" },
+      { "id": "opt-3", "text": "Net", "emoji": "🕸️" }
+    ],
+    "correctOptionId": "opt-1",
+    "feedback": {
+      "correctMessage": "Insect starts with the short /i/ sound!",
+      "incorrectMessage": "Listen again! We're looking for the short /i/ sound at the start."
+    },
+    "reward": { "xp": 50, "item": "Letter Badge I", "emoji": "🐛" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "i",
+      "difficultyLevel": 1,
+      "progressionStage": "letter-sound"
+    }
+  },
+  {
+    "id": "ra-n-l1",
+    "title": "Letter Sound: N",
+    "type": "letter-sound",
+    "prompt": {
+      "kind": "text",
+      "text": "Which word starts with the /n/ sound like in nap?",
+      "ttsText": "Which word starts with the n sound like in nap?"
+    },
+    "options": [
+      { "id": "opt-1", "text": "Nest", "emoji": "🪺" },
+      { "id": "opt-2", "text": "Sun", "emoji": "☀️" },
+      { "id": "opt-3", "text": "Pig", "emoji": "🐷" }
+    ],
+    "correctOptionId": "opt-1",
+    "feedback": {
+      "correctMessage": "Nest starts with the /n/ sound!",
+      "incorrectMessage": "Listen again! We're looking for the /n/ sound at the start."
+    },
+    "reward": { "xp": 50, "item": "Letter Badge N", "emoji": "🪺" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "n",
+      "difficultyLevel": 1,
+      "progressionStage": "letter-sound"
+    }
+  },
+  {
+    "id": "ra-a-l2",
+    "title": "Sound Object: A",
+    "type": "sound-match",
+    "prompt": {
+      "kind": "audio-only",
+      "text": "Which picture starts with the /a/ sound?",
+      "ttsText": "Which picture starts with the a sound?"
+    },
+    "options": [
+      { "id": "opt-1", "text": "Ant", "emoji": "🐜" },
+      { "id": "opt-2", "text": "Pig", "emoji": "🐷" },
+      { "id": "opt-3", "text": "Sun", "emoji": "☀️" }
+    ],
+    "correctOptionId": "opt-1",
+    "feedback": {
+      "correctMessage": "Ant starts with the /a/ sound!",
+      "incorrectMessage": "Listen again! We're listening for the /a/ sound at the start."
+    },
+    "reward": { "xp": 75, "item": "Ant Gem", "emoji": "🐜" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "a",
+      "difficultyLevel": 2,
+      "progressionStage": "sound-object"
+    }
+  },
+  {
+    "id": "ra-t-l2",
+    "title": "Sound Object: T",
+    "type": "sound-match",
+    "prompt": {
+      "kind": "audio-only",
+      "text": "Which picture starts with the /t/ sound?",
+      "ttsText": "Which picture starts with the t sound?"
+    },
+    "options": [
+      { "id": "opt-1", "text": "Top", "emoji": "🪀" },
+      { "id": "opt-2", "text": "Ant", "emoji": "🐜" },
+      { "id": "opt-3", "text": "Net", "emoji": "🕸️" }
+    ],
+    "correctOptionId": "opt-1",
+    "feedback": {
+      "correctMessage": "Top starts with the /t/ sound!",
+      "incorrectMessage": "Listen again! We're listening for the /t/ sound at the start."
+    },
+    "reward": { "xp": 75, "item": "Top Badge", "emoji": "🪀" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "t",
+      "difficultyLevel": 2,
+      "progressionStage": "sound-object"
+    }
+  },
+  {
+    "id": "ra-p-l2",
+    "title": "Sound Object: P",
+    "type": "sound-match",
+    "prompt": {
+      "kind": "audio-only",
+      "text": "Which picture starts with the /p/ sound?",
+      "ttsText": "Which picture starts with the p sound?"
+    },
+    "options": [
+      { "id": "opt-1", "text": "Pan", "emoji": "🍳" },
+      { "id": "opt-2", "text": "Sun", "emoji": "☀️" },
+      { "id": "opt-3", "text": "Net", "emoji": "🕸️" }
+    ],
+    "correctOptionId": "opt-1",
+    "feedback": {
+      "correctMessage": "Pan starts with the /p/ sound!",
+      "incorrectMessage": "Listen again! We're listening for the /p/ sound at the start."
+    },
+    "reward": { "xp": 75, "item": "Pan Badge", "emoji": "🍳" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "p",
+      "difficultyLevel": 2,
+      "progressionStage": "sound-object"
+    }
+  },
+  {
+    "id": "ra-i-l2",
+    "title": "Sound Object: I",
+    "type": "sound-match",
+    "prompt": {
+      "kind": "audio-only",
+      "text": "Which picture starts with the short /i/ sound?",
+      "ttsText": "Which picture starts with the short i sound?"
+    },
+    "options": [
+      { "id": "opt-1", "text": "Igloo", "emoji": "🏔️" },
+      { "id": "opt-2", "text": "Tap", "emoji": "🚿" },
+      { "id": "opt-3", "text": "Net", "emoji": "🕸️" }
+    ],
+    "correctOptionId": "opt-1",
+    "feedback": {
+      "correctMessage": "Igloo starts with the short /i/ sound!",
+      "incorrectMessage": "Listen again! We're listening for the short /i/ sound at the start."
+    },
+    "reward": { "xp": 75, "item": "Ice Badge", "emoji": "🏔️" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "i",
+      "difficultyLevel": 2,
+      "progressionStage": "sound-object"
+    }
+  },
+  {
+    "id": "ra-n-l2",
+    "title": "Sound Object: N",
+    "type": "sound-match",
+    "prompt": {
+      "kind": "audio-only",
+      "text": "Which picture starts with the /n/ sound?",
+      "ttsText": "Which picture starts with the n sound?"
+    },
+    "options": [
+      { "id": "opt-1", "text": "Net", "emoji": "🕸️" },
+      { "id": "opt-2", "text": "Pin", "emoji": "📌" },
+      { "id": "opt-3", "text": "Sun", "emoji": "☀️" }
+    ],
+    "correctOptionId": "opt-1",
+    "feedback": {
+      "correctMessage": "Net starts with the /n/ sound!",
+      "incorrectMessage": "Listen again! We're listening for the /n/ sound at the start."
+    },
+    "reward": { "xp": 75, "item": "Net Badge", "emoji": "🕸️" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "n",
+      "difficultyLevel": 2,
+      "progressionStage": "sound-object"
+    }
+  },
+  {
+    "id": "ra-s-l3",
+    "title": "Sound Sort: S",
+    "type": "sound-match",
+    "prompt": {
+      "kind": "text",
+      "text": "Tap the picture that starts with the /s/ sound.",
+      "ttsText": "Tap the picture that starts with the s sound."
+    },
+    "options": [
+      { "id": "opt-1", "text": "Sun", "emoji": "☀️" },
+      { "id": "opt-2", "text": "Ant", "emoji": "🐜" },
+      { "id": "opt-3", "text": "Pig", "emoji": "🐷" },
+      { "id": "opt-4", "text": "Net", "emoji": "🕸️" }
+    ],
+    "correctOptionId": "opt-1",
+    "feedback": {
+      "correctMessage": "Sun starts with /s/!",
+      "incorrectMessage": "Listen again! Which one starts with /s/ like sssnake?"
+    },
+    "reward": { "xp": 100, "item": "Sort Star", "emoji": "⭐" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "s",
+      "difficultyLevel": 3,
+      "progressionStage": "sorting"
+    }
+  },
+  {
+    "id": "ra-a-l3",
+    "title": "Sound Sort: A",
+    "type": "sound-match",
+    "prompt": {
+      "kind": "text",
+      "text": "Tap the picture that starts with the /a/ sound.",
+      "ttsText": "Tap the picture that starts with the a sound."
+    },
+    "options": [
+      { "id": "opt-1", "text": "Apple", "emoji": "🍎" },
+      { "id": "opt-2", "text": "Sun", "emoji": "☀️" },
+      { "id": "opt-3", "text": "Pin", "emoji": "📌" },
+      { "id": "opt-4", "text": "Net", "emoji": "🕸️" }
+    ],
+    "correctOptionId": "opt-1",
+    "feedback": {
+      "correctMessage": "Apple starts with /a/!",
+      "incorrectMessage": "Listen again! Which one starts with /a/ like apple?"
+    },
+    "reward": { "xp": 100, "item": "Sort Gem A", "emoji": "💎" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "a",
+      "difficultyLevel": 3,
+      "progressionStage": "sorting"
+    }
+  },
+  {
+    "id": "ra-t-l3",
+    "title": "Sound Sort: T",
+    "type": "sound-match",
+    "prompt": {
+      "kind": "text",
+      "text": "Tap the picture that starts with the /t/ sound.",
+      "ttsText": "Tap the picture that starts with the t sound."
+    },
+    "options": [
+      { "id": "opt-1", "text": "Sun", "emoji": "☀️" },
+      { "id": "opt-2", "text": "Tiger", "emoji": "🐯" },
+      { "id": "opt-3", "text": "Ant", "emoji": "🐜" },
+      { "id": "opt-4", "text": "Pig", "emoji": "🐷" }
+    ],
+    "correctOptionId": "opt-2",
+    "feedback": {
+      "correctMessage": "Tiger starts with /t/!",
+      "incorrectMessage": "Listen again! Which one starts with /t/ like tap?"
+    },
+    "reward": { "xp": 100, "item": "Tiger Token", "emoji": "🐯" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "t",
+      "difficultyLevel": 3,
+      "progressionStage": "sorting"
+    }
+  },
+  {
+    "id": "ra-cvc-sit",
+    "title": "Word Blend: S-I-T",
+    "type": "word-blend",
+    "prompt": {
+      "kind": "text",
+      "text": "Listen to the sounds /s/... /i/... /t/. What word do they make?",
+      "ttsText": "Listen to the sounds: s... i... t. What word do they make?"
+    },
+    "options": [
+      { "id": "opt-1", "text": "Sit", "emoji": "🧘" },
+      { "id": "opt-2", "text": "Nap", "emoji": "😴" },
+      { "id": "opt-3", "text": "Pan", "emoji": "🍳" }
+    ],
+    "correctOptionId": "opt-1",
+    "feedback": {
+      "correctMessage": "/s/ /i/ /t/ blends to make sit! Brilliant blending!",
+      "incorrectMessage": "Try again! Listen to each sound: /s/... /i/... /t/..."
+    },
+    "reward": { "xp": 100, "item": "Blend Gem", "emoji": "💎" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "sit",
+      "difficultyLevel": 4,
+      "progressionStage": "cvc-blend"
+    }
+  },
+  {
+    "id": "ra-cvc-tip",
+    "title": "Word Blend: T-I-P",
+    "type": "word-blend",
+    "prompt": {
+      "kind": "text",
+      "text": "Listen to the sounds /t/... /i/... /p/. What word do they make?",
+      "ttsText": "Listen to the sounds: t... i... p. What word do they make?"
+    },
+    "options": [
+      { "id": "opt-1", "text": "Tip", "emoji": "☝️" },
+      { "id": "opt-2", "text": "Sat", "emoji": "🪑" },
+      { "id": "opt-3", "text": "Nap", "emoji": "😴" }
+    ],
+    "correctOptionId": "opt-1",
+    "feedback": {
+      "correctMessage": "/t/ /i/ /p/ blends to make tip! Fantastic!",
+      "incorrectMessage": "Try again! Listen to each sound: /t/... /i/... /p/..."
+    },
+    "reward": { "xp": 100, "item": "Blend Pearl", "emoji": "🫧" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "tip",
+      "difficultyLevel": 4,
+      "progressionStage": "cvc-blend"
+    }
+  },
+  {
+    "id": "ra-cvc-pan",
+    "title": "Word Blend: P-A-N",
+    "type": "word-blend",
+    "prompt": {
+      "kind": "text",
+      "text": "Listen to the sounds /p/... /a/... /n/. What word do they make?",
+      "ttsText": "Listen to the sounds: p... a... n. What word do they make?"
+    },
+    "options": [
+      { "id": "opt-1", "text": "Pan", "emoji": "🍳" },
+      { "id": "opt-2", "text": "Sit", "emoji": "🧘" },
+      { "id": "opt-3", "text": "Tin", "emoji": "🥫" }
+    ],
+    "correctOptionId": "opt-1",
+    "feedback": {
+      "correctMessage": "/p/ /a/ /n/ blends to make pan! Amazing!",
+      "incorrectMessage": "Try again! Listen to each sound: /p/... /a/... /n/..."
+    },
+    "reward": { "xp": 100, "item": "Blend Coin", "emoji": "🪙" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "pan",
+      "difficultyLevel": 4,
+      "progressionStage": "cvc-blend"
+    }
+  },
+  {
+    "id": "ra-cvc-pin",
+    "title": "Word Blend: P-I-N",
+    "type": "word-blend",
+    "prompt": {
+      "kind": "text",
+      "text": "Listen to the sounds /p/... /i/... /n/. What word do they make?",
+      "ttsText": "Listen to the sounds: p... i... n. What word do they make?"
+    },
+    "options": [
+      { "id": "opt-1", "text": "Pin", "emoji": "📌" },
+      { "id": "opt-2", "text": "Sat", "emoji": "🪑" },
+      { "id": "opt-3", "text": "Tap", "emoji": "🚿" }
+    ],
+    "correctOptionId": "opt-1",
+    "feedback": {
+      "correctMessage": "/p/ /i/ /n/ blends to make pin! Wonderful!",
+      "incorrectMessage": "Try again! Listen to each sound: /p/... /i/... /n/..."
+    },
+    "reward": { "xp": 100, "item": "Pin Badge", "emoji": "📌" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "pin",
+      "difficultyLevel": 4,
+      "progressionStage": "cvc-blend"
+    }
+  },
+  {
+    "id": "ra-cvc-nap",
+    "title": "Word Blend: N-A-P",
+    "type": "word-blend",
+    "prompt": {
+      "kind": "text",
+      "text": "Listen to the sounds /n/... /a/... /p/. What word do they make?",
+      "ttsText": "Listen to the sounds: n... a... p. What word do they make?"
+    },
+    "options": [
+      { "id": "opt-1", "text": "Nap", "emoji": "😴" },
+      { "id": "opt-2", "text": "Sit", "emoji": "🧘" },
+      { "id": "opt-3", "text": "Pin", "emoji": "📌" }
+    ],
+    "correctOptionId": "opt-1",
+    "feedback": {
+      "correctMessage": "/n/ /a/ /p/ blends to make nap! Superb blending!",
+      "incorrectMessage": "Try again! Listen to each sound: /n/... /a/... /p/..."
+    },
+    "reward": { "xp": 100, "item": "Nap Treasure", "emoji": "💤" },
+    "completionCondition": { "type": "single-correct" },
+    "progression": {
+      "targetSound": "nap",
+      "difficultyLevel": 4,
+      "progressionStage": "cvc-blend"
+    }
   }
 ]
+

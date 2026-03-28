@@ -1,0 +1,75 @@
+[
+  {
+    "sound": "s",
+    "letter": "S",
+    "phoneme": "/s/",
+    "exampleWord": "snake",
+    "objects": [
+      { "word": "Sun", "emoji": "☀️" },
+      { "word": "Shark", "emoji": "🦈" },
+      { "word": "Snake", "emoji": "🐍" },
+      { "word": "Star", "emoji": "⭐" },
+      { "word": "Seal", "emoji": "🦭" }
+    ]
+  },
+  {
+    "sound": "a",
+    "letter": "A",
+    "phoneme": "/a/",
+    "exampleWord": "apple",
+    "objects": [
+      { "word": "Apple", "emoji": "🍎" },
+      { "word": "Ant", "emoji": "🐜" },
+      { "word": "Anchor", "emoji": "⚓" },
+      { "word": "Astronaut", "emoji": "👨‍🚀" }
+    ]
+  },
+  {
+    "sound": "t",
+    "letter": "T",
+    "phoneme": "/t/",
+    "exampleWord": "tap",
+    "objects": [
+      { "word": "Tiger", "emoji": "🐯" },
+      { "word": "Top", "emoji": "🪀" },
+      { "word": "Turtle", "emoji": "🐢" },
+      { "word": "Tree", "emoji": "🌳" }
+    ]
+  },
+  {
+    "sound": "p",
+    "letter": "P",
+    "phoneme": "/p/",
+    "exampleWord": "pat",
+    "objects": [
+      { "word": "Pig", "emoji": "🐷" },
+      { "word": "Pan", "emoji": "🍳" },
+      { "word": "Pin", "emoji": "📌" },
+      { "word": "Parrot", "emoji": "🦜" }
+    ]
+  },
+  {
+    "sound": "i",
+    "letter": "I",
+    "phoneme": "/i/",
+    "exampleWord": "itch",
+    "objects": [
+      { "word": "Insect", "emoji": "🐛" },
+      { "word": "Igloo", "emoji": "🏔️" },
+      { "word": "Ink", "emoji": "✒️" },
+      { "word": "Iguana", "emoji": "🦎" }
+    ]
+  },
+  {
+    "sound": "n",
+    "letter": "N",
+    "phoneme": "/n/",
+    "exampleWord": "nap",
+    "objects": [
+      { "word": "Net", "emoji": "🕸️" },
+      { "word": "Nest", "emoji": "🪺" },
+      { "word": "Newt", "emoji": "🦎" },
+      { "word": "Needle", "emoji": "🪡" }
+    ]
+  }
+]
