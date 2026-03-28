@@ -1,4 +1,5 @@
 import type { LessonReward } from './lesson';
+import type { CompletedSessionRecord } from './session';
 
 /**
  * Mastery state tracked for each individual phoneme/sound in the SATPIN
@@ -19,6 +20,13 @@ export interface PhonicsLetterMastery {
   consecutiveCorrect: number;
   /** ISO 8601 timestamp of the most recent activity completion for this sound. */
   lastCompletedAt: string;
+  /**
+   * Number of times activities for this sound were re-attempted after the
+   * activity had already been completed (i.e. replay / reinforcement attempts).
+   * Incremented each time the learner revisits an already-completed activity
+   * targeting this sound (issue #109).
+   */
+  retryCount: number;
 }
 
 /** A single treasure item earned by completing a lesson. */
@@ -64,6 +72,24 @@ export interface ProgressionState {
    * Append-only — badges are never removed once earned.
    */
   earnedBadgeIds: string[];
+  /**
+   * Lowercase SATPIN sounds that the learner has been introduced to — i.e.
+   * sounds for which at least one activity attempt has been recorded.
+   * Derived from `phonicsMastery` keys but stored explicitly for quick
+   * dashboard queries (issue #108).
+   */
+  introducedSounds: string[];
+  /**
+   * CVC words (lowercase, e.g. `"sat"`) that are currently unlocked because
+   * all of their component phonemes have been mastered by the learner.
+   * Recomputed after each activity completion (issue #108).
+   */
+  unlockedCvcWords: string[];
+  /**
+   * Ordered history of completed reading sessions.  A record is appended each
+   * time the learner finishes a full session (issue #110).
+   */
+  sessionHistory: CompletedSessionRecord[];
 }
 
 /** Data passed to the RewardScreen via React Router navigation state. */

@@ -53,3 +53,20 @@ export interface SessionRewardNavigationState {
   /** The session that was just completed. */
   session: ReadingSession;
 }
+
+/**
+ * A persisted record of a completed reading session, stored in
+ * `ProgressionState.sessionHistory` for parent-dashboard review (issue #110).
+ */
+export interface CompletedSessionRecord {
+  /** Matches `ReadingSession.id`. */
+  sessionId: string;
+  /** ISO 8601 timestamp when the session was finished. */
+  completedAt: string;
+  /** IDs of the activities that were completed during the session. */
+  activityIds: string[];
+  /** Total magic pearls earned across all activities in this session. */
+  pearlsEarned: number;
+  /** The phonics level at which this session was generated. */
+  phonicsLevel: number;
+}

@@ -10,6 +10,7 @@ import {
   PET_SEA_CREATURES,
   OCEAN_AREAS,
 } from '../data/rewardsConfig';
+import cvcWordsData from '../data/cvcWords.json';
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -164,4 +165,38 @@ export function getUnlockedAreas(earnedBadgeIds: string[]): OceanArea[] {
     ),
   );
   return OCEAN_AREAS.filter((a) => unlockedIds.has(a.id));
+}
+
+// ---------------------------------------------------------------------------
+// CVC word unlock computation (issue #108)
+// ---------------------------------------------------------------------------
+
+interface CvcWordEntry {
+  word: string;
+  phonemes: string[];
+}
+
+/**
+ * Returns the CVC words (lowercase) that are unlocked because every one of
+ * their component phonemes has been mastered by the learner.
+ *
+ * A phoneme is considered mastered when the learner's `PhonicsLetterMastery`
+ * for that sound has `consecutiveCorrect ≥ 2` (mirrors the mastery threshold
+ * used elsewhere in the codebase).
+ *
+ * @param phonicsMastery - The learner's per-sound mastery state.
+ * @returns Array of lowercase CVC word strings (e.g. `["sat", "tap"]`).
+ */
+export function computeUnlockedCvcWords(
+  phonicsMastery: ProgressionState['phonicsMastery'],
+): string[] {
+  const masteredSounds = new Set(
+    Object.entries(phonicsMastery)
+      .filter(([, m]) => m.consecutiveCorrect >= MASTERY_CONSECUTIVE_CORRECT_THRESHOLD)
+      .map(([sound]) => sound),
+  );
+
+  return (cvcWordsData as CvcWordEntry[])
+    .filter((entry) => entry.phonemes.every((p) => masteredSounds.has(p)))
+    .map((entry) => entry.word);
 }
