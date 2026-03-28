@@ -167,7 +167,7 @@ export default function TreasureChestSort({
                 }}
                 aria-label={`${bin.label} treasure chest${canReceive ? ', tap to place selected item' : ''}`}
                 className={[
-                  'flex flex-col items-center rounded-2xl border-2 p-4 transition-all duration-150 select-none',
+                  'flex flex-col items-center rounded-2xl border-2 p-4 min-h-[80px] transition-all duration-150 select-none',
                   canReceive
                     ? 'cursor-pointer hover:scale-105 hover:border-ocean-300'
                     : 'cursor-default',
@@ -212,7 +212,7 @@ export default function TreasureChestSort({
 
         {/* Per-placement feedback message */}
         {lastAttempt && !isCompleted && (
-          <div className="mb-4">
+          <div className="mb-4" role="status" aria-live="polite">
             {lastAttempt.isCorrect ? (
               <div className="rounded-2xl bg-seafoam-900/40 border-2 border-seafoam-400 px-5 py-3 text-seafoam-200 font-quest text-lg text-center">
                 ✅ Great job! Keep going!
