@@ -6,6 +6,8 @@ import ActivityScreen from '../screens/ActivityScreen';
 import ReadingActivityScreen from '../screens/ReadingActivityScreen';
 import RewardScreen from '../screens/RewardScreen';
 import ParentDashboardScreen from '../screens/ParentDashboardScreen';
+import SessionScreen from '../screens/SessionScreen';
+import SessionRewardScreen from '../screens/SessionRewardScreen';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +20,8 @@ const router = createBrowserRouter([
       { path: 'reading/:id', element: <ReadingActivityScreen /> },
       { path: 'reward', element: <RewardScreen /> },
       { path: 'parent', element: <ParentDashboardScreen /> },
+      { path: 'session', element: <SessionScreen /> },
+      { path: 'session/reward', element: <SessionRewardScreen /> },
     ],
   },
 ]);

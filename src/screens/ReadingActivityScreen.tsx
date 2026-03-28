@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
 import Button from '../components/ui/Button';
 import ActivityShell from '../components/ActivityShell';
 import SoundSeashellMatch from '../components/SoundSeashellMatch';
@@ -12,6 +12,8 @@ import { getReadingActivityById, getAllReadingActivities } from '../services/act
 import { usePhonicsActivity } from '../hooks/usePhonicsActivity';
 import { useAudio, prefetchAudio } from '../hooks/useAudio';
 import { useProgression } from '../hooks/useProgression';
+import { loadActiveSession, saveActiveSession } from '../services/storageService';
+import type { SessionActivityContext, SessionRewardNavigationState } from '../types/session';
 
 /**
  * Screen that wires the shared activity components together with the
@@ -34,6 +36,13 @@ import { useProgression } from '../hooks/useProgression';
 export default function ReadingActivityScreen() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // If this activity was launched from a reading session, the session context
+  // is available in location state so we can navigate back correctly.
+  const sessionContext = (location.state as SessionActivityContext | null)?.sessionId
+    ? (location.state as SessionActivityContext)
+    : null;
 
   const config = id ? getReadingActivityById(id) : undefined;
 
@@ -77,6 +86,57 @@ export default function ReadingActivityScreen() {
     const hintText = `${correctOption.text} starts with the ${config.progression.targetSound} sound`;
     speakOption(hintText);
   }, [config, speakOption]);
+
+  /**
+   * Unified reward handler for all activity variants.
+   *
+   * When the activity was launched from a reading session (session context
+   * present in location state), this function advances the session state in
+   * localStorage and navigates back to the session screen — or to the session
+   * reward screen when the session is complete (issues #99, #100).
+   *
+   * Otherwise it navigates to the standalone `/reward` screen.
+   *
+   * Defined unconditionally before early returns to satisfy the Rules of Hooks.
+   */
+  const handleClaimRewardWithContext = useCallback(
+    (correct: boolean) => {
+      if (!config) return;
+      progression.completeReadingActivity(config.id, config.reward, correct);
+
+      if (sessionContext?.sessionId) {
+        const storedSession = loadActiveSession();
+        if (storedSession && storedSession.id === sessionContext.sessionId) {
+          const updated = {
+            ...storedSession,
+            completedActivityIds: [...storedSession.completedActivityIds, config.id],
+            currentIndex: storedSession.currentIndex + 1,
+            xpEarned: storedSession.xpEarned + config.reward.xp,
+          };
+          const isSessionDone = updated.currentIndex >= updated.activityIds.length;
+          if (isSessionDone) {
+            updated.completedAt = new Date().toISOString();
+          }
+          saveActiveSession(updated);
+
+          if (isSessionDone) {
+            navigate('/session/reward', {
+              state: { session: updated } satisfies SessionRewardNavigationState,
+            });
+          } else {
+            navigate('/session', { state: { fromActivity: true } });
+          }
+          return;
+        }
+        // Session not found in storage — fall through to standalone reward
+        navigate('/session', { state: { fromActivity: true } });
+        return;
+      }
+
+      navigate('/reward', { state: { reward: config.reward, newZoneUnlocked: false } });
+    },
+    [config, progression, sessionContext, navigate],
+  );
 
   if (!config) {
     return (
@@ -141,20 +201,13 @@ export default function ReadingActivityScreen() {
     }
   }
 
-  const handleClaimReward = () => {
-    progression.completeReadingActivity(config.id, config.reward, isCorrect);
-    navigate('/reward', { state: { reward: config.reward, newZoneUnlocked: false } });
-  };
-
   /**
-   * Reward handler for treasure-sort activities.
-   * Sorting is only completable when all items are placed correctly,
-   * so `isCorrect` is always `true` at this point.
+   * Reward handler for treasure-sort / echo-song / word-builder activities.
+   * These activities are only completable when fully correct, so `isCorrect`
+   * is always `true` at this point.
    */
-  const handleSortingClaimReward = () => {
-    progression.completeReadingActivity(config.id, config.reward, true);
-    navigate('/reward', { state: { reward: config.reward, newZoneUnlocked: false } });
-  };
+  const handleClaimReward = () => handleClaimRewardWithContext(isCorrect);
+  const handleSortingClaimReward = () => handleClaimRewardWithContext(true);
 
   /** Plays the per-letter phoneme sound when the learner taps an option tile. */
   const handleOptionAudio = (ttsText: string) => {
