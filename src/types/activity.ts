@@ -101,8 +101,10 @@ export type PhonicsCompletionCondition =
  * | `default`     | Standard list of answer tiles via `ActivityShell`         |
  * | `seashell`    | Circular seashell tiles for letter-sound matching         |
  * | `bubble-pop`  | Animated floating letter bubbles the player pops          |
+ * | `fish-feed`   | Large object-picture cards; tap the one that starts with  |
+ * |               | the target phoneme to feed the friendly fish              |
  */
-export type PhonicsActivityUIVariant = 'default' | 'seashell' | 'bubble-pop';
+export type PhonicsActivityUIVariant = 'default' | 'seashell' | 'bubble-pop' | 'fish-feed';
 
 /** Full configuration object for one reading/phonics activity. */
 export interface PhonicsActivityConfig {

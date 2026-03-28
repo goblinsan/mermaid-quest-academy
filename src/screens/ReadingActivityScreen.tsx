@@ -1,9 +1,10 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Button from '../components/ui/Button';
 import ActivityShell from '../components/ActivityShell';
 import SoundSeashellMatch from '../components/SoundSeashellMatch';
 import BubblePopLetters from '../components/BubblePopLetters';
+import FeedFriendlyFish from '../components/FeedFriendlyFish';
 import { getReadingActivityById, getAllReadingActivities } from '../services/activityLoader';
 import { usePhonicsActivity } from '../hooks/usePhonicsActivity';
 import { useAudio, prefetchAudio } from '../hooks/useAudio';
@@ -17,6 +18,7 @@ import { useProgression } from '../hooks/useProgression';
  * The rendered component is chosen by `config.uiVariant`:
  * - `'seashell'`    → `SoundSeashellMatch`
  * - `'bubble-pop'`  → `BubblePopLetters`
+ * - `'fish-feed'`   → `FeedFriendlyFish`
  * - `'default'` / unset → `ActivityShell` (generic fallback)
  */
 export default function ReadingActivityScreen() {
@@ -50,6 +52,21 @@ export default function ReadingActivityScreen() {
       prefetchAudio(next.prompt.ttsText);
     }
   }, [config]);
+
+  /**
+   * Plays a corrective hint for the learner after an incorrect answer.
+   * Defined unconditionally (before the early return) to satisfy the Rules of
+   * Hooks. It is only passed to `FeedFriendlyFish`, which fires it after a
+   * short delay so the child hears the correct object's starting sound
+   * reinforced on the right word. (issue #81)
+   */
+  const handleIncorrectHintAudio = useCallback(() => {
+    if (!config) return;
+    const correctOption = config.options.find((o) => o.id === config.correctOptionId);
+    if (!correctOption) return;
+    const hintText = `${correctOption.text} starts with the ${config.progression.targetSound} sound`;
+    speakOption(hintText);
+  }, [config, speakOption]);
 
   if (!config) {
     return (
@@ -99,6 +116,15 @@ export default function ReadingActivityScreen() {
 
   if (config.uiVariant === 'bubble-pop') {
     return <BubblePopLetters {...sharedProps} />;
+  }
+
+  if (config.uiVariant === 'fish-feed') {
+    return (
+      <FeedFriendlyFish
+        {...sharedProps}
+        onIncorrectHintAudio={handleIncorrectHintAudio}
+      />
+    );
   }
 
   return <ActivityShell {...sharedProps} />;
