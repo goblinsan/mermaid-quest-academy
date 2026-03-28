@@ -19,9 +19,8 @@ const SESSION_MIN_ACTIVITIES = 2;
 /** Maximum number of activities selected per session. */
 const SESSION_MAX_ACTIVITIES = 3;
 
-// ---------------------------------------------------------------------------
-// Level unlock rules (issue #97)
-// ---------------------------------------------------------------------------
+/** Consecutive correct completions required to consider a sound "mastered". */
+const MASTERY_CONSECUTIVE_THRESHOLD = 2;
 
 /**
  * Determines the highest phonics level currently unlocked for the learner,
@@ -73,7 +72,8 @@ function scoreActivity(
   recentlyPlayedIds: string[],
 ): number {
   const soundMastery = mastery[activity.progression.targetSound];
-  const isMastered = soundMastery !== undefined && soundMastery.consecutiveCorrect >= 2;
+  const isMastered =
+    soundMastery !== undefined && soundMastery.consecutiveCorrect >= MASTERY_CONSECUTIVE_THRESHOLD;
   const isRecent = recentlyPlayedIds.includes(activity.id);
   const isCompleted = completed.has(activity.id);
 

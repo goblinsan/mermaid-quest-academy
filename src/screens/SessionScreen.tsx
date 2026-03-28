@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import Card, { CardHeader, CardTitle, CardBody } from '../components/ui/Card';
 import Button from '../components/ui/Button';
@@ -72,7 +72,7 @@ export default function SessionScreen() {
   // ------------------------------------------------------------------
 
   /** Generates and persists a brand-new session, discarding any saved one. */
-  const startNewSession = () => {
+  const startNewSession = useCallback(() => {
     // Preserve the old session's activity IDs as "recently played" so the
     // generator can deprioritise them.
     const prev = loadActiveSession();
@@ -94,33 +94,46 @@ export default function SessionScreen() {
     saveActiveSession(newSession);
     setSession(newSession);
     setShowResumePrompt(false);
-  };
+  }, [progression]);
 
   /** Resumes the previously-saved incomplete session. */
   const resumeSession = () => {
     setShowResumePrompt(false);
   };
 
-  // Generate session on first visit when none exists.
-  if (!session && !showResumePrompt) {
-    startNewSession();
-    // `startNewSession` calls `setSession`, so re-render will pick it up.
-    // Return null for this render cycle.
-    return null;
-  }
+  // Generate a new session on mount when none exists and no resume prompt is
+  // needed. Using useEffect ensures this runs after render (pure render phase).
+  useEffect(() => {
+    if (!session && !showResumePrompt) {
+      startNewSession();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Intentionally runs once on mount only
+
+  // Derived state used by the navigation effect below.
+  const isSessionComplete =
+    session !== null && session.currentIndex >= session.activityIds.length;
+
+  // Navigate to session reward when all activities are done. Must be declared
+  // before any conditional returns to satisfy the Rules of Hooks.
+  useEffect(() => {
+    if (isSessionComplete && session) {
+      navigate('/session/reward', { state: { session }, replace: true });
+    }
+  }, [isSessionComplete, session, navigate]);
 
   // ------------------------------------------------------------------
   // Render helpers
   // ------------------------------------------------------------------
 
-  const isSessionComplete =
-    session !== null && session.currentIndex >= session.activityIds.length;
-
-  // Navigate to session reward if somehow we land here with a complete session.
-  if (isSessionComplete && session) {
-    navigate('/session/reward', { state: { session }, replace: true });
+  // Show a brief loading state while the initial session is being generated
+  // (useEffect fires after the first render).
+  if (!session && !showResumePrompt) {
     return null;
   }
+
+  // While the useEffect triggers navigation to the reward screen, render nothing.
+  if (isSessionComplete) return null;
 
   const currentLevel = session
     ? session.phonicsLevel
