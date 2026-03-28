@@ -22,9 +22,14 @@ export default function HomeScreen() {
           and become the greatest mermaid scholar in all the seas!
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link to="/world">
+          <Link to="/session">
             <Button variant="primary" size="xl">
-              🌊 Start Your Quest!
+              📖 Start Reading Session
+            </Button>
+          </Link>
+          <Link to="/world">
+            <Button variant="secondary" size="xl">
+              🌊 World Map
             </Button>
           </Link>
           <Link to="/parent">

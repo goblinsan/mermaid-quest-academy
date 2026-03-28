@@ -1,8 +1,9 @@
 import { useCallback, useState } from 'react';
 import type { Lesson, LessonReward } from '../types/lesson';
-import type { EarnedItem, LessonAttempt, ProgressionState } from '../types/progression';
+import type { EarnedItem, LessonAttempt, PhonicsLetterMastery, ProgressionState } from '../types/progression';
 import { INITIAL_UNLOCKED_ACTIVITY_IDS } from '../data/zoneConfig';
 import { loadProgression, saveProgression } from '../services/storageService';
+import { getAllReadingActivities } from '../services/activityLoader';
 
 export interface UseProgressionReturn {
   /** Total XP accumulated across all completed lessons. */
@@ -15,6 +16,11 @@ export interface UseProgressionReturn {
   unlockedActivityIds: string[];
   /** Ordered list of per-lesson attempt records for accuracy tracking. */
   lessonAttempts: LessonAttempt[];
+  /**
+   * Per-sound mastery state, keyed by lowercase SATPIN letter/sound.
+   * Updated each time `completeReadingActivity` is called.
+   */
+  phonicsMastery: Record<string, PhonicsLetterMastery>;
   /** Returns true if the given lesson id has been completed. */
   isLessonCompleted: (id: string) => boolean;
   /** Returns true if the given activity id is unlocked for play. */
@@ -73,6 +79,7 @@ export function useProgression(): UseProgressionReturn {
         ],
         unlockedActivityIds: newUnlocked,
         lessonAttempts: [...prev.lessonAttempts, attempt],
+        phonicsMastery: prev.phonicsMastery ?? {},
       };
 
       saveProgression(next);
@@ -92,12 +99,36 @@ export function useProgression(): UseProgressionReturn {
           correct: isCorrect,
         };
 
+        // Update per-sound mastery (issue #98)
+        const allActivities = getAllReadingActivities();
+        const activityConfig = allActivities.find((a) => a.id === activityId);
+        let updatedMastery = { ...(prev.phonicsMastery ?? {}) };
+        if (activityConfig) {
+          const sound = activityConfig.progression.targetSound;
+          const existing = updatedMastery[sound] ?? {
+            attemptCount: 0,
+            correctCount: 0,
+            consecutiveCorrect: 0,
+            lastCompletedAt: '',
+          };
+          updatedMastery = {
+            ...updatedMastery,
+            [sound]: {
+              attemptCount: existing.attemptCount + 1,
+              correctCount: existing.correctCount + (isCorrect ? 1 : 0),
+              consecutiveCorrect: isCorrect ? existing.consecutiveCorrect + 1 : 0,
+              lastCompletedAt: attempt.completedAt,
+            },
+          };
+        }
+
         const next: ProgressionState = {
           ...prev,
           xp: prev.xp + reward.xp,
           completedLessonIds: [...prev.completedLessonIds, activityId],
           earnedItems: [...prev.earnedItems, { emoji: reward.emoji, item: reward.item }],
           lessonAttempts: [...prev.lessonAttempts, attempt],
+          phonicsMastery: updatedMastery,
         };
 
         saveProgression(next);
@@ -114,6 +145,7 @@ export function useProgression(): UseProgressionReturn {
       earnedItems: [],
       unlockedActivityIds: INITIAL_UNLOCKED_ACTIVITY_IDS,
       lessonAttempts: [],
+      phonicsMastery: {},
     };
     saveProgression(empty);
     setState(empty);
@@ -135,6 +167,7 @@ export function useProgression(): UseProgressionReturn {
     earnedItems: state.earnedItems,
     unlockedActivityIds: state.unlockedActivityIds,
     lessonAttempts: state.lessonAttempts,
+    phonicsMastery: state.phonicsMastery ?? {},
     isLessonCompleted,
     isActivityUnlocked,
     completeLesson,
