@@ -25,22 +25,24 @@ const CATEGORY_SET = new Set<string>(AUDIO_ID_CATEGORIES);
  *
  * A valid AudioId:
  *  - is a non-empty string
- *  - has exactly 2 or 3 dot-separated segments
+ *  - has exactly 2 to 4 dot-separated segments
  *  - each segment starts with a lowercase letter and contains only
- *    lowercase letters (a–z), digits (0–9), and hyphens (-)
+ *    lowercase letters (a–z), digits (0–9), and underscores (_)
  *  - the first segment is one of the reserved {@link AUDIO_ID_CATEGORIES}
  *
  * This function is optimised for hot paths: it performs only two regex tests
  * and a single Set lookup with no intermediate allocations.
  *
  * @example
- * isValidAudioId('phonics.letter.s')   // true
- * isValidAudioId('word.cvc.sat')        // true
- * isValidAudioId('feedback.correct')    // true
- * isValidAudioId('')                    // false
- * isValidAudioId('Phonics.letter.s')   // false – uppercase
- * isValidAudioId('unknown.thing')       // false – reserved category
- * isValidAudioId('phonics.letter.s.x') // false – too many segments
+ * isValidAudioId('phoneme.letter.s')          // true
+ * isValidAudioId('word.cvc.sat')               // true
+ * isValidAudioId('feedback.correct')           // true
+ * isValidAudioId('prompt.echo_song.default')   // true
+ * isValidAudioId('reward.level_complete')      // true
+ * isValidAudioId('')                           // false
+ * isValidAudioId('Phoneme.letter.s')           // false – uppercase
+ * isValidAudioId('unknown.thing')              // false – reserved category
+ * isValidAudioId('phoneme.letter.s.x.y')      // false – too many segments
  */
 export function isValidAudioId(id: string): id is AudioId {
   if (!id || typeof id !== 'string') return false;
@@ -58,10 +60,10 @@ export function isValidAudioId(id: string): id is AudioId {
  * Prefer {@link isValidAudioId} when only a boolean result is needed.
  *
  * @example
- * validateAudioId('phonics.letter.s')
+ * validateAudioId('phoneme.letter.s')
  * // → { valid: true }
  *
- * validateAudioId('Phonics.letter.s')
+ * validateAudioId('Phoneme.letter.s')
  * // → { valid: false, error: 'AudioId must match pattern ...' }
  *
  * validateAudioId('unknown.thing')
@@ -77,7 +79,7 @@ export function validateAudioId(id: string): AudioIdValidationResult {
       valid: false,
       error:
         `AudioId must match pattern ${AUDIO_ID_RE.toString()} ` +
-        `(2–3 dot-separated segments of [a-z][a-z0-9-]*). ` +
+        `(2–4 dot-separated segments of [a-z][a-z0-9_]*). ` +
         `Received: "${id}"`,
     };
   }
@@ -91,7 +93,7 @@ export function validateAudioId(id: string): AudioIdValidationResult {
         valid: false,
         error:
           `Each segment must match ${AUDIO_ID_SEGMENT_RE.toString()} ` +
-          `(start with [a-z], contain only [a-z0-9-]). ` +
+          `(start with [a-z], contain only [a-z0-9_]). ` +
           `Segment "${segment}" in "${id}" is invalid.`,
       };
     }

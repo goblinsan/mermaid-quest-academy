@@ -1,5 +1,5 @@
 /**
- * Tests for the AudioId validation utilities (issue #202)
+ * Tests for the AudioId validation utilities (issue #218)
  *
  * Covers:
  *  - isValidAudioId: valid IDs, invalid IDs (format, category, edge cases)
@@ -18,27 +18,33 @@ import { PHONICS_AUDIO_ID_MAP } from '../../data/phonicsAudioIds';
 
 describe('isValidAudioId — valid IDs', () => {
   const valid = [
-    'phonics.letter.s',
-    'phonics.letter.a',
-    'phonics.bin.s',
+    'phoneme.letter.s',
+    'phoneme.letter.a',
+    'phoneme.bin.s',
     'word.cvc.sat',
     'word.cvc.pin',
-    'object.name.sun',
-    'object.name.apple',
-    'instruction.seashell-match.s',
-    'instruction.echo-song.default',
-    'instruction.treasure-sort.letter',
-    'instruction.word-builder.sat',
+    'word.name.sun',
+    'word.name.apple',
+    'prompt.seashell_match.s',
+    'prompt.echo_song.default',
+    'prompt.treasure_sort.letter',
+    'prompt.word_builder.sat',
     'feedback.correct',
     'feedback.incorrect',
+    'reward.level_complete',
+    'reward.badge_earned',
     'ui.tap',
     'ui.sound',
+    'narration.intro.default',
     // digits in segments
-    'phonics.letter2.s',
+    'phoneme.letter2.s',
     'word.cvc2.sat',
-    // hyphens in subcategory / qualifier
-    'instruction.fish-feed.a',
-    'instruction.word-builder.pan',
+    // underscores in subcategory / qualifier
+    'prompt.fish_feed.a',
+    'prompt.word_builder.pan',
+    // 4-segment variant IDs
+    'prompt.seashell_match.s.v2',
+    'phoneme.letter.s.v2',
   ];
 
   for (const id of valid) {
@@ -55,22 +61,27 @@ describe('isValidAudioId — valid IDs', () => {
 describe('isValidAudioId — invalid IDs', () => {
   const invalid = [
     // wrong number of segments
-    ['phonics', 'only one segment'],
-    ['phonics.letter.s.extra', 'four segments'],
+    ['phoneme', 'only one segment'],
+    ['phoneme.letter.s.extra.too_many', 'five segments'],
     // uppercase
-    ['Phonics.letter.s', 'uppercase in category'],
-    ['phonics.Letter.s', 'uppercase in subcategory'],
-    ['phonics.letter.S', 'uppercase in qualifier'],
-    // segment starts with hyphen or digit
-    ['phonics.-letter.s', 'segment starting with hyphen'],
-    ['phonics.1letter.s', 'segment starting with digit'],
+    ['Phoneme.letter.s', 'uppercase in category'],
+    ['phoneme.Letter.s', 'uppercase in subcategory'],
+    ['phoneme.letter.S', 'uppercase in qualifier'],
+    // segment starts with underscore or digit
+    ['phoneme._letter.s', 'segment starting with underscore'],
+    ['phoneme.1letter.s', 'segment starting with digit'],
     // spaces or special chars
-    ['phonics.letter s', 'space in segment'],
-    ['phonics_letter_s', 'underscores instead of dots'],
-    ['phonics.letter.s!', 'exclamation mark in qualifier'],
+    ['phoneme.letter s', 'space in segment'],
+    ['phoneme_letter_s', 'underscores instead of dots'],
+    ['phoneme.letter.s!', 'exclamation mark in qualifier'],
+    // hyphens are no longer allowed in segments
+    ['phoneme.letter-s.x', 'hyphen in segment'],
     // unknown category
     ['unknown.thing', 'unregistered category'],
     ['audio.letter.s', 'unregistered category "audio"'],
+    ['phonics.letter.s', 'old category "phonics" (replaced by "phoneme")'],
+    ['instruction.seashell_match.s', 'old category "instruction" (replaced by "prompt")'],
+    ['object.name.sun', 'old category "object" (replaced by "word")'],
     // empty / non-string
     ['', 'empty string'],
   ];
@@ -88,7 +99,11 @@ describe('isValidAudioId — invalid IDs', () => {
 
 describe('validateAudioId — error messages', () => {
   it('returns valid:true for a well-formed ID', () => {
-    expect(validateAudioId('phonics.letter.s')).toEqual({ valid: true });
+    expect(validateAudioId('phoneme.letter.s')).toEqual({ valid: true });
+  });
+
+  it('returns valid:true for a 4-segment variant ID', () => {
+    expect(validateAudioId('prompt.seashell_match.s.v2')).toEqual({ valid: true });
   });
 
   it('returns an error for an empty string', () => {
@@ -98,7 +113,7 @@ describe('validateAudioId — error messages', () => {
   });
 
   it('returns an error mentioning the pattern for a malformed ID', () => {
-    const result = validateAudioId('PHONICS.letter.s');
+    const result = validateAudioId('PHONEME.letter.s');
     expect(result.valid).toBe(false);
     expect(result.error).toMatch(/match pattern/i);
   });
@@ -125,12 +140,13 @@ describe('validateAudioId — error messages', () => {
 
 describe('AUDIO_ID_CATEGORIES', () => {
   it('contains the expected reserved categories', () => {
-    expect(AUDIO_ID_CATEGORIES).toContain('phonics');
+    expect(AUDIO_ID_CATEGORIES).toContain('phoneme');
     expect(AUDIO_ID_CATEGORIES).toContain('word');
-    expect(AUDIO_ID_CATEGORIES).toContain('object');
-    expect(AUDIO_ID_CATEGORIES).toContain('instruction');
+    expect(AUDIO_ID_CATEGORIES).toContain('prompt');
     expect(AUDIO_ID_CATEGORIES).toContain('feedback');
+    expect(AUDIO_ID_CATEGORIES).toContain('reward');
     expect(AUDIO_ID_CATEGORIES).toContain('ui');
+    expect(AUDIO_ID_CATEGORIES).toContain('narration');
   });
 
   it('every category is itself a valid first segment', () => {
@@ -167,7 +183,7 @@ describe('PHONICS_AUDIO_ID_MAP', () => {
   it('covers all 6 SATPIN letter phoneme sounds', () => {
     const satpin = ['s', 'a', 't', 'p', 'i', 'n'];
     for (const letter of satpin) {
-      const key = `phonics.letter.${letter}`;
+      const key = `phoneme.letter.${letter}`;
       expect(
         Object.prototype.hasOwnProperty.call(PHONICS_AUDIO_ID_MAP, key),
         `missing key "${key}"`,
@@ -178,7 +194,7 @@ describe('PHONICS_AUDIO_ID_MAP', () => {
   it('covers all 6 SATPIN bin labels', () => {
     const satpin = ['s', 'a', 't', 'p', 'i', 'n'];
     for (const letter of satpin) {
-      const key = `phonics.bin.${letter}`;
+      const key = `phoneme.bin.${letter}`;
       expect(
         Object.prototype.hasOwnProperty.call(PHONICS_AUDIO_ID_MAP, key),
         `missing key "${key}"`,
@@ -190,6 +206,16 @@ describe('PHONICS_AUDIO_ID_MAP', () => {
     const words = ['sat', 'sit', 'tap', 'pin', 'nap', 'pan'];
     for (const word of words) {
       const key = `word.cvc.${word}`;
+      expect(
+        Object.prototype.hasOwnProperty.call(PHONICS_AUDIO_ID_MAP, key),
+        `missing key "${key}"`,
+      ).toBe(true);
+    }
+  });
+
+  it('covers the 3 reward IDs', () => {
+    const rewards = ['reward.level_complete', 'reward.badge_earned', 'reward.pearls_collected'];
+    for (const key of rewards) {
       expect(
         Object.prototype.hasOwnProperty.call(PHONICS_AUDIO_ID_MAP, key),
         `missing key "${key}"`,

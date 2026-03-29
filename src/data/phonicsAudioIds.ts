@@ -1,5 +1,5 @@
 /**
- * Phonics Audio ID Map  (issue #203 — Create phonics ID mapping examples)
+ * Phonics Audio ID Map  (issue #219 — Phonics mapping validation SATPIN)
  *
  * Maps every stable {@link AudioId} used in the SATPIN phonics curriculum to
  * the TTS text that should be synthesised for it.
@@ -11,7 +11,7 @@
  *      import { PHONICS_AUDIO_ID_MAP } from '../data/phonicsAudioIds';
  *      import { audioId } from '../types/audioId';
  *
- *      const id  = audioId('phonics.letter.s');
+ *      const id  = audioId('phoneme.letter.s');
  *      const tts = PHONICS_AUDIO_ID_MAP[id]; // 'S says sss'
  *
  * 2. Pass both to `speak()` so the cache is keyed by the stable ID:
@@ -20,25 +20,29 @@
  *
  * ─── ID TAXONOMY ───────────────────────────────────────────────────────────
  *
- * phonics.letter.{x}          Isolated phoneme for letter x
+ * phoneme.letter.{x}          Isolated phoneme for letter x
  *                               (used in seashell tiles, bubble-pop bubbles,
  *                                echo-song beats, word-builder tiles)
  *
- * phonics.bin.{x}             Bin/chest label for letter x
+ * phoneme.bin.{x}             Bin/chest label for letter x
  *                               (used in treasure-sort activity bins)
  *
  * word.cvc.{word}             Complete blended CVC word
  *                               (used in word-builder completion feedback)
  *
- * object.name.{object}        Object / picture name
+ * word.name.{object}          Object / picture name
  *                               (used in fish-feed and treasure-sort-obj options)
  *
- * instruction.seashell-match.{x}  Seashell-match prompt per target letter
- * instruction.fish-feed.{x}       Fish-feed prompt per target letter
- * instruction.treasure-sort.letter  Letter treasure-sort prompt
- * instruction.treasure-sort.object  Object treasure-sort prompt
- * instruction.echo-song.default     Echo-song activity prompt
- * instruction.word-builder.{word}   Word-builder prompt per target word
+ * prompt.seashell_match.{x}   Seashell-match prompt per target letter
+ * prompt.fish_feed.{x}        Fish-feed prompt per target letter
+ * prompt.treasure_sort.letter Letter treasure-sort prompt
+ * prompt.treasure_sort.object Object treasure-sort prompt
+ * prompt.echo_song.default    Echo-song activity prompt
+ * prompt.word_builder.{word}  Word-builder prompt per target word
+ *
+ * reward.level_complete       Level-completion celebration audio
+ * reward.badge_earned         Badge-earned celebration audio
+ * reward.pearls_collected     Pearl-collection sound
  */
 
 import { audioId, type AudioId } from '../types/audioId';
@@ -54,21 +58,21 @@ export const PHONICS_AUDIO_ID_MAP: Record<AudioId, string> = {
   // ── Letter phoneme sounds ──────────────────────────────────────────────────
   // Used as: seashell option tiles, bubble-pop bubbles,
   //          echo-song beat audio, word-builder letter tiles
-  [audioId('phonics.letter.s')]: 'S says sss',
-  [audioId('phonics.letter.a')]: 'A says aah',
-  [audioId('phonics.letter.t')]: 'T says tuh',
-  [audioId('phonics.letter.p')]: 'P says puh',
-  [audioId('phonics.letter.i')]: 'I says ih',
-  [audioId('phonics.letter.n')]: 'N says nnn',
+  [audioId('phoneme.letter.s')]: 'S says sss',
+  [audioId('phoneme.letter.a')]: 'A says aah',
+  [audioId('phoneme.letter.t')]: 'T says tuh',
+  [audioId('phoneme.letter.p')]: 'P says puh',
+  [audioId('phoneme.letter.i')]: 'I says ih',
+  [audioId('phoneme.letter.n')]: 'N says nnn',
 
   // ── Bin / chest labels ────────────────────────────────────────────────────
   // Used as: treasure-sort bin tap audio
-  [audioId('phonics.bin.s')]: 'S says s like in snake',
-  [audioId('phonics.bin.a')]: 'A says a like in apple',
-  [audioId('phonics.bin.t')]: 'T says t like in tiger',
-  [audioId('phonics.bin.p')]: 'P says p like in pig',
-  [audioId('phonics.bin.i')]: 'I says i like in insect',
-  [audioId('phonics.bin.n')]: 'N says n like in nest',
+  [audioId('phoneme.bin.s')]: 'S says s like in snake',
+  [audioId('phoneme.bin.a')]: 'A says a like in apple',
+  [audioId('phoneme.bin.t')]: 'T says t like in tiger',
+  [audioId('phoneme.bin.p')]: 'P says p like in pig',
+  [audioId('phoneme.bin.i')]: 'I says i like in insect',
+  [audioId('phoneme.bin.n')]: 'N says n like in nest',
 
   // ── CVC words ─────────────────────────────────────────────────────────────
   // Used as: word-builder completion / blended word feedback
@@ -81,65 +85,77 @@ export const PHONICS_AUDIO_ID_MAP: Record<AudioId, string> = {
 
   // ── Object / picture names ────────────────────────────────────────────────
   // Used as: fish-feed and treasure-sort-obj option tap audio
-  [audioId('object.name.sun')]: 'Sun',
-  [audioId('object.name.apple')]: 'Apple',
-  [audioId('object.name.tiger')]: 'Tiger',
-  [audioId('object.name.pig')]: 'Pig',
-  [audioId('object.name.insect')]: 'Insect',
-  [audioId('object.name.net')]: 'Net',
-  [audioId('object.name.ant')]: 'Ant',
-  [audioId('object.name.nest')]: 'Nest',
-  [audioId('object.name.ink')]: 'Ink',
+  [audioId('word.name.sun')]: 'Sun',
+  [audioId('word.name.apple')]: 'Apple',
+  [audioId('word.name.tiger')]: 'Tiger',
+  [audioId('word.name.pig')]: 'Pig',
+  [audioId('word.name.insect')]: 'Insect',
+  [audioId('word.name.net')]: 'Net',
+  [audioId('word.name.ant')]: 'Ant',
+  [audioId('word.name.nest')]: 'Nest',
+  [audioId('word.name.ink')]: 'Ink',
 
   // ── Seashell-match activity prompts (one per target letter) ───────────────
-  [audioId('instruction.seashell-match.s')]:
+  [audioId('prompt.seashell_match.s')]:
     'Tap the shell that makes the s sound, like in snake',
-  [audioId('instruction.seashell-match.a')]:
+  [audioId('prompt.seashell_match.a')]:
     'Tap the shell that makes the a sound, like in apple',
-  [audioId('instruction.seashell-match.t')]:
+  [audioId('prompt.seashell_match.t')]:
     'Tap the shell that makes the t sound, like in tap',
-  [audioId('instruction.seashell-match.p')]:
+  [audioId('prompt.seashell_match.p')]:
     'Tap the shell that makes the p sound, like in pat',
-  [audioId('instruction.seashell-match.i')]:
+  [audioId('prompt.seashell_match.i')]:
     'Tap the shell that makes the short i sound, like in insect',
-  [audioId('instruction.seashell-match.n')]:
+  [audioId('prompt.seashell_match.n')]:
     'Tap the shell that makes the n sound, like in nest',
 
   // ── Fish-feed activity prompts (one per target letter) ────────────────────
-  [audioId('instruction.fish-feed.s')]:
+  [audioId('prompt.fish_feed.s')]:
     'Which picture starts with the s sound like in snake? Tap the right one to feed the fish!',
-  [audioId('instruction.fish-feed.a')]:
+  [audioId('prompt.fish_feed.a')]:
     'Which picture starts with the a sound like in apple? Tap the right one to feed the fish!',
-  [audioId('instruction.fish-feed.t')]:
+  [audioId('prompt.fish_feed.t')]:
     'Which picture starts with the t sound like in turtle? Tap the right one to feed the fish!',
-  [audioId('instruction.fish-feed.p')]:
+  [audioId('prompt.fish_feed.p')]:
     'Which picture starts with the p sound like in parrot? Tap the right one to feed the fish!',
-  [audioId('instruction.fish-feed.i')]:
+  [audioId('prompt.fish_feed.i')]:
     'Which picture starts with the i sound like in igloo? Tap the right one to feed the fish!',
-  [audioId('instruction.fish-feed.n')]:
+  [audioId('prompt.fish_feed.n')]:
     'Which picture starts with the n sound like in nest? Tap the right one to feed the fish!',
 
   // ── Treasure-sort activity prompts ────────────────────────────────────────
-  [audioId('instruction.treasure-sort.letter')]:
+  [audioId('prompt.treasure_sort.letter')]:
     'Sort each letter into the right treasure chest! Listen to the sound and put it in the correct chest.',
-  [audioId('instruction.treasure-sort.object')]:
+  [audioId('prompt.treasure_sort.object')]:
     'Sort each picture into the chest that matches its starting sound!',
 
   // ── Echo-song activity prompt ─────────────────────────────────────────────
-  [audioId('instruction.echo-song.default')]:
+  [audioId('prompt.echo_song.default')]:
     'Echo the mermaid! Tap along as you hear each sound.',
 
   // ── Word-builder activity prompts (one per CVC target) ────────────────────
-  [audioId('instruction.word-builder.sat')]:
+  [audioId('prompt.word_builder.sat')]:
     'Tap the letters in order to build the word: s, a, t',
-  [audioId('instruction.word-builder.sit')]:
+  [audioId('prompt.word_builder.sit')]:
     'Tap the letters in order to build the word: s, i, t',
-  [audioId('instruction.word-builder.tap')]:
+  [audioId('prompt.word_builder.tap')]:
     'Tap the letters in order to build the word: t, a, p',
-  [audioId('instruction.word-builder.pin')]:
+  [audioId('prompt.word_builder.pin')]:
     'Tap the letters in order to build the word: p, i, n',
-  [audioId('instruction.word-builder.nap')]:
+  [audioId('prompt.word_builder.nap')]:
     'Tap the letters in order to build the word: n, a, p',
-  [audioId('instruction.word-builder.pan')]:
+  [audioId('prompt.word_builder.pan')]:
     'Tap the letters in order to build the word: p, a, n',
+
+  // ── Feedback ──────────────────────────────────────────────────────────────
+  [audioId('feedback.correct')]: 'Well done! That is correct.',
+  [audioId('feedback.incorrect')]: 'Not quite. Try again!',
+
+  // ── Reward audio ──────────────────────────────────────────────────────────
+  [audioId('reward.level_complete')]:
+    'Amazing! You completed the level! Keep swimming!',
+  [audioId('reward.badge_earned')]:
+    'You earned a badge! Fantastic work!',
+  [audioId('reward.pearls_collected')]:
+    'You collected pearls!',
 } as Record<AudioId, string>;

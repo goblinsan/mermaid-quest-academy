@@ -3,19 +3,35 @@
   "updatedAt": "2026-03-29",
   "phrases": [
     {
-      "id": "phonics.letter.s",
+      "id": "phoneme.letter.s",
       "type": "phoneme",
       "text": "S says sss",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-s-seashell" },
-        { "type": "activity", "id": "ra-s-bubble" },
-        { "type": "component", "id": "MermaidEchoSong" },
-        { "type": "component", "id": "UnderwaterWordBuilder" }
+        {
+          "type": "activity",
+          "id": "ra-s-seashell"
+        },
+        {
+          "type": "activity",
+          "id": "ra-s-bubble"
+        },
+        {
+          "type": "component",
+          "id": "MermaidEchoSong"
+        },
+        {
+          "type": "component",
+          "id": "UnderwaterWordBuilder"
+        }
       ],
-      "tags": ["satpin", "phoneme", "level-1"],
+      "tags": [
+        "satpin",
+        "phoneme",
+        "level-1"
+      ],
       "status": "active",
       "phonicsMetadata": {
         "phonemeSymbol": "s",
@@ -26,22 +42,38 @@
       }
     },
     {
-      "id": "phonics.letter.a",
+      "id": "phoneme.letter.a",
       "type": "phoneme",
       "text": "A says aah",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-a-seashell" },
-        { "type": "activity", "id": "ra-a-bubble" },
-        { "type": "component", "id": "MermaidEchoSong" },
-        { "type": "component", "id": "UnderwaterWordBuilder" }
+        {
+          "type": "activity",
+          "id": "ra-a-seashell"
+        },
+        {
+          "type": "activity",
+          "id": "ra-a-bubble"
+        },
+        {
+          "type": "component",
+          "id": "MermaidEchoSong"
+        },
+        {
+          "type": "component",
+          "id": "UnderwaterWordBuilder"
+        }
       ],
-      "tags": ["satpin", "phoneme", "level-1"],
+      "tags": [
+        "satpin",
+        "phoneme",
+        "level-1"
+      ],
       "status": "active",
       "phonicsMetadata": {
-        "phonemeSymbol": "æ",
+        "phonemeSymbol": "\u00e6",
         "isolationRequired": true,
         "maxDurationMs": 1500,
         "allowLetterName": true,
@@ -49,19 +81,35 @@
       }
     },
     {
-      "id": "phonics.letter.t",
+      "id": "phoneme.letter.t",
       "type": "phoneme",
       "text": "T says tuh",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-t-seashell" },
-        { "type": "activity", "id": "ra-t-bubble" },
-        { "type": "component", "id": "MermaidEchoSong" },
-        { "type": "component", "id": "UnderwaterWordBuilder" }
+        {
+          "type": "activity",
+          "id": "ra-t-seashell"
+        },
+        {
+          "type": "activity",
+          "id": "ra-t-bubble"
+        },
+        {
+          "type": "component",
+          "id": "MermaidEchoSong"
+        },
+        {
+          "type": "component",
+          "id": "UnderwaterWordBuilder"
+        }
       ],
-      "tags": ["satpin", "phoneme", "level-1"],
+      "tags": [
+        "satpin",
+        "phoneme",
+        "level-1"
+      ],
       "status": "active",
       "phonicsMetadata": {
         "phonemeSymbol": "t",
@@ -72,19 +120,35 @@
       }
     },
     {
-      "id": "phonics.letter.p",
+      "id": "phoneme.letter.p",
       "type": "phoneme",
       "text": "P says puh",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-p-seashell" },
-        { "type": "activity", "id": "ra-p-bubble" },
-        { "type": "component", "id": "MermaidEchoSong" },
-        { "type": "component", "id": "UnderwaterWordBuilder" }
+        {
+          "type": "activity",
+          "id": "ra-p-seashell"
+        },
+        {
+          "type": "activity",
+          "id": "ra-p-bubble"
+        },
+        {
+          "type": "component",
+          "id": "MermaidEchoSong"
+        },
+        {
+          "type": "component",
+          "id": "UnderwaterWordBuilder"
+        }
       ],
-      "tags": ["satpin", "phoneme", "level-1"],
+      "tags": [
+        "satpin",
+        "phoneme",
+        "level-1"
+      ],
       "status": "active",
       "phonicsMetadata": {
         "phonemeSymbol": "p",
@@ -95,22 +159,38 @@
       }
     },
     {
-      "id": "phonics.letter.i",
+      "id": "phoneme.letter.i",
       "type": "phoneme",
       "text": "I says ih",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-i-seashell" },
-        { "type": "activity", "id": "ra-i-bubble" },
-        { "type": "component", "id": "MermaidEchoSong" },
-        { "type": "component", "id": "UnderwaterWordBuilder" }
+        {
+          "type": "activity",
+          "id": "ra-i-seashell"
+        },
+        {
+          "type": "activity",
+          "id": "ra-i-bubble"
+        },
+        {
+          "type": "component",
+          "id": "MermaidEchoSong"
+        },
+        {
+          "type": "component",
+          "id": "UnderwaterWordBuilder"
+        }
       ],
-      "tags": ["satpin", "phoneme", "level-1"],
+      "tags": [
+        "satpin",
+        "phoneme",
+        "level-1"
+      ],
       "status": "active",
       "phonicsMetadata": {
-        "phonemeSymbol": "ɪ",
+        "phonemeSymbol": "\u026a",
         "isolationRequired": true,
         "maxDurationMs": 1500,
         "allowLetterName": true,
@@ -118,19 +198,35 @@
       }
     },
     {
-      "id": "phonics.letter.n",
+      "id": "phoneme.letter.n",
       "type": "phoneme",
       "text": "N says nnn",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-n-seashell" },
-        { "type": "activity", "id": "ra-n-bubble" },
-        { "type": "component", "id": "MermaidEchoSong" },
-        { "type": "component", "id": "UnderwaterWordBuilder" }
+        {
+          "type": "activity",
+          "id": "ra-n-seashell"
+        },
+        {
+          "type": "activity",
+          "id": "ra-n-bubble"
+        },
+        {
+          "type": "component",
+          "id": "MermaidEchoSong"
+        },
+        {
+          "type": "component",
+          "id": "UnderwaterWordBuilder"
+        }
       ],
-      "tags": ["satpin", "phoneme", "level-1"],
+      "tags": [
+        "satpin",
+        "phoneme",
+        "level-1"
+      ],
       "status": "active",
       "phonicsMetadata": {
         "phonemeSymbol": "n",
@@ -141,17 +237,29 @@
       }
     },
     {
-      "id": "phonics.bin.s",
+      "id": "phoneme.bin.s",
       "type": "phoneme",
       "text": "S says s like in snake",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-sort-s-a" },
-        { "type": "activity", "id": "ra-sort-s-t" }
+        {
+          "type": "activity",
+          "id": "ra-sort-s-a"
+        },
+        {
+          "type": "activity",
+          "id": "ra-sort-s-t"
+        }
       ],
-      "tags": ["satpin", "phoneme", "bin-label", "level-3", "treasure-sort"],
+      "tags": [
+        "satpin",
+        "phoneme",
+        "bin-label",
+        "level-3",
+        "treasure-sort"
+      ],
       "status": "active",
       "phonicsMetadata": {
         "phonemeSymbol": "s",
@@ -162,20 +270,32 @@
       }
     },
     {
-      "id": "phonics.bin.a",
+      "id": "phoneme.bin.a",
       "type": "phoneme",
       "text": "A says a like in apple",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-sort-s-a" },
-        { "type": "activity", "id": "ra-sort-a-p" }
+        {
+          "type": "activity",
+          "id": "ra-sort-s-a"
+        },
+        {
+          "type": "activity",
+          "id": "ra-sort-a-p"
+        }
       ],
-      "tags": ["satpin", "phoneme", "bin-label", "level-3", "treasure-sort"],
+      "tags": [
+        "satpin",
+        "phoneme",
+        "bin-label",
+        "level-3",
+        "treasure-sort"
+      ],
       "status": "active",
       "phonicsMetadata": {
-        "phonemeSymbol": "æ",
+        "phonemeSymbol": "\u00e6",
         "isolationRequired": false,
         "maxDurationMs": 3000,
         "allowLetterName": true,
@@ -183,17 +303,29 @@
       }
     },
     {
-      "id": "phonics.bin.t",
+      "id": "phoneme.bin.t",
       "type": "phoneme",
       "text": "T says t like in tiger",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-sort-t-p" },
-        { "type": "activity", "id": "ra-sort-s-t" }
+        {
+          "type": "activity",
+          "id": "ra-sort-t-p"
+        },
+        {
+          "type": "activity",
+          "id": "ra-sort-s-t"
+        }
       ],
-      "tags": ["satpin", "phoneme", "bin-label", "level-3", "treasure-sort"],
+      "tags": [
+        "satpin",
+        "phoneme",
+        "bin-label",
+        "level-3",
+        "treasure-sort"
+      ],
       "status": "active",
       "phonicsMetadata": {
         "phonemeSymbol": "t",
@@ -204,18 +336,33 @@
       }
     },
     {
-      "id": "phonics.bin.p",
+      "id": "phoneme.bin.p",
       "type": "phoneme",
       "text": "P says p like in pig",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-sort-t-p" },
-        { "type": "activity", "id": "ra-sort-a-p" },
-        { "type": "activity", "id": "ra-sort-p-n" }
+        {
+          "type": "activity",
+          "id": "ra-sort-t-p"
+        },
+        {
+          "type": "activity",
+          "id": "ra-sort-a-p"
+        },
+        {
+          "type": "activity",
+          "id": "ra-sort-p-n"
+        }
       ],
-      "tags": ["satpin", "phoneme", "bin-label", "level-3", "treasure-sort"],
+      "tags": [
+        "satpin",
+        "phoneme",
+        "bin-label",
+        "level-3",
+        "treasure-sort"
+      ],
       "status": "active",
       "phonicsMetadata": {
         "phonemeSymbol": "p",
@@ -226,19 +373,28 @@
       }
     },
     {
-      "id": "phonics.bin.i",
+      "id": "phoneme.bin.i",
       "type": "phoneme",
       "text": "I says i like in insect",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-sort-i-n" }
+        {
+          "type": "activity",
+          "id": "ra-sort-i-n"
+        }
       ],
-      "tags": ["satpin", "phoneme", "bin-label", "level-3", "treasure-sort"],
+      "tags": [
+        "satpin",
+        "phoneme",
+        "bin-label",
+        "level-3",
+        "treasure-sort"
+      ],
       "status": "active",
       "phonicsMetadata": {
-        "phonemeSymbol": "ɪ",
+        "phonemeSymbol": "\u026a",
         "isolationRequired": false,
         "maxDurationMs": 3000,
         "allowLetterName": true,
@@ -246,17 +402,29 @@
       }
     },
     {
-      "id": "phonics.bin.n",
+      "id": "phoneme.bin.n",
       "type": "phoneme",
       "text": "N says n like in nest",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-sort-i-n" },
-        { "type": "activity", "id": "ra-sort-p-n" }
+        {
+          "type": "activity",
+          "id": "ra-sort-i-n"
+        },
+        {
+          "type": "activity",
+          "id": "ra-sort-p-n"
+        }
       ],
-      "tags": ["satpin", "phoneme", "bin-label", "level-3", "treasure-sort"],
+      "tags": [
+        "satpin",
+        "phoneme",
+        "bin-label",
+        "level-3",
+        "treasure-sort"
+      ],
       "status": "active",
       "phonicsMetadata": {
         "phonemeSymbol": "n",
@@ -274,10 +442,22 @@
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-wb-sat" },
-        { "type": "activity", "id": "ra-echo-sat" }
+        {
+          "type": "activity",
+          "id": "ra-wb-sat"
+        },
+        {
+          "type": "activity",
+          "id": "ra-echo-sat"
+        }
       ],
-      "tags": ["satpin", "cvc", "level-4", "word-builder", "echo-song"],
+      "tags": [
+        "satpin",
+        "cvc",
+        "level-4",
+        "word-builder",
+        "echo-song"
+      ],
       "status": "active"
     },
     {
@@ -288,10 +468,22 @@
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-wb-sit" },
-        { "type": "activity", "id": "ra-echo-sit" }
+        {
+          "type": "activity",
+          "id": "ra-wb-sit"
+        },
+        {
+          "type": "activity",
+          "id": "ra-echo-sit"
+        }
       ],
-      "tags": ["satpin", "cvc", "level-4", "word-builder", "echo-song"],
+      "tags": [
+        "satpin",
+        "cvc",
+        "level-4",
+        "word-builder",
+        "echo-song"
+      ],
       "status": "active"
     },
     {
@@ -302,10 +494,22 @@
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-wb-tap" },
-        { "type": "activity", "id": "ra-echo-tap" }
+        {
+          "type": "activity",
+          "id": "ra-wb-tap"
+        },
+        {
+          "type": "activity",
+          "id": "ra-echo-tap"
+        }
       ],
-      "tags": ["satpin", "cvc", "level-4", "word-builder", "echo-song"],
+      "tags": [
+        "satpin",
+        "cvc",
+        "level-4",
+        "word-builder",
+        "echo-song"
+      ],
       "status": "active"
     },
     {
@@ -316,10 +520,22 @@
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-wb-pin" },
-        { "type": "activity", "id": "ra-echo-pin" }
+        {
+          "type": "activity",
+          "id": "ra-wb-pin"
+        },
+        {
+          "type": "activity",
+          "id": "ra-echo-pin"
+        }
       ],
-      "tags": ["satpin", "cvc", "level-4", "word-builder", "echo-song"],
+      "tags": [
+        "satpin",
+        "cvc",
+        "level-4",
+        "word-builder",
+        "echo-song"
+      ],
       "status": "active"
     },
     {
@@ -330,10 +546,22 @@
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-wb-nap" },
-        { "type": "activity", "id": "ra-echo-nap" }
+        {
+          "type": "activity",
+          "id": "ra-wb-nap"
+        },
+        {
+          "type": "activity",
+          "id": "ra-echo-nap"
+        }
       ],
-      "tags": ["satpin", "cvc", "level-4", "word-builder", "echo-song"],
+      "tags": [
+        "satpin",
+        "cvc",
+        "level-4",
+        "word-builder",
+        "echo-song"
+      ],
       "status": "active"
     },
     {
@@ -344,433 +572,760 @@
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-wb-pan" },
-        { "type": "activity", "id": "ra-echo-pan" }
+        {
+          "type": "activity",
+          "id": "ra-wb-pan"
+        },
+        {
+          "type": "activity",
+          "id": "ra-echo-pan"
+        }
       ],
-      "tags": ["satpin", "cvc", "level-4", "word-builder", "echo-song"],
+      "tags": [
+        "satpin",
+        "cvc",
+        "level-4",
+        "word-builder",
+        "echo-song"
+      ],
       "status": "active"
     },
     {
-      "id": "object.name.sun",
+      "id": "word.name.sun",
       "type": "word",
       "text": "Sun",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-s-fish" },
-        { "type": "activity", "id": "ra-sort-obj-s-a" },
-        { "type": "component", "id": "ObjectPhonicsCard" }
+        {
+          "type": "activity",
+          "id": "ra-s-fish"
+        },
+        {
+          "type": "activity",
+          "id": "ra-sort-obj-s-a"
+        },
+        {
+          "type": "component",
+          "id": "ObjectPhonicsCard"
+        }
       ],
-      "tags": ["satpin", "object-name", "level-2", "fish-feed", "treasure-sort"],
+      "tags": [
+        "satpin",
+        "object-name",
+        "level-2",
+        "fish-feed",
+        "treasure-sort"
+      ],
       "status": "active",
       "notes": "Initial-sound /s/; used as correct answer for s-sound activities"
     },
     {
-      "id": "object.name.apple",
+      "id": "word.name.apple",
       "type": "word",
       "text": "Apple",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-a-fish" },
-        { "type": "activity", "id": "ra-sort-obj-s-a" },
-        { "type": "component", "id": "ObjectPhonicsCard" }
+        {
+          "type": "activity",
+          "id": "ra-a-fish"
+        },
+        {
+          "type": "activity",
+          "id": "ra-sort-obj-s-a"
+        },
+        {
+          "type": "component",
+          "id": "ObjectPhonicsCard"
+        }
       ],
-      "tags": ["satpin", "object-name", "level-2", "fish-feed", "treasure-sort"],
+      "tags": [
+        "satpin",
+        "object-name",
+        "level-2",
+        "fish-feed",
+        "treasure-sort"
+      ],
       "status": "active",
-      "notes": "Initial-sound /æ/; used as correct answer for a-sound activities"
+      "notes": "Initial-sound /\u00e6/; used as correct answer for a-sound activities"
     },
     {
-      "id": "object.name.tiger",
+      "id": "word.name.tiger",
       "type": "word",
       "text": "Tiger",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-t-fish" },
-        { "type": "activity", "id": "ra-sort-obj-t-p" },
-        { "type": "component", "id": "ObjectPhonicsCard" }
+        {
+          "type": "activity",
+          "id": "ra-t-fish"
+        },
+        {
+          "type": "activity",
+          "id": "ra-sort-obj-t-p"
+        },
+        {
+          "type": "component",
+          "id": "ObjectPhonicsCard"
+        }
       ],
-      "tags": ["satpin", "object-name", "level-2", "fish-feed", "treasure-sort"],
+      "tags": [
+        "satpin",
+        "object-name",
+        "level-2",
+        "fish-feed",
+        "treasure-sort"
+      ],
       "status": "active",
       "notes": "Initial-sound /t/; used as correct answer for t-sound activities"
     },
     {
-      "id": "object.name.pig",
+      "id": "word.name.pig",
       "type": "word",
       "text": "Pig",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-p-fish" },
-        { "type": "activity", "id": "ra-sort-obj-t-p" },
-        { "type": "component", "id": "ObjectPhonicsCard" }
+        {
+          "type": "activity",
+          "id": "ra-p-fish"
+        },
+        {
+          "type": "activity",
+          "id": "ra-sort-obj-t-p"
+        },
+        {
+          "type": "component",
+          "id": "ObjectPhonicsCard"
+        }
       ],
-      "tags": ["satpin", "object-name", "level-2", "fish-feed", "treasure-sort"],
+      "tags": [
+        "satpin",
+        "object-name",
+        "level-2",
+        "fish-feed",
+        "treasure-sort"
+      ],
       "status": "active",
       "notes": "Initial-sound /p/; used as correct answer for p-sound activities"
     },
     {
-      "id": "object.name.insect",
+      "id": "word.name.insect",
       "type": "word",
       "text": "Insect",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-i-fish" },
-        { "type": "activity", "id": "ra-sort-obj-i-n" },
-        { "type": "component", "id": "ObjectPhonicsCard" }
+        {
+          "type": "activity",
+          "id": "ra-i-fish"
+        },
+        {
+          "type": "activity",
+          "id": "ra-sort-obj-i-n"
+        },
+        {
+          "type": "component",
+          "id": "ObjectPhonicsCard"
+        }
       ],
-      "tags": ["satpin", "object-name", "level-2", "fish-feed", "treasure-sort"],
+      "tags": [
+        "satpin",
+        "object-name",
+        "level-2",
+        "fish-feed",
+        "treasure-sort"
+      ],
       "status": "active",
-      "notes": "Initial-sound /ɪ/; used as correct answer for i-sound activities"
+      "notes": "Initial-sound /\u026a/; used as correct answer for i-sound activities"
     },
     {
-      "id": "object.name.net",
+      "id": "word.name.net",
       "type": "word",
       "text": "Net",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-n-fish" },
-        { "type": "activity", "id": "ra-sort-obj-i-n" },
-        { "type": "component", "id": "ObjectPhonicsCard" }
+        {
+          "type": "activity",
+          "id": "ra-n-fish"
+        },
+        {
+          "type": "activity",
+          "id": "ra-sort-obj-i-n"
+        },
+        {
+          "type": "component",
+          "id": "ObjectPhonicsCard"
+        }
       ],
-      "tags": ["satpin", "object-name", "level-2", "fish-feed", "treasure-sort"],
+      "tags": [
+        "satpin",
+        "object-name",
+        "level-2",
+        "fish-feed",
+        "treasure-sort"
+      ],
       "status": "active",
       "notes": "Initial-sound /n/; used as correct answer for n-sound activities"
     },
     {
-      "id": "object.name.ant",
+      "id": "word.name.ant",
       "type": "word",
       "text": "Ant",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "component", "id": "ObjectPhonicsCard" }
+        {
+          "type": "component",
+          "id": "ObjectPhonicsCard"
+        }
       ],
-      "tags": ["satpin", "object-name", "distractor"],
+      "tags": [
+        "satpin",
+        "object-name",
+        "distractor"
+      ],
       "status": "active",
       "notes": "Used as a distractor option in fish-feed/treasure-sort activities"
     },
     {
-      "id": "object.name.nest",
+      "id": "word.name.nest",
       "type": "word",
       "text": "Nest",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "component", "id": "ObjectPhonicsCard" }
+        {
+          "type": "component",
+          "id": "ObjectPhonicsCard"
+        }
       ],
-      "tags": ["satpin", "object-name", "distractor"],
+      "tags": [
+        "satpin",
+        "object-name",
+        "distractor"
+      ],
       "status": "active",
       "notes": "Used as a distractor option in fish-feed/treasure-sort activities"
     },
     {
-      "id": "object.name.ink",
+      "id": "word.name.ink",
       "type": "word",
       "text": "Ink",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "component", "id": "ObjectPhonicsCard" }
+        {
+          "type": "component",
+          "id": "ObjectPhonicsCard"
+        }
       ],
-      "tags": ["satpin", "object-name", "distractor"],
+      "tags": [
+        "satpin",
+        "object-name",
+        "distractor"
+      ],
       "status": "active",
       "notes": "Used as a distractor option in fish-feed/treasure-sort activities"
     },
     {
-      "id": "instruction.seashell-match.s",
+      "id": "prompt.seashell_match.s",
       "type": "prompt",
       "text": "Tap the shell that makes the s sound, like in snake",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-s-seashell" }
+        {
+          "type": "activity",
+          "id": "ra-s-seashell"
+        }
       ],
-      "tags": ["satpin", "prompt", "level-1", "seashell-match"],
+      "tags": [
+        "satpin",
+        "prompt",
+        "level-1",
+        "seashell-match"
+      ],
       "status": "active"
     },
     {
-      "id": "instruction.seashell-match.a",
+      "id": "prompt.seashell_match.a",
       "type": "prompt",
       "text": "Tap the shell that makes the a sound, like in apple",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-a-seashell" }
+        {
+          "type": "activity",
+          "id": "ra-a-seashell"
+        }
       ],
-      "tags": ["satpin", "prompt", "level-1", "seashell-match"],
+      "tags": [
+        "satpin",
+        "prompt",
+        "level-1",
+        "seashell-match"
+      ],
       "status": "active"
     },
     {
-      "id": "instruction.seashell-match.t",
+      "id": "prompt.seashell_match.t",
       "type": "prompt",
       "text": "Tap the shell that makes the t sound, like in tap",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-t-seashell" }
+        {
+          "type": "activity",
+          "id": "ra-t-seashell"
+        }
       ],
-      "tags": ["satpin", "prompt", "level-1", "seashell-match"],
+      "tags": [
+        "satpin",
+        "prompt",
+        "level-1",
+        "seashell-match"
+      ],
       "status": "active"
     },
     {
-      "id": "instruction.seashell-match.p",
+      "id": "prompt.seashell_match.p",
       "type": "prompt",
       "text": "Tap the shell that makes the p sound, like in pat",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-p-seashell" }
+        {
+          "type": "activity",
+          "id": "ra-p-seashell"
+        }
       ],
-      "tags": ["satpin", "prompt", "level-1", "seashell-match"],
+      "tags": [
+        "satpin",
+        "prompt",
+        "level-1",
+        "seashell-match"
+      ],
       "status": "active"
     },
     {
-      "id": "instruction.seashell-match.i",
+      "id": "prompt.seashell_match.i",
       "type": "prompt",
       "text": "Tap the shell that makes the short i sound, like in insect",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-i-seashell" }
+        {
+          "type": "activity",
+          "id": "ra-i-seashell"
+        }
       ],
-      "tags": ["satpin", "prompt", "level-1", "seashell-match"],
+      "tags": [
+        "satpin",
+        "prompt",
+        "level-1",
+        "seashell-match"
+      ],
       "status": "active"
     },
     {
-      "id": "instruction.seashell-match.n",
+      "id": "prompt.seashell_match.n",
       "type": "prompt",
       "text": "Tap the shell that makes the n sound, like in nest",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-n-seashell" }
+        {
+          "type": "activity",
+          "id": "ra-n-seashell"
+        }
       ],
-      "tags": ["satpin", "prompt", "level-1", "seashell-match"],
+      "tags": [
+        "satpin",
+        "prompt",
+        "level-1",
+        "seashell-match"
+      ],
       "status": "active"
     },
     {
-      "id": "instruction.fish-feed.s",
+      "id": "prompt.fish_feed.s",
       "type": "prompt",
       "text": "Which picture starts with the s sound like in snake? Tap the right one to feed the fish!",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-s-fish" }
+        {
+          "type": "activity",
+          "id": "ra-s-fish"
+        }
       ],
-      "tags": ["satpin", "prompt", "level-2", "fish-feed"],
+      "tags": [
+        "satpin",
+        "prompt",
+        "level-2",
+        "fish-feed"
+      ],
       "status": "active"
     },
     {
-      "id": "instruction.fish-feed.a",
+      "id": "prompt.fish_feed.a",
       "type": "prompt",
       "text": "Which picture starts with the a sound like in apple? Tap the right one to feed the fish!",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-a-fish" }
+        {
+          "type": "activity",
+          "id": "ra-a-fish"
+        }
       ],
-      "tags": ["satpin", "prompt", "level-2", "fish-feed"],
+      "tags": [
+        "satpin",
+        "prompt",
+        "level-2",
+        "fish-feed"
+      ],
       "status": "active"
     },
     {
-      "id": "instruction.fish-feed.t",
+      "id": "prompt.fish_feed.t",
       "type": "prompt",
       "text": "Which picture starts with the t sound like in turtle? Tap the right one to feed the fish!",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-t-fish" }
+        {
+          "type": "activity",
+          "id": "ra-t-fish"
+        }
       ],
-      "tags": ["satpin", "prompt", "level-2", "fish-feed"],
+      "tags": [
+        "satpin",
+        "prompt",
+        "level-2",
+        "fish-feed"
+      ],
       "status": "active"
     },
     {
-      "id": "instruction.fish-feed.p",
+      "id": "prompt.fish_feed.p",
       "type": "prompt",
       "text": "Which picture starts with the p sound like in parrot? Tap the right one to feed the fish!",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-p-fish" }
+        {
+          "type": "activity",
+          "id": "ra-p-fish"
+        }
       ],
-      "tags": ["satpin", "prompt", "level-2", "fish-feed"],
+      "tags": [
+        "satpin",
+        "prompt",
+        "level-2",
+        "fish-feed"
+      ],
       "status": "active"
     },
     {
-      "id": "instruction.fish-feed.i",
+      "id": "prompt.fish_feed.i",
       "type": "prompt",
       "text": "Which picture starts with the i sound like in igloo? Tap the right one to feed the fish!",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-i-fish" }
+        {
+          "type": "activity",
+          "id": "ra-i-fish"
+        }
       ],
-      "tags": ["satpin", "prompt", "level-2", "fish-feed"],
+      "tags": [
+        "satpin",
+        "prompt",
+        "level-2",
+        "fish-feed"
+      ],
       "status": "active"
     },
     {
-      "id": "instruction.fish-feed.n",
+      "id": "prompt.fish_feed.n",
       "type": "prompt",
       "text": "Which picture starts with the n sound like in nest? Tap the right one to feed the fish!",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-n-fish" }
+        {
+          "type": "activity",
+          "id": "ra-n-fish"
+        }
       ],
-      "tags": ["satpin", "prompt", "level-2", "fish-feed"],
+      "tags": [
+        "satpin",
+        "prompt",
+        "level-2",
+        "fish-feed"
+      ],
       "status": "active"
     },
     {
-      "id": "instruction.treasure-sort.letter",
+      "id": "prompt.treasure_sort.letter",
       "type": "prompt",
       "text": "Sort each letter into the right treasure chest! Listen to the sound and put it in the correct chest.",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-sort-s-a" },
-        { "type": "activity", "id": "ra-sort-t-p" },
-        { "type": "activity", "id": "ra-sort-i-n" },
-        { "type": "activity", "id": "ra-sort-s-t" },
-        { "type": "activity", "id": "ra-sort-a-p" },
-        { "type": "activity", "id": "ra-sort-p-n" }
+        {
+          "type": "activity",
+          "id": "ra-sort-s-a"
+        },
+        {
+          "type": "activity",
+          "id": "ra-sort-t-p"
+        },
+        {
+          "type": "activity",
+          "id": "ra-sort-i-n"
+        },
+        {
+          "type": "activity",
+          "id": "ra-sort-s-t"
+        },
+        {
+          "type": "activity",
+          "id": "ra-sort-a-p"
+        },
+        {
+          "type": "activity",
+          "id": "ra-sort-p-n"
+        }
       ],
-      "tags": ["satpin", "prompt", "level-3", "treasure-sort"],
+      "tags": [
+        "satpin",
+        "prompt",
+        "level-3",
+        "treasure-sort"
+      ],
       "status": "active"
     },
     {
-      "id": "instruction.treasure-sort.object",
+      "id": "prompt.treasure_sort.object",
       "type": "prompt",
       "text": "Sort each picture into the chest that matches its starting sound!",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-sort-obj-s-a" },
-        { "type": "activity", "id": "ra-sort-obj-t-p" },
-        { "type": "activity", "id": "ra-sort-obj-i-n" }
+        {
+          "type": "activity",
+          "id": "ra-sort-obj-s-a"
+        },
+        {
+          "type": "activity",
+          "id": "ra-sort-obj-t-p"
+        },
+        {
+          "type": "activity",
+          "id": "ra-sort-obj-i-n"
+        }
       ],
-      "tags": ["satpin", "prompt", "level-3", "treasure-sort"],
+      "tags": [
+        "satpin",
+        "prompt",
+        "level-3",
+        "treasure-sort"
+      ],
       "status": "active"
     },
     {
-      "id": "instruction.echo-song.default",
+      "id": "prompt.echo_song.default",
       "type": "prompt",
       "text": "Echo the mermaid! Tap along as you hear each sound.",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-echo-sat" },
-        { "type": "activity", "id": "ra-echo-sit" },
-        { "type": "activity", "id": "ra-echo-tap" },
-        { "type": "activity", "id": "ra-echo-pin" },
-        { "type": "activity", "id": "ra-echo-nap" },
-        { "type": "activity", "id": "ra-echo-pan" }
+        {
+          "type": "activity",
+          "id": "ra-echo-sat"
+        },
+        {
+          "type": "activity",
+          "id": "ra-echo-sit"
+        },
+        {
+          "type": "activity",
+          "id": "ra-echo-tap"
+        },
+        {
+          "type": "activity",
+          "id": "ra-echo-pin"
+        },
+        {
+          "type": "activity",
+          "id": "ra-echo-nap"
+        },
+        {
+          "type": "activity",
+          "id": "ra-echo-pan"
+        }
       ],
-      "tags": ["satpin", "prompt", "level-4", "echo-song"],
+      "tags": [
+        "satpin",
+        "prompt",
+        "level-4",
+        "echo-song"
+      ],
       "status": "active"
     },
     {
-      "id": "instruction.word-builder.sat",
+      "id": "prompt.word_builder.sat",
       "type": "prompt",
       "text": "Tap the letters in order to build the word: s, a, t",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-wb-sat" }
+        {
+          "type": "activity",
+          "id": "ra-wb-sat"
+        }
       ],
-      "tags": ["satpin", "prompt", "level-4", "word-builder"],
+      "tags": [
+        "satpin",
+        "prompt",
+        "level-4",
+        "word-builder"
+      ],
       "status": "active"
     },
     {
-      "id": "instruction.word-builder.sit",
+      "id": "prompt.word_builder.sit",
       "type": "prompt",
       "text": "Tap the letters in order to build the word: s, i, t",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-wb-sit" }
+        {
+          "type": "activity",
+          "id": "ra-wb-sit"
+        }
       ],
-      "tags": ["satpin", "prompt", "level-4", "word-builder"],
+      "tags": [
+        "satpin",
+        "prompt",
+        "level-4",
+        "word-builder"
+      ],
       "status": "active"
     },
     {
-      "id": "instruction.word-builder.tap",
+      "id": "prompt.word_builder.tap",
       "type": "prompt",
       "text": "Tap the letters in order to build the word: t, a, p",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-wb-tap" }
+        {
+          "type": "activity",
+          "id": "ra-wb-tap"
+        }
       ],
-      "tags": ["satpin", "prompt", "level-4", "word-builder"],
+      "tags": [
+        "satpin",
+        "prompt",
+        "level-4",
+        "word-builder"
+      ],
       "status": "active"
     },
     {
-      "id": "instruction.word-builder.pin",
+      "id": "prompt.word_builder.pin",
       "type": "prompt",
       "text": "Tap the letters in order to build the word: p, i, n",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-wb-pin" }
+        {
+          "type": "activity",
+          "id": "ra-wb-pin"
+        }
       ],
-      "tags": ["satpin", "prompt", "level-4", "word-builder"],
+      "tags": [
+        "satpin",
+        "prompt",
+        "level-4",
+        "word-builder"
+      ],
       "status": "active"
     },
     {
-      "id": "instruction.word-builder.nap",
+      "id": "prompt.word_builder.nap",
       "type": "prompt",
       "text": "Tap the letters in order to build the word: n, a, p",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-wb-nap" }
+        {
+          "type": "activity",
+          "id": "ra-wb-nap"
+        }
       ],
-      "tags": ["satpin", "prompt", "level-4", "word-builder"],
+      "tags": [
+        "satpin",
+        "prompt",
+        "level-4",
+        "word-builder"
+      ],
       "status": "active"
     },
     {
-      "id": "instruction.word-builder.pan",
+      "id": "prompt.word_builder.pan",
       "type": "prompt",
       "text": "Tap the letters in order to build the word: p, a, n",
       "voiceProfile": "mermaid-default",
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [
-        { "type": "activity", "id": "ra-wb-pan" }
+        {
+          "type": "activity",
+          "id": "ra-wb-pan"
+        }
       ],
-      "tags": ["satpin", "prompt", "level-4", "word-builder"],
+      "tags": [
+        "satpin",
+        "prompt",
+        "level-4",
+        "word-builder"
+      ],
       "status": "active"
     },
     {
@@ -781,7 +1336,10 @@
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [],
-      "tags": ["feedback", "positive"],
+      "tags": [
+        "feedback",
+        "positive"
+      ],
       "status": "active"
     },
     {
@@ -792,7 +1350,67 @@
       "locale": "en-US",
       "renderStrategy": "tts",
       "sourceRefs": [],
-      "tags": ["feedback", "negative"],
+      "tags": [
+        "feedback",
+        "negative"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "reward.level_complete",
+      "type": "reward",
+      "text": "Amazing! You completed the level! Keep swimming!",
+      "voiceProfile": "mermaid-default",
+      "locale": "en-US",
+      "renderStrategy": "tts",
+      "sourceRefs": [
+        {
+          "type": "component",
+          "id": "SessionRewardScreen"
+        }
+      ],
+      "tags": [
+        "reward",
+        "level"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "reward.badge_earned",
+      "type": "reward",
+      "text": "You earned a badge! Fantastic work!",
+      "voiceProfile": "mermaid-default",
+      "locale": "en-US",
+      "renderStrategy": "tts",
+      "sourceRefs": [
+        {
+          "type": "component",
+          "id": "SessionRewardScreen"
+        }
+      ],
+      "tags": [
+        "reward",
+        "badge"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "reward.pearls_collected",
+      "type": "reward",
+      "text": "You collected pearls!",
+      "voiceProfile": "mermaid-default",
+      "locale": "en-US",
+      "renderStrategy": "tts",
+      "sourceRefs": [
+        {
+          "type": "component",
+          "id": "SessionRewardScreen"
+        }
+      ],
+      "tags": [
+        "reward",
+        "pearls"
+      ],
       "status": "active"
     }
   ]
