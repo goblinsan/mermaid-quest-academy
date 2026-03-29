@@ -35,4 +35,12 @@ export class AudioPlayer {
     this.audio.pause();
     this.audio.currentTime = 0;
   }
+
+  /**
+   * Returns `true` when audio is actively playing (not paused, not ended).
+   * Used by the audio manager to enforce interruption priority rules.
+   */
+  isPlaying(): boolean {
+    return this.audio !== null && !this.audio.paused && !this.audio.ended;
+  }
 }
