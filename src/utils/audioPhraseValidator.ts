@@ -109,7 +109,7 @@ export function validateAudioPhraseEntry(
   } else if (!isValidAudioId(e.id)) {
     errors.push(
       `${entryLabel}.id: "${e.id}" is not a valid AudioId ` +
-        `(must match pattern ^[a-z][a-z0-9-]*(\\.[a-z][a-z0-9-]*){1,2}$ with a reserved category)`,
+        `(must match pattern ^[a-z][a-z0-9_]*(\\.[a-z][a-z0-9_]*){1,3}$ with a reserved category)`,
     );
   }
 

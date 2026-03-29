@@ -24,7 +24,7 @@ import inventoryRaw from '../../data/audio-phrases.json';
 /** Returns a valid 'phoneme' entry that can be tweaked per test. */
 function makePhoneme(overrides: Partial<Record<string, unknown>> = {}): Record<string, unknown> {
   return {
-    id: 'phonics.letter.s',
+    id: 'phoneme.letter.s',
     type: 'phoneme',
     text: 'S says sss',
     voiceProfile: 'mermaid-default',
@@ -47,7 +47,7 @@ function makePhoneme(overrides: Partial<Record<string, unknown>> = {}): Record<s
 /** Returns a valid 'prompt' entry that can be tweaked per test. */
 function makePrompt(overrides: Partial<Record<string, unknown>> = {}): Record<string, unknown> {
   return {
-    id: 'instruction.seashell-match.s',
+    id: 'prompt.seashell_match.s',
     type: 'prompt',
     text: 'Tap the shell that makes the s sound',
     voiceProfile: 'mermaid-default',
@@ -209,12 +209,12 @@ describe('validateAudioPhraseEntry — invalid id', () => {
   });
 
   it('rejects an id with uppercase letters', () => {
-    const result = validateAudioPhraseEntry(makePhoneme({ id: 'Phonics.letter.s' }));
+    const result = validateAudioPhraseEntry(makePhoneme({ id: 'Phoneme.letter.s' }));
     expect(result.valid).toBe(false);
   });
 
   it('rejects an id with only one segment', () => {
-    const result = validateAudioPhraseEntry(makePhoneme({ id: 'phonics' }));
+    const result = validateAudioPhraseEntry(makePhoneme({ id: 'phoneme' }));
     expect(result.valid).toBe(false);
   });
 });
@@ -570,8 +570,8 @@ describe('validateAudioPhrasesInventory — duplicate IDs', () => {
     const result = validateAudioPhrasesInventory(
       makeInventory({
         phrases: [
-          makePhoneme({ id: 'phonics.letter.s' }),
-          makePhoneme({ id: 'phonics.letter.a' }),
+          makePhoneme({ id: 'phoneme.letter.s' }),
+          makePhoneme({ id: 'phoneme.letter.a' }),
         ],
       }),
     );
@@ -597,7 +597,7 @@ describe('validateAudioPhrasesInventory — per-entry error reporting', () => {
     const inv = makeInventory({
       phrases: [
         makeWord({ text: '' }),                    // bad text
-        makePhoneme({ id: 'phonics.letter.a', phonicsMetadata: null }), // missing phonicsMetadata
+        makePhoneme({ id: 'phoneme.letter.a', phonicsMetadata: null }), // missing phonicsMetadata
       ],
     });
     const result = validateAudioPhrasesInventory(inv);
@@ -651,14 +651,14 @@ describe('audio-phrases.json — starter inventory', () => {
   it('covers all 6 SATPIN letter phoneme IDs', () => {
     const ids = new Set(inventory.phrases.map((p) => p.id as string));
     for (const letter of ['s', 'a', 't', 'p', 'i', 'n']) {
-      expect(ids.has(`phonics.letter.${letter}`), `missing phonics.letter.${letter}`).toBe(true);
+      expect(ids.has(`phoneme.letter.${letter}`), `missing phoneme.letter.${letter}`).toBe(true);
     }
   });
 
   it('covers all 6 SATPIN bin label IDs', () => {
     const ids = new Set(inventory.phrases.map((p) => p.id as string));
     for (const letter of ['s', 'a', 't', 'p', 'i', 'n']) {
-      expect(ids.has(`phonics.bin.${letter}`), `missing phonics.bin.${letter}`).toBe(true);
+      expect(ids.has(`phoneme.bin.${letter}`), `missing phoneme.bin.${letter}`).toBe(true);
     }
   });
 
@@ -673,6 +673,13 @@ describe('audio-phrases.json — starter inventory', () => {
     const ids = new Set(inventory.phrases.map((p) => p.id as string));
     expect(ids.has('feedback.correct')).toBe(true);
     expect(ids.has('feedback.incorrect')).toBe(true);
+  });
+
+  it('includes all 3 reward entries', () => {
+    const ids = new Set(inventory.phrases.map((p) => p.id as string));
+    expect(ids.has('reward.level_complete')).toBe(true);
+    expect(ids.has('reward.badge_earned')).toBe(true);
+    expect(ids.has('reward.pearls_collected')).toBe(true);
   });
 
   it('every phoneme entry has phonicsMetadata', () => {
